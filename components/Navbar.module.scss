@@ -1,0 +1,70 @@
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-blue);
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.socialContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.socialIconsRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.textButton {
+  text-decoration: none;
+  border: none;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  font-size: var(--font-size-Mini);
+  transition: color 200ms ease;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    color: var(--color-gray);
+  }
+}
+
+// .textButtonLink {
+//   //   border-bottom: 1px solid var(--color-white);
+
+//   transition: border-color 200ms ease;
+//   cursor: pointer;
+//   padding: 1px 0px;
+
+//   &:hover {
+//     border-color: var(--color-gray);
+//   }
+// }
+.link {
+  transition: color 0.02ms ease;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-gray);
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--color-white);
+  font-size: var(--font-size-MiniPlus);
+}
