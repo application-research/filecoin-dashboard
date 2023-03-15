@@ -1,8 +1,8 @@
-import styles from '@components/Navbar.module.scss';
-import GutterContainer from './GutterContainer';
-import FilecoinSVG from './svgs/FilecoinSVG';
-import GithubSVG from './svgs/GithubSVG';
-import TwitterSVG from './svgs/TwitterSVG';
+import styles from "@components/Navbar.module.scss";
+import GutterContainer from "./GutterContainer";
+import FilecoinSVG from "./svgs/FilecoinSVG";
+import GithubSVG from "./svgs/GithubSVG";
+import TwitterSVG from "./svgs/TwitterSVG";
 
 export default function Navbar() {
   return (
@@ -10,8 +10,8 @@ export default function Navbar() {
       <GutterContainer>
         <div className={styles.navContainer}>
           <div className={styles.logoContainer}>
-            <a>
-              <FilecoinSVG style={{ width: '2.5rem' }} />
+            <a href="https://filecoin.io/">
+              <FilecoinSVG style={{ width: "2.5rem" }} />
             </a>
             <p>Filecoin</p>
           </div>
@@ -25,10 +25,10 @@ export default function Navbar() {
 
             <div className={styles.socialIconsRow}>
               <a className={styles.link}>
-                <GithubSVG style={{ width: '1.5rem' }} />
+                <GithubSVG style={{ width: "1.5rem" }} />
               </a>
               <a className={styles.link}>
-                <TwitterSVG style={{ width: '1.5rem' }} />
+                <TwitterSVG style={{ width: "1.5rem" }} />
               </a>
             </div>
           </div>
