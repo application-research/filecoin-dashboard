@@ -1,12 +1,10 @@
 import "@root/global.scss";
 
 import DefaultLayout from "@components/DefaultLayout";
-import Navbar from "@root/components/Navbar";
-import Footer from "@root/components/Footer";
 import Hero from "@root/components/Hero";
-import { MixBarChart } from "@root/components/MixBarChart";
-import OnboardedDataTable from "@root/components/OnboardedDataTable";
+import Navbar from "@root/components/Navbar";
 import Statistics from "@root/components/Statistics";
+import Footer from "@root/components/Footer";
 
 export default async function Page() {
   return (
@@ -16,9 +14,7 @@ export default async function Page() {
 
       <Statistics />
 
-      {/* <Footer /> */}
+      <Footer />
     </DefaultLayout>
   );
 }
-// console.log("testttt", getItems());
-// let data = getItems();

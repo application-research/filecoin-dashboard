@@ -1,11 +1,10 @@
 import styles from "@components/Statistics.module.scss";
-import GutterContainer from "./GutterContainer";
 
 function TableHeadings() {
   return (
     <div className={`${styles.row} ${styles.rowHeading}`}>
       <div className={styles.col32}>
-        <div className={styles.tableName}>Client</div>
+        <div className={styles.tableName}>Client ID and Name</div>
       </div>
       <span className={styles.col18}>
         <div className={styles.tableName}>Region</div>
@@ -14,7 +13,7 @@ function TableHeadings() {
         <div className={styles.tableName}>Industry</div>
       </span>
       <span className={styles.col18}>
-        <div className={styles.tableName}>Data Onboarded</div>
+        <div className={styles.tableName}>Deals</div>
       </span>
       <span className={styles.col18}>
         <div className={styles.tableName}>Website</div>
@@ -24,26 +23,17 @@ function TableHeadings() {
 }
 
 export default function OnboardedDataTable({
-  data,
+  clients,
   currentPage,
-  itemsPerPage,
-  setCurrentPage,
-  setItemsPerPage,
+
+  onPageChange,
+  pageNumbers,
 }) {
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const displayedData = data?.data?.slice(startIndex, endIndex);
-
-  function handleLoadMore() {
-    setCurrentPage(currentPage + 1); //update the page
-  }
-
   return (
     <div>
       <TableHeadings />
 
-      {displayedData?.map((each, index) => {
-        console.log(each, "each");
+      {clients?.map((each, index) => {
         return (
           <div className={styles.row} key={index}>
             <div className={styles.col32}>
@@ -66,10 +56,10 @@ export default function OnboardedDataTable({
               </div>
             </div>
 
-            <span className={styles.col18}>{each.region}</span>
-            <span className={styles.col18}>{each.industry}</span>
+            <span className={styles.col18}>{each.region ?? "-"}</span>
+            <span className={styles.col18}>{each.industry ?? "-"}</span>
 
-            <span className={styles.col18}>{each.dealCount}</span>
+            <span className={styles.col18}>{each.dealCount ?? 0}</span>
             <span className={styles.col18}>
               {each.website && (
                 <a href={each.website} target="_blank">
@@ -81,25 +71,21 @@ export default function OnboardedDataTable({
         );
       })}
 
-      <div>
-        <button
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage(currentPage - 1)}
-        >
-          Previous
-        </button>
-        <button
-          onClick={handleLoadMore}
-          //   disabled={currentPage === Math.ceil}
-          //   onClick={() => setCurrentPage(currentPage + 1)}
-        >
-          Next
-        </button>
+      <div className={styles.pagination} style={{ paddingTop: "1rem" }}>
+        {pageNumbers.map((pageNumber) => {
+          return (
+            <button
+              key={pageNumber}
+              onClick={() => onPageChange(pageNumber)}
+              className={
+                pageNumber === currentPage ? styles.active : styles.notActive
+              }
+            >
+              {pageNumber}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 }
-
-//keep track of the current page number & number of items on the page
-//pass down the current page number and number of items to display per page as props to the onboarded datatable
-//add buttons to allow the usert to navigate between pages and update current page

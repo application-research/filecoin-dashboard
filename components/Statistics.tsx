@@ -3,60 +3,28 @@
 import styles from "@components/Statistics.module.scss";
 import GutterContainer from "./GutterContainer";
 import { useEffect, useState } from "react";
-import { MixBarChart } from "./MixBarChart";
 import OnboardedDataTable from "./OnboardedDataTable";
 
-const dataRegions = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+const startTimestamp = 1673882814;
+const currentTimestamp = Math.floor(Date.now() / 1000);
+
+const date = (timestamp) => {
+  const newDate = new Date(timestamp * 1000);
+  return newDate;
+};
+
+const todayDate = date(currentTimestamp);
+const startDate = date(startTimestamp);
 
 export default function Statistics() {
   const [clients, setClients] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [pageNumbers, setPageNumbers] = useState([]);
+  const [totalClients, setTotalClients] = useState(0);
+
+  const itemsPerPage = 25;
 
   const RATE_LIMIT_DELAY = 80000; // 1 second
 
@@ -64,9 +32,12 @@ export default function Statistics() {
     async function fetchClients() {
       try {
         const res = await fetch(
-          `https://api.datacapstats.io/api/getVerifiedClients?limit=${itemsPerPage}&page=${currentPage}`
+          `https://api.datacapstats.io/api/getVerifiedClients?limit=${itemsPerPage}&page=${currentPage}&count=true`
         );
-        const data = await res.json();
+
+        const { count, data } = await res.json();
+
+        setTotalClients(count);
 
         setClients(data);
         setIsLoading(false);
@@ -82,25 +53,33 @@ export default function Statistics() {
       fetchClients();
     }, RATE_LIMIT_DELAY);
 
-    fetchClients();
-
     return () => clearInterval(intervalId);
-  }, []);
+  }, [itemsPerPage, currentPage]);
+
+  useEffect(() => {
+    const totalPages = Math.ceil(totalClients / itemsPerPage);
+    const pageNumbers = Array.from(Array(totalPages).keys()).map(
+      (pageNumber) => pageNumber + 1
+    );
+    setPageNumbers(pageNumbers);
+  }, [totalClients]);
 
   function handlePageChange(pageNumber) {
     setCurrentPage(pageNumber);
-    setItemsPerPage(10);
   }
-
   return (
     <div className={styles.body}>
       <GutterContainer>
+        <div className={styles.headingContainer}>
+          <h1> Onboarded Data</h1>
+          <p>{totalClients} clients </p>
+        </div>
+
         <OnboardedDataTable
+          clients={clients}
           currentPage={currentPage}
-          data={clients}
-          itemsPerPage={itemsPerPage}
-          setCurrentPage={handlePageChange}
-          setItemsPerPage={setItemsPerPage}
+          onPageChange={handlePageChange}
+          pageNumbers={pageNumbers}
         />
       </GutterContainer>
     </div>

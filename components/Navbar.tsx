@@ -10,24 +10,34 @@ export default function Navbar() {
       <GutterContainer>
         <div className={styles.navContainer}>
           <div className={styles.logoContainer}>
-            <a href="https://filecoin.io/">
+            <a href="https://filecoin.io/" target="_blank">
               <FilecoinSVG style={{ width: "2.5rem" }} />
             </a>
             <p>Filecoin</p>
           </div>
 
           <div className={styles.socialContainer}>
-            <a className={styles.textButtonLink}>
-              <button className={styles.textButton} style={{}}>
-                Protocol Labs
-              </button>
+            <a
+              className={styles.textButtonLink}
+              href="https://protocol.ai/"
+              target="_blank"
+            >
+              <button className={styles.textButton}>Protocol Labs</button>
             </a>
 
             <div className={styles.socialIconsRow}>
-              <a className={styles.link}>
+              <a
+                className={styles.link}
+                href="https://github.com/filecoin-project/filecoin-docs"
+                target="_blank"
+              >
                 <GithubSVG style={{ width: "1.5rem" }} />
               </a>
-              <a className={styles.link}>
+              <a
+                className={styles.link}
+                href="https://twitter.com/filecoin"
+                target="_blank"
+              >
                 <TwitterSVG style={{ width: "1.5rem" }} />
               </a>
             </div>
