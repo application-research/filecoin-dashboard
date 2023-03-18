@@ -1,9 +1,9 @@
-import DefaultMetaTags from '@components/DefaultMetaTags';
+import DefaultMetaTags from "@components/DefaultMetaTags";
 
 export default async function Head({ params }) {
-  const title = 'example';
-  const description = 'CHANGEME: description for your application using next-sass';
-  const url = 'CHANGEME: your-production-url.tld';
+  const title = "Filecoin User Explorer";
+  const description = "Welcome to filecoin user explorer";
+  const url = "filecoin.user.explorer";
 
   // SUMMARY_LARGE_IMAGE: 1500x785
   return (

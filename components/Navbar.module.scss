@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--color-blue);
+  background: var(--color-blue200);
 }
 
 .navContainer {
@@ -28,7 +28,7 @@
 .textButton {
   text-decoration: none;
   border: none;
-  background-color: var(--color-blue);
+  background-color: var(--color-blue200);
   color: var(--color-white);
   font-size: var(--font-size-Mini);
   transition: color 200ms ease;
