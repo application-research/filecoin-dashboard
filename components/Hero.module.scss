@@ -1,5 +1,5 @@
 .body {
-  height: 200px;
+  // height: 30vh;
   background: var(--color-blue200);
   display: flex;
   align-items: center;
@@ -8,7 +8,33 @@
 
 .headline {
   font-family: "Clash Display";
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-size: 2.5rem;
   max-width: 25ch;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.heroImage {
+  width: 30rem;
+  margin: 0 auto 0 auto;
+
+  .image {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 20rem;
+  }
 }

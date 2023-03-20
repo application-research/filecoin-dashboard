@@ -24,7 +24,7 @@ export default function Statistics() {
   const [pageNumbers, setPageNumbers] = useState([]);
   const [totalClients, setTotalClients] = useState(0);
 
-  const itemsPerPage = 25;
+  const itemsPerPage = 15;
 
   const RATE_LIMIT_DELAY = 80000; // 1 second
 
@@ -67,20 +67,33 @@ export default function Statistics() {
   function handlePageChange(pageNumber) {
     setCurrentPage(pageNumber);
   }
+
   return (
     <div className={styles.body}>
       <GutterContainer>
-        <div className={styles.headingContainer}>
-          <h1> Onboarded Data</h1>
-          <p>{totalClients} clients </p>
-        </div>
+        <div style={{ display: "grid", rowGap: "2.5rem" }}>
+          <div>
+            <div className={styles.headingContainer}>
+              <h3 className={styles.colorBlue}>
+                Data Onboarded by Regions (wip)
+              </h3>
+            </div>
+          </div>
 
-        <OnboardedDataTable
-          clients={clients}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-          pageNumbers={pageNumbers}
-        />
+          <div>
+            <div className={styles.headingContainer}>
+              <h3 className={styles.colorBlue}> Onboarded Data</h3>
+              <p>{totalClients} clients </p>
+            </div>
+
+            <OnboardedDataTable
+              clients={clients}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+              pageNumbers={pageNumbers}
+            />
+          </div>
+        </div>
       </GutterContainer>
     </div>
   );

@@ -16,11 +16,10 @@ import {
 } from "recharts";
 
 export interface BarGraphProps {
-  amount: number;
   graphData: any;
 }
 
-export function MixBarChart({ amount, graphData }: BarGraphProps) {
+export function MixBarChart({ graphData }: BarGraphProps) {
   return (
     <ResponsiveContainer height={500}>
       <BarChart
@@ -40,8 +39,8 @@ export function MixBarChart({ amount, graphData }: BarGraphProps) {
         <Tooltip />
         <Legend />
         <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-        <Bar dataKey="amt" stackId="a" fill="#82ca9d" />
-        <Bar dataKey="uv" fill="#ffc658" />
+        <Bar dataKey="Asia" stackId="a" fill="blue" />
+        <Bar dataKey="United States" stackId="a" fill="#82ca9d" />
       </BarChart>
     </ResponsiveContainer>
   );

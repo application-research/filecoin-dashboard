@@ -1,6 +1,6 @@
 .body {
   color: var(--color-text);
   font-family: "Clash Display";
-  letter-spacing: 0.02rem;
+  letter-spacing: var(--letter-spacing-small);
   font-weight: 400;
 }

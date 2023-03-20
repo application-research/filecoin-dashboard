@@ -1,4 +1,4 @@
-import styles from "@components/Statistics.module.scss";
+import styles from "@components/OnboardedDataTable.module.scss";
 
 function TableHeadings() {
   return (
@@ -77,6 +77,7 @@ export default function OnboardedDataTable({
             <button
               key={pageNumber}
               onClick={() => onPageChange(pageNumber)}
+              aria-label={`Page Number ${pageNumber}`}
               className={
                 pageNumber === currentPage ? styles.active : styles.notActive
               }

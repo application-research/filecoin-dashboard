@@ -1,49 +1,128 @@
+.body {
+  font-family: "Clash Display";
+  padding: 1rem 0rem;
+}
+
+.dataTitle {
+  color: var(--color-blue200);
+  font-weight: 500;
+}
+
+.data {
+  font-weight: 500;
+  color: var(--color-blue200);
+  font-size: 4rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 1.5rem;
+}
+
+.image {
+  width: 100%;
+  display: block;
+  border-radius: 18rem;
+}
+
 .row {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   border-bottom: 1px solid var(--color-blue300);
-  background: var(--color-light-gray);
+}
+
+.rowHeading {
+  border-top: 1px solid var(--color-blue300);
+}
+
+.link {
+  color: var(--color-blue);
+  text-decoration: none;
+  transition: 200ms ease all;
+
+  &:visited {
+    color: var(--color-blue);
+  }
+
+  &:hover {
+    color: var(--color-blue027);
+  }
 }
 
 .col32 {
   width: 25%;
   align-self: stretch;
-  border-right: 1px solid var(--color-blue300);
   overflow-wrap: break-word;
   white-space: pre-wrap;
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   padding: 8px 16px 8px 16px;
   min-height: 54px;
   flex-shrink: 0;
-
-  &:first-child {
-    border-left: 1px solid var(--color-blue300);
-  }
 }
 
 .col18 {
   width: 18%;
   align-self: stretch;
-  border-right: 1px solid var(--color-blue300);
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
-  padding: 8px 16px 8px 16px;
+  word-break: break-all;
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 8px 16px 8px 16px;
   min-height: 54px;
 }
 
 .name {
-  font-weight: 600;
-}
-
-.pagination {
-  display: flex;
-  gap: 10px;
+  font-weight: var(--font-weight-bold);
+  font-size: 0.8rem;
 }
 
 .plan {
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--text-black-opacity04);
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: -var(--letter-spacing-small);
+  padding-top: 2px;
+
+  @media (max-width: 1920px) {
+    font-size: 12px;
+  }
+}
+
+.left {
+  width: 40px;
+  padding-right: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.right {
+  min-width: 10%;
+  width: 100%;
+}
+
+.tableName {
+  font-family: "Clash Display";
+  font-weight: 500;
+}
+
+.active {
+  background: var(--color-blue200);
+  border: none;
+  color: var(--color-white);
+  padding: 0.2rem;
+  font-family: "Clash Display";
+}
+
+.notActive {
+  background: var(--color-white);
+  border: none;
+  color: var(--color-blue200);
+  padding: 0.2rem;
+  font-family: "Clash Display";
 }

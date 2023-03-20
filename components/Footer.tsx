@@ -13,7 +13,7 @@ export default function Footer() {
             <a href="https://filecoin.io/" target="_blank">
               <FilecoinSVG style={{ width: "2.5rem" }} />
             </a>
-            <p>Filecoin</p>
+            <p className={styles.filecoinLogo}>Filecoin</p>
           </div>
 
           <div className={styles.socialContainer}>
