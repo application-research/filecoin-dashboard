@@ -118,9 +118,28 @@ body {
 
   //Font Size
 
-  --font-size-Mini: 1rem;
-  --font-size-MiniPlus: 1.5rem;
-  --font-size-Regular: 2rem;
+  --font-size-mini: 1rem;
+  --font-size-miniPlus: 1.5rem;
+  --font-size-regular: 2rem;
+  --font-size-large: 2.5rem;
+  --font-size-largePlus: 3rem;
+
+  //Font Weight
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+
+  //Letter Spacing
+  --letter-spacing-small: 0.02rem;
+
+  //Padding:
+  --p-small: 0.05rem;
+  --p-medium: 1rem;
+  --p-medium-plus: 1.5rem;
+  --p-large: 2rem;
+  --p-large-x: 2.5rem;
+  --p-large-xl: 3rem;
+  --p-large-xxl: 3.5rem;
 
   font-size: 16px;
   background: var(--color-background);
@@ -132,5 +151,26 @@ body {
 
   ::-webkit-scrollbar {
     display: none;
+  }
+
+  h1 {
+    color: inherit;
+    font-size: var(--font-size-largePlus);
+    letter-spacing: var(--letter-spacing-small);
+    font-weight: var(--font-weight-medium);
+  }
+
+  h2 {
+    color: inherit;
+    font-size: var(--font-size-large);
+    letter-spacing: var(--letter-spacing-small);
+    font-weight: var(--font-weight-medium);
+  }
+
+  h3 {
+    color: inherit;
+    font-size: var(--font-size-regular);
+    letter-spacing: var(--letter-spacing-small);
+    font-weight: var(--font-weight-medium);
   }
 }

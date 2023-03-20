@@ -30,7 +30,7 @@
   border: none;
   background-color: var(--color-blue200);
   color: var(--color-white);
-  font-size: var(--font-size-Mini);
+  font-size: var(--font-size-mini);
   transition: color 200ms ease;
   cursor: pointer;
   padding: 0;
@@ -66,5 +66,5 @@
   justify-content: center;
   gap: 1rem;
   color: var(--color-white);
-  font-size: var(--font-size-MiniPlus);
+  font-size: var(--font-size-miniPlus);
 }
