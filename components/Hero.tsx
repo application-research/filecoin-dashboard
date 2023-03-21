@@ -7,11 +7,8 @@ export default function Hero() {
       <GutterContainer>
         <div className={styles.container}>
           <div>
-            <h1
-              className={styles.headline}
-              style={{ paddingBottom: "var(--p-small)" }}
-            >
-              Filecoin user explorer
+            <h1 className={styles.headline} style={{ paddingBottom: "1rem" }}>
+              Filecoin<br></br> user explorer
             </h1>
             <p>Explore the data onboarding growth to the Filecoin Network</p>
           </div>

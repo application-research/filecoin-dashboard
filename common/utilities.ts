@@ -11,15 +11,15 @@ export const pluralize = (text, count) => {
 
 export function toDateISOString(data: string) {
   const date = new Date(data);
-  return date.toLocaleDateString('en-US', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 }
 
-export const elide = (string, length = 140, emptyState = '...') => {
+export const elide = (string, length = 140, emptyState = "...") => {
   if (isEmpty(string)) {
     return emptyState;
   }
@@ -32,11 +32,11 @@ export const elide = (string, length = 140, emptyState = '...') => {
 };
 
 export function bytesToSize(bytes: number, decimals: number = 2) {
-  if (bytes === 0) return '0 Bytes';
+  if (bytes === 0) return "0 Bytes";
 
   const k = 1000;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
@@ -53,7 +53,7 @@ export function isEmpty(text: any) {
     return true;
   }
 
-  if (typeof text === 'object') {
+  if (typeof text === "object") {
     return true;
   }
 
@@ -68,27 +68,27 @@ export function isEmpty(text: any) {
 
 export function createSlug(text: any) {
   if (isEmpty(text)) {
-    return 'untitled';
+    return "untitled";
   }
 
-  const a = 'æøåàáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;';
-  const b = 'aoaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------';
-  const p = new RegExp(a.split('').join('|'), 'g');
+  const a = "æøåàáäâèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;";
+  const b = "aoaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------";
+  const p = new RegExp(a.split("").join("|"), "g");
 
   return text
     .toString()
     .toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/\s+/g, "-") // Replace spaces with -
     .replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special chars
-    .replace(/&/g, '-and-') // Replace & with 'and'
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, ''); // Trim - from end of text
+    .replace(/&/g, "-and-") // Replace & with 'and'
+    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+    .replace(/\-\-+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
 }
 
 export function isUrl(string: any) {
-  if (typeof string !== 'string') {
+  if (typeof string !== "string") {
     return false;
   }
 
@@ -102,14 +102,20 @@ export function isUrl(string: any) {
     return false;
   }
 
-  if (localhostDomainRE.test(everythingAfterProtocol) || nonLocalhostDomainRE.test(everythingAfterProtocol)) {
+  if (
+    localhostDomainRE.test(everythingAfterProtocol) ||
+    nonLocalhostDomainRE.test(everythingAfterProtocol)
+  ) {
     return true;
   }
 
   return false;
 }
 
-export function debounce<Args extends unknown[]>(fn: (...args: Args) => void, delay: number) {
+export function debounce<Args extends unknown[]>(
+  fn: (...args: Args) => void,
+  delay: number
+) {
   let timeoutID: number | undefined;
   let lastArgs: Args | undefined;
 
@@ -142,7 +148,7 @@ export function classNames(...args: any[]): string {
 
     var argType = typeof arg;
 
-    if (argType === 'string' || argType === 'number') {
+    if (argType === "string" || argType === "number") {
       classes.push(arg);
     } else if (Array.isArray(arg)) {
       if (arg.length) {
@@ -151,7 +157,7 @@ export function classNames(...args: any[]): string {
           classes.push(inner);
         }
       }
-    } else if (argType === 'object') {
+    } else if (argType === "object") {
       if (arg.toString !== Object.prototype.toString) {
         classes.push(arg.toString());
       } else {
@@ -164,5 +170,5 @@ export function classNames(...args: any[]): string {
     }
   }
 
-  return classes.join(' ');
+  return classes.join(" ");
 }

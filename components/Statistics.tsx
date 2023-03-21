@@ -4,6 +4,9 @@ import styles from "@components/Statistics.module.scss";
 import GutterContainer from "./GutterContainer";
 import { useEffect, useState } from "react";
 import OnboardedDataTable from "./OnboardedDataTable";
+import TimeSeries from "./TimeSeries";
+import OverviewDataGrowth from "./OverviewDataGrowth";
+import { bytesToSize } from "@root/common/utilities";
 
 const startTimestamp = 1673882814;
 const currentTimestamp = Math.floor(Date.now() / 1000);
@@ -67,11 +70,38 @@ export default function Statistics() {
   function handlePageChange(pageNumber) {
     setCurrentPage(pageNumber);
   }
+  console.log(clients, "clients");
+
+  let totalDatacap = 0;
+  let dealCount = 0;
+
+  clients.map((each) => {
+    console.log(each.dealCount, "deal");
+
+    if (!isNaN(each.allowance)) {
+      totalDatacap += each.allowance;
+    }
+
+    dealCount += each.dealCount;
+
+    return { totalDatacap, dealCount };
+  });
+
+  const totalDataOnboarded = bytesToSize(totalDatacap);
+  // console.log(totalDatacap, "total");
+  console.log(dealCount, "deal");
+  console.log(clients, "client");
 
   return (
     <div className={styles.body}>
+      <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
+        <OverviewDataGrowth
+          totalClients={totalClients}
+          // totalDataOnboarded={totalDataOnboarded}
+        />
+      </div>
       <GutterContainer>
-        <div style={{ display: "grid", rowGap: "2.5rem" }}>
+        <div style={{ display: "grid", rowGap: "var(--p-large-x)" }}>
           <div>
             <div className={styles.headingContainer}>
               <h3 className={styles.colorBlue}>
@@ -79,7 +109,7 @@ export default function Statistics() {
               </h3>
             </div>
           </div>
-
+          {/* <TimeSeries /> */}
           <div>
             <div className={styles.headingContainer}>
               <h3 className={styles.colorBlue}> Onboarded Data</h3>

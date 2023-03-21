@@ -11,11 +11,9 @@ export default async function Page() {
   return (
     <DefaultLayout>
       <Navbar />
+      <Hero />
       <div style={{ display: "grid", rowGap: "var(--p-large-xxl)" }}>
-        <Hero />
-
         <Statistics />
-
         <Footer />
       </div>
     </DefaultLayout>
