@@ -15,6 +15,9 @@ function TableHeadings() {
         <div className={styles.tableName}>DataCap Allocated</div>
       </span>
       <span className={styles.col18}>
+        <div className={styles.tableName}>DataCap Available</div>
+      </span>
+      <span className={styles.col18}>
         <div className={styles.tableName}>Region</div>
       </span>
       <span className={styles.col18}>
@@ -39,8 +42,8 @@ export default function OnboardedDataTable({
       <TableHeadings />
 
       {clients?.map((each, index) => {
-        const bytes = !isNaN(each.allowance) ? each.allowance : 0;
-        const dataCap = bytesToSize(bytes);
+        const dataCapAvailable = bytesToSize(each.allowance);
+        const dataCapAllocated = bytesToSize(each.initialAllowance);
 
         return (
           <div className={styles.row} key={index}>
@@ -67,9 +70,11 @@ export default function OnboardedDataTable({
               {each.address ? <ShortAddress address={each.address} /> : "-"}
             </span>
             <span className={styles.col18}>
-              {dataCap != "NaN undefined" ? dataCap : "-"}
+              {dataCapAllocated != "NaN undefined" ? dataCapAllocated : "-"}
             </span>
-
+            <span className={styles.col18}>
+              {dataCapAvailable != "NaN undefined" ? dataCapAvailable : "-"}
+            </span>
             <span className={styles.col18}>{each.region ?? "-"}</span>
             <span className={styles.col18}>{each.industry ?? "-"}</span>
             <span className={styles.col18}>{each.dealCount ?? "-"}</span>
