@@ -1,4 +1,6 @@
 import styles from "@components/OnboardedDataTable.module.scss";
+import ShortAddress from "./ShortAddress";
+import { bytesToSize } from "@root/common/utilities";
 
 function TableHeadings() {
   return (
@@ -7,16 +9,20 @@ function TableHeadings() {
         <div className={styles.tableName}>Client ID and Name</div>
       </div>
       <span className={styles.col18}>
+        <div className={styles.tableName}>Address</div>
+      </span>
+      <span className={styles.col18}>
+        <div className={styles.tableName}>DataCap Allocated</div>
+      </span>
+      <span className={styles.col18}>
         <div className={styles.tableName}>Region</div>
       </span>
       <span className={styles.col18}>
         <div className={styles.tableName}>Industry</div>
       </span>
+
       <span className={styles.col18}>
         <div className={styles.tableName}>Deals</div>
-      </span>
-      <span className={styles.col18}>
-        <div className={styles.tableName}>Website</div>
       </span>
     </div>
   );
@@ -25,7 +31,6 @@ function TableHeadings() {
 export default function OnboardedDataTable({
   clients,
   currentPage,
-
   onPageChange,
   pageNumbers,
 }) {
@@ -34,6 +39,9 @@ export default function OnboardedDataTable({
       <TableHeadings />
 
       {clients?.map((each, index) => {
+        const bytes = !isNaN(each.allowance) ? each.allowance : 0;
+        const dataCap = bytesToSize(bytes);
+
         return (
           <div className={styles.row} key={index}>
             <div className={styles.col32}>
@@ -55,18 +63,16 @@ export default function OnboardedDataTable({
                 <div className={styles.plan}>{each.addressId}</div>
               </div>
             </div>
+            <span className={styles.col18}>
+              {each.address ? <ShortAddress address={each.address} /> : "-"}
+            </span>
+            <span className={styles.col18}>
+              {dataCap != "NaN undefined" ? dataCap : "-"}
+            </span>
+            <span className={styles.col18}>{each.deals ?? "-"}</span>
 
             <span className={styles.col18}>{each.region ?? "-"}</span>
             <span className={styles.col18}>{each.industry ?? "-"}</span>
-
-            <span className={styles.col18}>{each.dealCount ?? 0}</span>
-            <span className={styles.col18}>
-              {each.website && (
-                <a href={each.website} target="_blank">
-                  website
-                </a>
-              )}
-            </span>
           </div>
         );
       })}

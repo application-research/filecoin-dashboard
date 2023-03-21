@@ -1,0 +1,19 @@
+.copySVG {
+  stroke: var(--color-gray);
+  width: 1.2rem;
+  transition: stroke 200ms ease;
+
+  &:hover {
+    stroke: var(--color-blue200);
+  }
+}
+
+.copied {
+  color: var(--color-blue200);
+}
+
+.textContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}

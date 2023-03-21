@@ -3,23 +3,6 @@
   padding: 1rem 0rem;
 }
 
-.dataTitle {
-  color: var(--color-blue200);
-  font-weight: 500;
-}
-
-.data {
-  font-weight: 500;
-  color: var(--color-blue200);
-  font-size: 4rem;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  row-gap: 1.5rem;
-}
-
 .image {
   width: 100%;
   display: block;
@@ -38,7 +21,7 @@
 }
 
 .link {
-  color: var(--color-blue);
+  color: var(--color-blue200);
   text-decoration: none;
   transition: 200ms ease all;
 
@@ -47,7 +30,7 @@
   }
 
   &:hover {
-    color: var(--color-blue027);
+    color: var(--color-blue);
   }
 }
 

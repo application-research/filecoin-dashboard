@@ -141,6 +141,9 @@ body {
   --p-large-xl: 3rem;
   --p-large-xxl: 3.5rem;
 
+  //Line Height
+  --line-height-regular: 4rem;
+
   font-size: 16px;
   background: var(--color-background);
   color: var(--color-text);
@@ -153,24 +156,29 @@ body {
     display: none;
   }
 
-  h1 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     color: inherit;
-    font-size: var(--font-size-largePlus);
     letter-spacing: var(--letter-spacing-small);
     font-weight: var(--font-weight-medium);
+  }
+
+  h1 {
+    font-size: var(--font-size-largePlus);
   }
 
   h2 {
-    color: inherit;
     font-size: var(--font-size-large);
-    letter-spacing: var(--letter-spacing-small);
-    font-weight: var(--font-weight-medium);
   }
 
   h3 {
-    color: inherit;
     font-size: var(--font-size-regular);
-    letter-spacing: var(--letter-spacing-small);
-    font-weight: var(--font-weight-medium);
+  }
+
+  p {
+    font-weight: var(--font-weight-regular);
   }
 }

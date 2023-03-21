@@ -36,6 +36,7 @@
   background-color: var(--color-text);
   color: var(--color-white);
   font-size: var(--font-size-mini);
+  font-family: "Clash Display";
   transition: color 200ms ease;
   cursor: pointer;
   padding: 0;
@@ -64,5 +65,12 @@
 }
 
 .filecoinLogo {
-  font-size: 0.02rem;
+  font-size: 1.5rem;
+}
+
+.copyright {
+  display: flex;
+  color: var(--color-gray);
+  align-items: center;
+  justify-content: center;
 }

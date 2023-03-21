@@ -31,6 +31,7 @@
   background-color: var(--color-blue200);
   color: var(--color-white);
   font-size: var(--font-size-mini);
+  font-family: "Clash Display";
   transition: color 200ms ease;
   cursor: pointer;
   padding: 0;
@@ -40,17 +41,6 @@
   }
 }
 
-// .textButtonLink {
-//   //   border-bottom: 1px solid var(--color-white);
-
-//   transition: border-color 200ms ease;
-//   cursor: pointer;
-//   padding: 1px 0px;
-
-//   &:hover {
-//     border-color: var(--color-gray);
-//   }
-// }
 .link {
   transition: color 0.02ms ease;
   cursor: pointer;
@@ -67,4 +57,8 @@
   gap: 1rem;
   color: var(--color-white);
   font-size: var(--font-size-miniPlus);
+}
+
+.filecoinLogo {
+  font-size: 1.5rem;
 }

@@ -1,5 +1,4 @@
 .body {
-  // height: 30vh;
   background: var(--color-blue200);
   display: flex;
   align-items: center;
@@ -9,8 +8,9 @@
 .headline {
   font-family: "Clash Display";
   font-weight: var(--font-weight-medium);
-  font-size: 2.5rem;
-  max-width: 25ch;
+  font-size: 4rem;
+  max-width: 20ch;
+  line-height: var(--line-height-regular);
 }
 
 .container {
@@ -28,9 +28,11 @@
 
 .heroImage {
   width: 30rem;
+
   margin: 0 auto 0 auto;
 
   .image {
+    height: 14rem;
     width: 100%;
   }
 
