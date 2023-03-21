@@ -11,6 +11,12 @@
   font-size: 4rem;
   max-width: 20ch;
   line-height: var(--line-height-regular);
+
+  @media (max-width: 768px) {
+    font-size: var(--font-size-large);
+    max-width: none;
+    line-height: 3rem;
+  }
 }
 
 .container {

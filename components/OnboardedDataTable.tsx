@@ -22,7 +22,7 @@ function TableHeadings() {
       </span>
 
       <span className={styles.col18}>
-        <div className={styles.tableName}>Deals</div>
+        <div className={styles.tableName}>Verified Deals</div>
       </span>
     </div>
   );
@@ -45,14 +45,14 @@ export default function OnboardedDataTable({
         return (
           <div className={styles.row} key={index}>
             <div className={styles.col32}>
-              <div className={styles.left}>
+              {/*To be Added when we have logos: <div className={styles.left}>
                 <img
                   src={
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Solid_blue.svg/800px-Solid_blue.svg.png"
                   }
                   className={styles.image}
                 />
-              </div>
+              </div> */}
               <div className={styles.right}>
                 <div className={styles.name}>
                   <a className={styles.link} href={each?.url} target="_blank">
@@ -69,10 +69,10 @@ export default function OnboardedDataTable({
             <span className={styles.col18}>
               {dataCap != "NaN undefined" ? dataCap : "-"}
             </span>
-            <span className={styles.col18}>{each.deals ?? "-"}</span>
 
             <span className={styles.col18}>{each.region ?? "-"}</span>
             <span className={styles.col18}>{each.industry ?? "-"}</span>
+            <span className={styles.col18}>{each.dealCount ?? "-"}</span>
           </div>
         );
       })}
