@@ -1,16 +1,13 @@
 import styles from "@components/OverviewDataGrowth.module.scss";
 import GutterContainer from "./GutterContainer";
 
-export default function OverviewDataGrowth({
-  totalDataOnboarded,
-  totalClients,
-}) {
+export default function OverviewDataGrowth({ totalClients }) {
   return (
     <div className={styles.body}>
       <GutterContainer>
         <div className={styles.container}>
           <div>
-            <h4 className={styles.data}>{totalDataOnboarded ?? "-"}</h4>
+            <h4 className={styles.data}>-</h4>
             <p className={styles.dataTitle}>Data onboarded</p>
           </div>
 
