@@ -1,12 +1,14 @@
 "use client";
 
-import styles from "@components/Statistics.module.scss";
+import styles from "@components/SectionData.module.scss";
 import GutterContainer from "./GutterContainer";
 import { useEffect, useState } from "react";
 import OnboardedDataTable from "./OnboardedDataTable";
 import TimeSeries from "./TimeSeries";
 import OverviewDataGrowth from "./OverviewDataGrowth";
 import { bytesToSize } from "@root/common/utilities";
+import Partners from "./Partners";
+import { PARTNERS_FIXTURE } from "@root/fixtures/partners";
 
 const startTimestamp = 1673882814;
 const currentTimestamp = Math.floor(Date.now() / 1000);
@@ -19,7 +21,7 @@ const date = (timestamp) => {
 const todayDate = date(currentTimestamp);
 const startDate = date(startTimestamp);
 
-export default function Statistics() {
+export default function SectionData() {
   const [clients, setClients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
@@ -83,12 +85,16 @@ export default function Statistics() {
   });
 
   const totalDataOnboarded = bytesToSize(totalDatacap);
+  const partners = PARTNERS_FIXTURE;
 
   return (
     <div className={styles.body}>
+      <OverviewDataGrowth totalClients={totalClients} />
+
       <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
-        <OverviewDataGrowth totalClients={totalClients} />
+        <Partners partners={partners} />
       </div>
+
       <GutterContainer>
         <div style={{ display: "grid", rowGap: "var(--p-large-x)" }}>
           <div>
