@@ -38,9 +38,10 @@ export function MixBarChart({ graphData }: BarGraphProps) {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-        <Bar dataKey="Asia" stackId="a" fill="blue" />
-        <Bar dataKey="United States" stackId="a" fill="#82ca9d" />
+        <Bar dataKey="unitedStates" stackId="a" fill="#8884d8" />
+        <Bar dataKey="asia" stackId="a" fill="blue" />
+        <Bar dataKey="europe" stackId="a" fill="#82ca9d" />
+        <Bar dataKey="unknown" stackId="a" fill="var(--color-blue-purple)" />
       </BarChart>
     </ResponsiveContainer>
   );

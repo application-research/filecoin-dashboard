@@ -1,14 +1,15 @@
 "use client";
 
 import styles from "@components/SectionData.module.scss";
-import GutterContainer from "./GutterContainer";
-import { useEffect, useState } from "react";
-import OnboardedDataTable from "./OnboardedDataTable";
-import TimeSeries from "./TimeSeries";
-import OverviewDataGrowth from "./OverviewDataGrowth";
 import { bytesToSize } from "@root/common/utilities";
-import Partners from "./Partners";
+import { MIX_BAR_CHART_DATA_FIXTURE } from "@root/fixtures/graph-data-fixtures";
+import { MixBarChart } from "./MixBarChart";
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners";
+import { useEffect, useState } from "react";
+import GutterContainer from "./GutterContainer";
+import OnboardedDataTable from "./OnboardedDataTable";
+import OverviewDataGrowth from "./OverviewDataGrowth";
+import Partners from "./Partners";
 
 const startTimestamp = 1673882814;
 const currentTimestamp = Math.floor(Date.now() / 1000);
@@ -104,6 +105,7 @@ export default function SectionData() {
               </h3>
             </div>
           </div>
+          {/* <MixBarChart graphData={MIX_BAR_CHART_DATA_FIXTURE} /> */}
           {/* <TimeSeries /> */}
           <div>
             <div className={styles.headingContainer}>
