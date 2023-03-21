@@ -70,35 +70,24 @@ export default function Statistics() {
   function handlePageChange(pageNumber) {
     setCurrentPage(pageNumber);
   }
-  console.log(clients, "clients");
 
   let totalDatacap = 0;
   let dealCount = 0;
 
   clients.map((each) => {
-    console.log(each.dealCount, "deal");
-
     if (!isNaN(each.allowance)) {
       totalDatacap += each.allowance;
     }
-
     dealCount += each.dealCount;
-
     return { totalDatacap, dealCount };
   });
 
   const totalDataOnboarded = bytesToSize(totalDatacap);
-  // console.log(totalDatacap, "total");
-  console.log(dealCount, "deal");
-  console.log(clients, "client");
 
   return (
     <div className={styles.body}>
       <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
-        <OverviewDataGrowth
-          totalClients={totalClients}
-          // totalDataOnboarded={totalDataOnboarded}
-        />
+        <OverviewDataGrowth totalClients={totalClients} />
       </div>
       <GutterContainer>
         <div style={{ display: "grid", rowGap: "var(--p-large-x)" }}>
