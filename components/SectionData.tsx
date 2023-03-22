@@ -10,6 +10,9 @@ import GutterContainer from "./GutterContainer";
 import OnboardedDataTable from "./OnboardedDataTable";
 import OverviewDataGrowth from "./OverviewDataGrowth";
 import Partners from "./Partners";
+import SectionDataByRegion from "./SectionGraphByRegion";
+import SectionGraphByRegion from "./SectionGraphByRegion";
+import SectionGraphByIndustry from "./SectionGraphByIndustry";
 
 const startTimestamp = 1673882814;
 const currentTimestamp = Math.floor(Date.now() / 1000);
@@ -78,10 +81,7 @@ export default function SectionData() {
     setCurrentPage(pageNumber);
   }
 
-  console.log(allData, "all data");
-
   const partners = PARTNERS_FIXTURE;
-  console.log("clients", clients);
 
   return (
     <div className={styles.body}>
@@ -95,15 +95,23 @@ export default function SectionData() {
 
       <GutterContainer>
         <div style={{ display: "grid", rowGap: "var(--p-large-x)" }}>
+          {Object.keys(allData).length > 0 && (
+            <>
+              {" "}
+              <div>
+                <div className={styles.headingContainer}>
+                  <h3 className={styles.colorBlue}>Data by Regions </h3>
+                </div>
+              </div>
+              <SectionGraphByRegion allData={allData} />{" "}
+            </>
+          )}
           <div>
             <div className={styles.headingContainer}>
-              <h3 className={styles.colorBlue}>
-                Data Onboarded by Regions (wip)
-              </h3>
+              <h3 className={styles.colorBlue}>Data by Industries </h3>
             </div>
           </div>
-          {/* <MixBarChart graphData={MIX_BAR_CHART_DATA_FIXTURE} /> */}
-          {/* <TimeSeries /> */}
+          {/* <SectionGraphByIndustry allData={allData} /> */}
           <div>
             <div className={styles.headingContainer}>
               <h3 className={styles.colorBlue}> Onboarded Data</h3>
