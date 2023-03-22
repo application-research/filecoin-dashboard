@@ -29,6 +29,7 @@ export default function SectionData() {
   const [isLoading, setIsLoading] = useState(true);
   const [pageNumbers, setPageNumbers] = useState([]);
   const [totalClients, setTotalClients] = useState(0);
+  const [allData, setAllData] = useState([]);
 
   const itemsPerPage = 15;
 
@@ -40,12 +41,15 @@ export default function SectionData() {
         const res = await fetch(
           `https://api.datacapstats.io/api/getVerifiedClients?limit=${itemsPerPage}&page=${currentPage}&count=true`
         );
-
         const { count, data } = await res.json();
-
         setTotalClients(count);
-
         setClients(data);
+
+        const res2 = await fetch(
+          `https://api.datacapstats.io/api/getVerifiedClients?limit=none`
+        );
+        const data2 = await res2.json();
+        setAllData(data2);
         setIsLoading(false);
       } catch (error) {
         setError(error);
@@ -74,23 +78,16 @@ export default function SectionData() {
     setCurrentPage(pageNumber);
   }
 
-  let totalDatacap = 0;
-  let dealCount = 0;
+  console.log(allData, "all data");
 
-  clients.map((each) => {
-    if (!isNaN(each.allowance)) {
-      totalDatacap += each.allowance;
-    }
-    dealCount += each.dealCount;
-    return { totalDatacap, dealCount };
-  });
-
-  const totalDataOnboarded = bytesToSize(totalDatacap);
   const partners = PARTNERS_FIXTURE;
+  console.log("clients", clients);
 
   return (
     <div className={styles.body}>
-      <OverviewDataGrowth totalClients={totalClients} />
+      {Object.keys(allData).length > 0 && (
+        <OverviewDataGrowth totalClients={totalClients} allData={allData} />
+      )}
 
       <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
         <Partners partners={partners} />
