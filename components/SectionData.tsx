@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "@components/SectionData.module.scss";
-import { PARTNERS_FIXTURE } from "@root/fixtures/partners";
+import { PARTNERS_FIXTURE } from "@root/fixtures/partners-fixtures";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
 import OnboardedDataTable from "./OnboardedDataTable";
@@ -83,7 +83,9 @@ export default function SectionData() {
             <>
               <div>
                 <div className={styles.headingContainer}>
-                  <h3 className={styles.colorBlue}>Data by Regions </h3>
+                  <h3 className={styles.colorBlue}>
+                    Onboarded Data by Regions (Weekly in PiB){" "}
+                  </h3>
                 </div>
               </div>
               <SectionGraphByRegion allData={allData} />{" "}
@@ -91,7 +93,9 @@ export default function SectionData() {
           )}
           <div>
             <div className={styles.headingContainer}>
-              <h3 className={styles.colorBlue}>Data by Industries (wip) </h3>
+              <h3 className={styles.colorBlue}>
+                Onboarded Data by Industries (wip){" "}
+              </h3>
             </div>
           </div>
           <div>

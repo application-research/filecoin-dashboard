@@ -1,6 +1,6 @@
 import { RegionType } from "@root/common/types";
 import { MixBarChart } from "./MixBarChart";
-import { regionsKeywordsMap } from "@root/fixtures/regions";
+import { regionsKeywordsMap } from "@root/fixtures/regions-fixtures";
 import { byteInPetabyte } from "@root/common/utilities";
 
 function groupClientsByWeekAndRegion(clients) {
