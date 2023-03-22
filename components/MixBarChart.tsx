@@ -8,6 +8,7 @@ import {
   BarChart,
   CartesianGrid,
   Cell,
+  Label,
   Legend,
   ResponsiveContainer,
   Tooltip,
@@ -35,7 +36,14 @@ export function MixBarChart({ graphData }: BarGraphProps) {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
-        <YAxis />
+        <YAxis>
+          <Label
+            value="PiB Onboarded"
+            angle={-90}
+            position="insideLeft"
+            style={{ textAnchor: "middle" }}
+          />
+        </YAxis>
         <Tooltip />
         <Legend />
         <Bar dataKey="Asia" stackId="a" fill="var(--color-blue200)" />
