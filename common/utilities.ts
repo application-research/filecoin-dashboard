@@ -36,7 +36,7 @@ export function bytesToSize(bytes: bigint, decimals: number = 2) {
 
   const base = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ["B", "KB", "MB", "GiB", "TiB", "PiB", "EiB", "ZB", "YB"];
+  const sizes = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"];
 
   const sizeIndex = Math.floor(Math.log(Number(bytes)) / Math.log(base));
 
@@ -173,3 +173,5 @@ export function classNames(...args: any[]): string {
 
   return classes.join(" ");
 }
+
+export const byteInPetabyte = BigInt(1125899906842624);

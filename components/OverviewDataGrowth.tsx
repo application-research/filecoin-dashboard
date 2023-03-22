@@ -3,10 +3,6 @@ import GutterContainer from "./GutterContainer";
 import { bytesToSize } from "@root/common/utilities";
 
 export default function OverviewDataGrowth({ totalClients, allData }) {
-  function bytesToPetabytes(bytes) {
-    return Number(bytes) / Number(1.125899906842624e15);
-  }
-
   const totalDataOnboarded = allData.data.reduce((acc, client) => {
     const initialAllowance = BigInt(client.initialAllowance);
     const allowance = BigInt(client.allowance);

@@ -1,12 +1,16 @@
+import { RegionType } from "@root/common/types";
 import { MixBarChart } from "./MixBarChart";
 import { regionsKeywordsMap } from "@root/fixtures/regions";
+import { byteInPetabyte } from "@root/common/utilities";
 
 function groupClientsByWeekAndRegion(clients) {
   const groupedData = {};
 
   function getCategorizedRegion(region) {
     if (!region) return "Uncategorized";
+
     const lowerCaseRegion = region.toLowerCase();
+
     for (const [key, keywords] of Object.entries(regionsKeywordsMap)) {
       if (
         keywords.some((keyword) =>
@@ -42,8 +46,6 @@ function groupClientsByWeekAndRegion(clients) {
       };
     }
 
-    let byteInPetabyte = BigInt(1125899906842624);
-
     const dataAmountInPetabytes =
       (BigInt(client.initialAllowance) - BigInt(client.allowance)) /
       byteInPetabyte;
@@ -58,7 +60,7 @@ export default function SectionGraphByRegion({ allData }) {
   const groupedClients = groupClientsByWeekAndRegion(allData);
 
   // Filter data for only 2023
-  const data2023 = groupedClients.filter((entry) => {
+  const data2023 = groupedClients.filter((entry: RegionType) => {
     const entryDate = new Date(entry.date);
     return entryDate.getFullYear() === 2023;
   });
@@ -66,11 +68,13 @@ export default function SectionGraphByRegion({ allData }) {
   const lastTwentyWeeks = data2023.slice(-20);
 
   // Sort from least to greatest (ascending order)
-  const sortedLastTwentyWeeks = lastTwentyWeeks.sort((a, b) => {
-    const dateA = new Date(a.date).getTime();
-    const dateB = new Date(b.date).getTime();
-    return dateA - dateB;
-  });
+  const sortedLastTwentyWeeks = lastTwentyWeeks.sort(
+    (a: RegionType, b: RegionType) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return dateA - dateB;
+    }
+  );
 
   return <MixBarChart graphData={sortedLastTwentyWeeks} />;
 }

@@ -1,29 +1,13 @@
 "use client";
 
 import styles from "@components/SectionData.module.scss";
-import { bytesToSize } from "@root/common/utilities";
-import { MIX_BAR_CHART_DATA_FIXTURE } from "@root/fixtures/graph-data-fixtures";
-import { MixBarChart } from "./MixBarChart";
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
 import OnboardedDataTable from "./OnboardedDataTable";
 import OverviewDataGrowth from "./OverviewDataGrowth";
 import Partners from "./Partners";
-import SectionDataByRegion from "./SectionGraphByRegion";
 import SectionGraphByRegion from "./SectionGraphByRegion";
-import SectionGraphByIndustry from "./SectionGraphByIndustry";
-
-const startTimestamp = 1673882814;
-const currentTimestamp = Math.floor(Date.now() / 1000);
-
-const date = (timestamp) => {
-  const newDate = new Date(timestamp * 1000);
-  return newDate;
-};
-
-const todayDate = date(currentTimestamp);
-const startDate = date(startTimestamp);
 
 export default function SectionData() {
   const [clients, setClients] = useState([]);
@@ -97,7 +81,6 @@ export default function SectionData() {
         <div style={{ display: "grid", rowGap: "var(--p-large-x)" }}>
           {Object.keys(allData).length > 0 && (
             <>
-              {" "}
               <div>
                 <div className={styles.headingContainer}>
                   <h3 className={styles.colorBlue}>Data by Regions </h3>
@@ -108,10 +91,9 @@ export default function SectionData() {
           )}
           <div>
             <div className={styles.headingContainer}>
-              <h3 className={styles.colorBlue}>Data by Industries </h3>
+              <h3 className={styles.colorBlue}>Data by Industries (wip) </h3>
             </div>
           </div>
-          {/* <SectionGraphByIndustry allData={allData} /> */}
           <div>
             <div className={styles.headingContainer}>
               <h3 className={styles.colorBlue}> Onboarded Data</h3>
