@@ -31,16 +31,17 @@ export const elide = (string, length = 140, emptyState = "...") => {
   return `${string.substring(0, length)}...`;
 };
 
-export function bytesToSize(bytes: number, decimals: number = 2) {
-  if (bytes === 0) return "0 Bytes";
+export function bytesToSize(bytes: bigint, decimals: number = 2) {
+  if (bytes === BigInt(0)) return "0 Bytes";
 
-  const k = 1024;
+  const base = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+  const sizes = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"];
 
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const sizeIndex = Math.floor(Math.log(Number(bytes)) / Math.log(base));
 
-  return `${(bytes / Math.pow(k, i)).toFixed(dm)} ${sizes[i]}`;
+  const humanReadableBytes = Number(bytes) / Math.pow(base, sizeIndex);
+  return `${humanReadableBytes.toFixed(dm)} ${sizes[sizeIndex]}`;
 }
 
 export function isEmpty(text: any) {
@@ -172,3 +173,5 @@ export function classNames(...args: any[]): string {
 
   return classes.join(" ");
 }
+
+export const byteInPetabyte = BigInt(1125899906842624);

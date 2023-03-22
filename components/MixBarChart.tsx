@@ -34,14 +34,20 @@ export function MixBarChart({ graphData }: BarGraphProps) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="unitedStates" stackId="a" fill="#8884d8" />
-        <Bar dataKey="asia" stackId="a" fill="blue" />
-        <Bar dataKey="europe" stackId="a" fill="#82ca9d" />
-        <Bar dataKey="unknown" stackId="a" fill="var(--color-blue-purple)" />
+        <Bar dataKey="Asia" stackId="a" fill="var(--color-blue200)" />
+        <Bar dataKey="Europe" stackId="a" fill="#FF7555" />
+        <Bar dataKey="NorthAmerica" stackId="a" fill="#F215A4" />
+        <Bar dataKey="Oceania" stackId="a" fill="#8849A5" />
+        <Bar dataKey="SouthAmerica" stackId="a" fill="#C1D30C" />
+        <Bar
+          dataKey="Uncategorized"
+          stackId="a"
+          fill="var(--color-blue-purple)"
+        />
       </BarChart>
     </ResponsiveContainer>
   );

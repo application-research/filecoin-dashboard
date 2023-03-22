@@ -1,26 +1,13 @@
 "use client";
 
 import styles from "@components/SectionData.module.scss";
-import { bytesToSize } from "@root/common/utilities";
-import { MIX_BAR_CHART_DATA_FIXTURE } from "@root/fixtures/graph-data-fixtures";
-import { MixBarChart } from "./MixBarChart";
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
 import OnboardedDataTable from "./OnboardedDataTable";
 import OverviewDataGrowth from "./OverviewDataGrowth";
 import Partners from "./Partners";
-
-const startTimestamp = 1673882814;
-const currentTimestamp = Math.floor(Date.now() / 1000);
-
-const date = (timestamp) => {
-  const newDate = new Date(timestamp * 1000);
-  return newDate;
-};
-
-const todayDate = date(currentTimestamp);
-const startDate = date(startTimestamp);
+import SectionGraphByRegion from "./SectionGraphByRegion";
 
 export default function SectionData() {
   const [clients, setClients] = useState([]);
@@ -29,6 +16,7 @@ export default function SectionData() {
   const [isLoading, setIsLoading] = useState(true);
   const [pageNumbers, setPageNumbers] = useState([]);
   const [totalClients, setTotalClients] = useState(0);
+  const [allData, setAllData] = useState([]);
 
   const itemsPerPage = 15;
 
@@ -40,12 +28,15 @@ export default function SectionData() {
         const res = await fetch(
           `https://api.datacapstats.io/api/getVerifiedClients?limit=${itemsPerPage}&page=${currentPage}&count=true`
         );
-
         const { count, data } = await res.json();
-
         setTotalClients(count);
-
         setClients(data);
+
+        const res2 = await fetch(
+          `https://api.datacapstats.io/api/getVerifiedClients?limit=none`
+        );
+        const data2 = await res2.json();
+        setAllData(data2);
         setIsLoading(false);
       } catch (error) {
         setError(error);
@@ -74,23 +65,13 @@ export default function SectionData() {
     setCurrentPage(pageNumber);
   }
 
-  let totalDatacap = 0;
-  let dealCount = 0;
-
-  clients.map((each) => {
-    if (!isNaN(each.allowance)) {
-      totalDatacap += each.allowance;
-    }
-    dealCount += each.dealCount;
-    return { totalDatacap, dealCount };
-  });
-
-  const totalDataOnboarded = bytesToSize(totalDatacap);
   const partners = PARTNERS_FIXTURE;
 
   return (
     <div className={styles.body}>
-      <OverviewDataGrowth totalClients={totalClients} />
+      {Object.keys(allData).length > 0 && (
+        <OverviewDataGrowth totalClients={totalClients} allData={allData} />
+      )}
 
       <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
         <Partners partners={partners} />
@@ -98,15 +79,21 @@ export default function SectionData() {
 
       <GutterContainer>
         <div style={{ display: "grid", rowGap: "var(--p-large-x)" }}>
+          {Object.keys(allData).length > 0 && (
+            <>
+              <div>
+                <div className={styles.headingContainer}>
+                  <h3 className={styles.colorBlue}>Data by Regions </h3>
+                </div>
+              </div>
+              <SectionGraphByRegion allData={allData} />{" "}
+            </>
+          )}
           <div>
             <div className={styles.headingContainer}>
-              <h3 className={styles.colorBlue}>
-                Data Onboarded by Regions (wip)
-              </h3>
+              <h3 className={styles.colorBlue}>Data by Industries (wip) </h3>
             </div>
           </div>
-          {/* <MixBarChart graphData={MIX_BAR_CHART_DATA_FIXTURE} /> */}
-          {/* <TimeSeries /> */}
           <div>
             <div className={styles.headingContainer}>
               <h3 className={styles.colorBlue}> Onboarded Data</h3>
