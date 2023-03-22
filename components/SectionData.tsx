@@ -84,7 +84,7 @@ export default function SectionData() {
               <div>
                 <div className={styles.headingContainer}>
                   <h3 className={styles.colorBlue}>
-                    Onboarded Data by Regions (Weekly in PiB){" "}
+                    Onboarded Data by Regions
                   </h3>
                 </div>
               </div>
