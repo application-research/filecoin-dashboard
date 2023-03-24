@@ -10,9 +10,9 @@ export default function Partners({ partners }) {
             Global Partners and Builders
           </h3>
           <div className={styles.partnerGrid}>
-            {partners.map((partner) => {
+            {partners.map((partner, index) => {
               return (
-                <div className={styles.partner}>
+                <div className={styles.partner} key={index}>
                   {partner.logo && (
                     <img src={partner.logo} className={styles.logo} />
                   )}

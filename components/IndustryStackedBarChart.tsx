@@ -1,13 +1,7 @@
-"use client";
-import styles from "@components/BarGraph.module.scss";
-
-import * as React from "react";
-
 import {
   Bar,
   BarChart,
   CartesianGrid,
-  Cell,
   Label,
   Legend,
   ResponsiveContainer,
@@ -20,7 +14,7 @@ export interface BarGraphProps {
   graphData: any;
 }
 
-export function MixBarChart({ graphData }: BarGraphProps) {
+export function IndusrtyStackedBarChart({ graphData }: BarGraphProps) {
   return (
     <ResponsiveContainer height={500}>
       <BarChart
@@ -46,16 +40,20 @@ export function MixBarChart({ graphData }: BarGraphProps) {
         </YAxis>
         <Tooltip />
         <Legend />
-        <Bar dataKey="Asia" stackId="a" fill="var(--color-blue200)" />
-        <Bar dataKey="Europe" stackId="a" fill="#FF7555" />
-        <Bar dataKey="NorthAmerica" stackId="a" fill="#F215A4" />
-        <Bar dataKey="Oceania" stackId="a" fill="#8849A5" />
-        <Bar dataKey="SouthAmerica" stackId="a" fill="#C1D30C" />
+
+        <Bar dataKey="Education" stackId="a" fill="var(--color-blue200)" />
+        <Bar dataKey="Life Science / Healthcare" stackId="a" fill="#FF7555" />
+        <Bar dataKey="Environment" stackId="a" fill="#F215A4" />
         <Bar
-          dataKey="Uncategorized"
+          dataKey="Information, Media & Telecommunications"
           stackId="a"
-          fill="var(--color-blue-purple)"
+          fill="#8849A5"
         />
+        <Bar dataKey="IT & Technology Services" stackId="a" fill="#C1D30C" />
+        <Bar dataKey="Web3" stackId="a" fill="red" />
+        <Bar dataKey="Financial Services" stackId="a" fill="green" />
+
+        <Bar dataKey="Other" stackId="a" fill="var(--color-blue-purple)" />
       </BarChart>
     </ResponsiveContainer>
   );

@@ -2,8 +2,8 @@ export interface RegionType {
   date: string;
   Asia: number;
   Europe: number;
-  NorthAmerica: number;
+  "North America": number;
   Oceania: number;
-  SouthAmerica: number;
+  "South America": number;
   Uncategorized: number;
 }

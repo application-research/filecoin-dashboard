@@ -175,3 +175,7 @@ export function classNames(...args: any[]): string {
 }
 
 export const byteInPetabyte = BigInt(1125899906842624);
+
+export function formatKeywordForComparison(keyword) {
+  return keyword.toLowerCase().replace(/\s*\/\s*/g, "/");
+}
