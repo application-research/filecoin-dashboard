@@ -42,8 +42,8 @@ export default function OnboardedDataTable({
       <TableHeadings />
 
       {clients?.map((each, index) => {
-        const dataCapAvailable = bytesToSize(each.allowance);
         const dataCapAllocated = bytesToSize(each.initialAllowance);
+        const dataCapAvailable = bytesToSize(each.allowance);
 
         return (
           <div className={styles.row} key={index}>
@@ -75,9 +75,11 @@ export default function OnboardedDataTable({
             <span className={styles.col18}>
               {dataCapAvailable != "NaN undefined" ? dataCapAvailable : "-"}
             </span>
-            <span className={styles.col18}>{each.region ?? "-"}</span>
-            <span className={styles.col18}>{each.industry ?? "-"}</span>
-            <span className={styles.col18}>{each.dealCount ?? "-"}</span>
+            <span className={styles.col18}>
+              {each.region ?? "Uncategorized"}
+            </span>
+            <span className={styles.col18}>{each.industry ?? "Other"}</span>
+            <span className={styles.col18}>{each.dealCount ?? "0"}</span>
           </div>
         );
       })}
