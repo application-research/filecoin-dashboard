@@ -38,8 +38,13 @@
   margin: 0 auto 0 auto;
 
   .image {
-    height: 14rem;
-    width: 100%;
+    // height: 14rem;
+    // width: 100%;
+    width: 24rem;
+    top: 8rem;
+    left: 60%;
+    // right: 6rem;
+    position: absolute;
   }
 
   @media (max-width: 768px) {

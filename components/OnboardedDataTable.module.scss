@@ -22,6 +22,7 @@
 
 .link {
   color: var(--color-blue200);
+  // color: var(--color-white);
   text-decoration: none;
   transition: 200ms ease all;
 
@@ -42,9 +43,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px 8px 16px;
+  padding: 1rem 16px 1rem 16px;
   min-height: 54px;
   flex-shrink: 0;
+  // color: var(--color-white);
 }
 
 .col18 {
@@ -55,22 +57,24 @@
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  padding: 8px 16px 8px 16px;
+  padding: 1rem 16px 1rem 16px;
   min-height: 54px;
+  // color: var(--color-white);
 }
 
 .name {
   font-weight: var(--font-weight-bold);
   font-size: 0.8rem;
+  // color: var(--color-white);
 }
 
 .plan {
   color: var(--text-black-opacity04);
-
+  // color: var(--color-blue-purple);
   font-size: 16px;
   font-weight: 300;
   letter-spacing: -var(--letter-spacing-small);
-  padding-top: 2px;
+  padding-top: 6px;
 
   @media (max-width: 1920px) {
     font-size: 12px;
@@ -98,7 +102,7 @@
 .active {
   background: var(--color-blue200);
   border: none;
-  color: var(--color-white);
+  // color: var(--color-white);
   padding: 0.2rem;
   font-family: "Clash Display";
 }
@@ -107,6 +111,7 @@
   background: var(--color-white);
   border: none;
   color: var(--color-blue200);
+  // color: var(--color-white200);
   padding: 0.2rem;
   font-family: "Clash Display";
 }
