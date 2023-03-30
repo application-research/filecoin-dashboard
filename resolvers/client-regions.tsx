@@ -110,20 +110,18 @@ export function groupClientsByWeekAndRegion(clients) {
       if (!groupedData[dateString]) {
         groupedData[dateString] = {
           date: dateString,
-          Asia: { incoming: 0, outgoing: 0 },
-          Europe: { incoming: 0, outgoing: 0 },
-          "North America": { incoming: 0, outgoing: 0 },
-          Oceania: { incoming: 0, outgoing: 0 },
-          "South America": { incoming: 0, outgoing: 0 },
-          Uncategorized: { incoming: 0, outgoing: 0 },
+          Asia: 0,
+          Europe: 0,
+          "North America": 0,
+          Oceania: 0,
+          "South America": 0,
+          Uncategorized: 0,
         };
       }
       const dataOutgoing = BigInt(record.incomingDatacap);
       const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
 
-      groupedData[dateString][regionKey].outgoing += Number(
-        dataOutgoingInPetabytes
-      );
+      groupedData[dateString][regionKey] += Number(dataOutgoingInPetabytes);
     });
   });
 
