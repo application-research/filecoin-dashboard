@@ -1,9 +1,10 @@
+import { Client } from "@root/common/types";
 import {
   byteInPetabyte,
   formatKeywordForComparison,
 } from "@root/common/utilities";
 import {
-  CLIENT_NAME_BY_REGION_FIXTURE,
+  CLIENT_ADDRESS_BY_REGION_FIXTURE,
   REGIONS_KEYWORDS_MAP_FIXTURE,
 } from "@root/fixtures/regions-fixtures";
 
@@ -24,28 +25,34 @@ export function getCategorizedRegion(region) {
   return "Uncategorized";
 }
 
-export function updateClientRegions(clients: any) {
-  clients.map((client) => {
-    const updatedRegion = updateClientRegion(client.region, client.name);
+export function updateClientRegions(clients) {
+  if (!Array.isArray(clients)) {
+    return clients;
+  }
 
+  const updatedClients = clients.map((client) => {
+    const updatedRegion = updateClientRegion(client.region, client.name);
     return { ...client, region: (updatedRegion as any).region };
   });
 
-  return clients;
+  return updatedClients;
 }
 
-export function updateClientRegion(region, clientName = null) {
+export function updateClientRegion(region, addressId = null) {
   if (!region || typeof region !== "string") {
-    if (clientName) {
-      const formattedClientName = formatKeywordForComparison(clientName);
+    if (addressId) {
+      const formattedAddressId = formatKeywordForComparison(addressId);
       let matchedRegion = null;
-      Object.entries(CLIENT_NAME_BY_REGION_FIXTURE).forEach(([key, value]) => {
-        if (
-          value.map(formatKeywordForComparison).includes(formattedClientName)
-        ) {
-          matchedRegion = key;
+
+      Object.entries(CLIENT_ADDRESS_BY_REGION_FIXTURE).forEach(
+        ([key, value]) => {
+          if (
+            value.map(formatKeywordForComparison).includes(formattedAddressId)
+          ) {
+            matchedRegion = key;
+          }
         }
-      });
+      );
 
       if (matchedRegion) {
         return { region: matchedRegion };
@@ -65,42 +72,59 @@ export function updateClientRegion(region, clientName = null) {
       return { region: key };
     }
   }
+
   return "Uncategorized";
+}
+
+function getWeekStartDate(year, week) {
+  const firstDayOfYear = new Date(year, 0, 1);
+  const weekStart = new Date(firstDayOfYear.getTime());
+  weekStart.setDate(
+    firstDayOfYear.getDate() + 7 * (week - 1) - firstDayOfYear.getDay() + 1
+  );
+  return weekStart;
 }
 
 export function groupClientsByWeekAndRegion(clients) {
   const groupedData = {};
 
-  clients.forEach((client) => {
-    const weekDate = new Date(client.createMessageTimestamp * 1000);
-    weekDate.setDate(weekDate.getDate() - weekDate.getDay());
-    const dateString = weekDate.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "2-digit",
-    });
+  clients?.forEach((client) => {
+    if (!client.usedDc || client.usedDc.length === 0) {
+      return;
+    }
 
     const regionKey = getCategorizedRegion(client.region);
 
-    if (!groupedData[dateString]) {
-      groupedData[dateString] = {
-        date: dateString,
-        Asia: 0,
-        Europe: 0,
-        "North America": 0,
-        Oceania: 0,
-        "South America": 0,
-        Uncategorized: 0,
-      };
-    }
+    client.usedDc.forEach((record) => {
+      const week = record.week;
+      const year = record.year;
 
-    const dataAmountInPetabytes =
-      (BigInt(client.initialAllowance) - BigInt(client.allowance)) /
-      byteInPetabyte;
+      const date = new Date(Date.UTC(year, 0, (week - 1) * 7));
 
-    if (dataAmountInPetabytes >= 0) {
-      groupedData[dateString][regionKey] += Number(dataAmountInPetabytes);
-    }
+      const dateString = date.toLocaleDateString("en-US", {
+        year: "2-digit",
+        month: "short",
+        day: "numeric",
+      });
+
+      if (!groupedData[dateString]) {
+        groupedData[dateString] = {
+          date: dateString,
+          Asia: { incoming: 0, outgoing: 0 },
+          Europe: { incoming: 0, outgoing: 0 },
+          "North America": { incoming: 0, outgoing: 0 },
+          Oceania: { incoming: 0, outgoing: 0 },
+          "South America": { incoming: 0, outgoing: 0 },
+          Uncategorized: { incoming: 0, outgoing: 0 },
+        };
+      }
+      const dataOutgoing = BigInt(record.incomingDatacap);
+      const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
+
+      groupedData[dateString][regionKey].outgoing += Number(
+        dataOutgoingInPetabytes
+      );
+    });
   });
 
   return Object.values(groupedData);

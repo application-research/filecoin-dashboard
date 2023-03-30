@@ -1,35 +1,30 @@
 import { groupClientsByWeekAndIndustry } from "@root/resolvers/client-industry";
-import { IndusrtyStackedBarChart } from "./IndustryStackedBarChart";
-
-interface Client {
-  date: string;
-  [key: string]: any;
-}
+import { IndustryStackedBarChart } from "./IndustryStackedBarChart";
+import { AllData } from "@root/common/types";
 
 interface SectionGraphByIndustryProps {
-  allData: Array<Client>;
+  allData: AllData[];
+}
+
+interface GraphByIndustryProps extends SectionGraphByIndustryProps {
+  date: string;
 }
 
 export default function SectionGraphByIndustry({
   allData,
 }: SectionGraphByIndustryProps) {
-  const clients = groupClientsByWeekAndIndustry(allData);
+  if (!allData) return;
+  const clientsArray = Array.from(allData);
 
-  //Filter data for only 2023
-  const data2023 = clients.filter((client: any) => {
-    const startDate = new Date((client as Client).date);
-    return startDate.getFullYear() === 2023;
-  });
+  const groupedClients = groupClientsByWeekAndIndustry(clientsArray);
 
-  const lastTwentyWeeks = data2023.slice(-20);
-  //sort from least to greatest (ascending order)
-
-  const sortedLastWeeks = lastTwentyWeeks.sort((a, b) => {
-    const dateA = new Date((a as any).date).getTime();
-    const dateB = new Date((b as any).date).getTime();
-
-    return dateA - dateB;
-  });
-
-  return <IndusrtyStackedBarChart graphData={sortedLastWeeks} />;
+  const sortedEightWeeks = groupedClients
+    .sort((a: GraphByIndustryProps, b: GraphByIndustryProps) => {
+      const dateA = new Date(a.date.replace(",", ""));
+      const dateB = new Date(b.date.replace(",", ""));
+      return dateA.getTime() - dateB.getTime();
+    })
+    .slice(2)
+    .slice(-15);
+  return <IndustryStackedBarChart graphData={sortedEightWeeks} />;
 }

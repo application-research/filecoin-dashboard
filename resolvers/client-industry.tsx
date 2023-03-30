@@ -1,3 +1,4 @@
+import { AllData, Client } from "@root/common/types";
 import {
   byteInPetabyte,
   formatKeywordForComparison,
@@ -33,40 +34,49 @@ export function updateClientIndustry(industry) {
   return { industry: "Other" };
 }
 
-export function groupClientsByWeekAndIndustry(clients) {
+export function groupClientsByWeekAndIndustry(clients: Client[]) {
+  // if (!clients) return;
+
   const groupedData = {};
 
-  clients.forEach((client) => {
-    const weekDate = new Date(client.createMessageTimestamp * 1000);
-    weekDate.setDate(weekDate.getDate() - weekDate.getDay());
-    const dateString = weekDate.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "2-digit",
+  clients?.forEach((client) => {
+    if (!client.usedDc || client.usedDc.length === 0) {
+      return;
+    }
+
+    client.usedDc.forEach((record: any) => {
+      const week = record.week;
+      const year = record.year;
+
+      const date = new Date(Date.UTC(year, 0, (week - 1) * 7));
+
+      const dateString = date.toLocaleDateString("en-US", {
+        year: "2-digit",
+        month: "short",
+        day: "numeric",
+      });
+
+      if (!groupedData[dateString]) {
+        groupedData[dateString] = {
+          date: dateString,
+          Education: 0,
+          "Financial Services": 0,
+          Environment: 0,
+          Web3: 0,
+          "Information, Media & Telecommunications": 0,
+          "IT & Technology Services": 0,
+          "Life Science / Healthcare": 0,
+          Other: 0,
+        };
+      }
+
+      const dataOutgoing = BigInt(record.incomingDatacap);
+      const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
+
+      groupedData[dateString][client.industry] += Number(
+        dataOutgoingInPetabytes
+      );
     });
-
-    if (!groupedData[dateString]) {
-      groupedData[dateString] = {
-        date: dateString,
-        Education: 0,
-        "Financial Services": 0,
-        Environment: 0,
-        Web3: 0,
-        "Information, Media & Telecommunications": 0,
-        "IT & Technology Services": 0,
-        "Life Science / Healthcare": 0,
-        Other: 0,
-      };
-    }
-
-    const dataAmountInPetabytes =
-      (BigInt(client.initialAllowance) - BigInt(client.allowance)) /
-      byteInPetabyte;
-
-    // Only add the dataAmountInPetabytes if it's not negative
-    if (dataAmountInPetabytes >= 0) {
-      groupedData[dateString][client.industry] += Number(dataAmountInPetabytes);
-    }
   });
 
   return Object.values(groupedData);
