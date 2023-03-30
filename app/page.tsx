@@ -9,11 +9,13 @@ import Hero from "@root/components/Hero";
 export default async function Page() {
   return (
     <DefaultLayout>
-      <Navbar />
-      <Hero />
-      <div style={{ display: "grid", rowGap: "var(--p-large-xxl)" }}>
-        <SectionData />
-        <Footer />
+      <div style={{ background: "black" }}>
+        <Navbar />
+        <Hero />
+        <div style={{ display: "grid", rowGap: "var(--p-large-xxl)" }}>
+          <SectionData />
+          <Footer />
+        </div>
       </div>
     </DefaultLayout>
   );

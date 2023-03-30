@@ -121,44 +121,58 @@ export default function SectionData() {
       <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
         <Partners partners={partners} />
       </div>
-      <GutterContainer>
-        <div style={{ display: "grid", rowGap: "var(--p-large-x)" }}>
-          {allDataFiltered.length > 0 &&
-            Object.keys(allDataFiltered).length > 0 && (
-              <>
-                <div>
-                  <div className={styles.headingContainer}>
-                    <h3 className={styles.colorBlue}>
-                      Onboarded Data by Regions
-                    </h3>
-                  </div>
-                </div>
-                <SectionGraphByRegion allData={allDataFiltered} />
 
+      <div
+        style={{
+          display: "grid",
+          rowGap: "var(--p-large-x)",
+          background: "white",
+          paddingTop: "4rem",
+        }}
+      >
+        {allDataFiltered.length > 0 &&
+          Object.keys(allDataFiltered).length > 0 && (
+            <>
+              <GutterContainer styles={{ background: "red" }}>
+                <div className={styles.red}>
+                  <div className={styles.headingContainer}>
+                    <h2 className={styles.colorBlue}>
+                      Onboarded Data by Regions
+                    </h2>
+                  </div>
+
+                  <SectionGraphByRegion allData={allDataFiltered} />
+                </div>
+              </GutterContainer>
+              <GutterContainer>
                 <div>
                   <div className={styles.headingContainer}>
-                    <h3 className={styles.colorBlue}>
+                    <h2 className={styles.colorBlue}>
                       Onboarded Data by Industries
-                    </h3>
+                    </h2>
                   </div>
                 </div>
                 <SectionGraphByIndustry allData={allDataFiltered} />
-              </>
-            )}
-          <div style={{ paddingBottom: "4rem" }}>
-            <div className={styles.headingContainer}>
-              <h3 className={styles.colorBlue}> Onboarded Data</h3>
-              <p>{totalClientCount} clients </p>
+              </GutterContainer>
+            </>
+          )}
+        <GutterContainer>
+          <div style={{ paddingBottom: "4rem", paddingTop: "2rem" }}>
+            <div className={styles.backgroundTable}>
+              <div className={styles.headingContainer}>
+                <h2 className={styles.colorBlue}> Onboarded Data</h2>
+                <p>{totalClientCount} clients </p>
+              </div>
+              <OnboardedDataTable
+                clients={clients}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+                pageNumbers={pageNumbers}
+              />
             </div>
-            <OnboardedDataTable
-              clients={clients}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-              pageNumbers={pageNumbers}
-            />
           </div>
-        </div>
-      </GutterContainer>
+        </GutterContainer>
+      </div>
     </div>
   );
 }

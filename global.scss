@@ -104,14 +104,19 @@ html,
 body {
   --color-background: #ffffff;
   --color-text: #000000;
+  --color-black: rgba(0, 0, 0, 1);
   --color-blue-purple: #afcaff;
   --color-blue: #0090ff;
   --color-blue200: #0058ff;
   --color-blue300: #0058ff;
   --color-white: #ffffff;
-
+  --color-white200: rgba(250, 252, 255, 1);
   --color-gray: #bbb8b8;
-
+  --gradient-white-to-black: linear-gradient(
+    179.97deg,
+    #000000 31.73%,
+    #ffffff 99.98%
+  );
   //Page Gutters
   --page-width: 1440px;
   --page-gutters-default: 0 16px 0 16px;
@@ -141,6 +146,10 @@ body {
   --p-large-x: 2.5rem;
   --p-large-xl: 3rem;
   --p-large-xxl: 3.5rem;
+
+  //Z-index
+  --z-index-tiny: 1;
+  --z-indez-small: 2;
 
   //Line Height
   --line-height-regular: 4rem;

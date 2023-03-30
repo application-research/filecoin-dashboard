@@ -1,6 +1,6 @@
 .container {
   background: var(--color-text);
-  padding: 4rem 0rem;
+  padding: 3rem 0rem 2rem 0rem;
 }
 
 .partnerGrid {
@@ -16,7 +16,7 @@
 }
 
 .logo {
-  width: 10rem;
+  max-width: 8rem;
 
   @media (max-width: 1050px) {
     width: 6rem;
@@ -31,10 +31,6 @@
   }
 }
 
-.colorBluePurple {
-  color: var(--color-blue-purple);
-}
-
 .partner {
   justify-content: center;
   align-items: center;
@@ -44,4 +40,26 @@
     align-items: flex-start;
     justify-content: flex-start;
   }
+}
+
+.folder {
+  width: 100%;
+  position: absolute;
+  top: -6rem;
+  left: 3rem;
+}
+.folderSVG {
+  width: 50%;
+}
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.headingTitle {
+  position: absolute;
+  color: var(--color-white);
+  top: -6rem;
+  z-index: var(--z-index-tiny);
+  font-size: var(--font-size-large);
 }
