@@ -14,7 +14,7 @@ export interface BarGraphProps {
   graphData: any;
 }
 
-export function IndusrtyStackedBarChart({ graphData }: BarGraphProps) {
+export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
   return (
     <ResponsiveContainer height={500}>
       <BarChart
@@ -49,7 +49,7 @@ export function IndusrtyStackedBarChart({ graphData }: BarGraphProps) {
           stackId="a"
           fill="#8849A5"
         />
-        <Bar dataKey="IT & Technology Services" stackId="a" fill="#C1D30C" />
+        <Bar dataKey="IT & Technology Services" stackId="a" fill="#59CEC5" />
         <Bar dataKey="Web3" stackId="a" fill="red" />
         <Bar dataKey="Financial Services" stackId="a" fill="green" />
 

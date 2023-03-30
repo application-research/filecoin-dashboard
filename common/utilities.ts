@@ -31,7 +31,7 @@ export const elide = (string, length = 140, emptyState = "...") => {
   return `${string.substring(0, length)}...`;
 };
 
-export function bytesToSize(bytes: bigint, decimals: number = 2) {
+export function bytesToSize(bytes: bigint, decimals: number = 1) {
   if (bytes === BigInt(0)) return "0 Bytes";
 
   const base = 1024;
@@ -178,4 +178,28 @@ export const byteInPetabyte = BigInt(1125899906842624);
 
 export function formatKeywordForComparison(keyword) {
   return keyword.toLowerCase().replace(/\s*\/\s*/g, "/");
+}
+
+export const CACHE_KEY = "allClients";
+export const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000;
+
+export function saveToLocalStorage(key, data) {
+  const dataToSave = {
+    timestamp: new Date().getTime(),
+    data,
+  };
+  localStorage.setItem(key, JSON.stringify(dataToSave));
+}
+
+export function getFromLocalStorage(key) {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : null;
+}
+
+export function isCacheValid(cachedData, expirationTime) {
+  if (!cachedData || !cachedData.timestamp) {
+    return false;
+  }
+  const currentTime = new Date().getTime();
+  return currentTime - cachedData.timestamp < expirationTime;
 }
