@@ -133,7 +133,7 @@ export default function SectionData() {
         {allDataFiltered.length > 0 &&
           Object.keys(allDataFiltered).length > 0 && (
             <>
-              <GutterContainer styles={{ background: "red" }}>
+              <GutterContainer>
                 <div className={styles.red}>
                   <div className={styles.headingContainer}>
                     <h2 className={styles.colorBlue}>
