@@ -45,30 +45,14 @@ export function RegionStackedBarChart({ graphData }: BarGraphProps) {
         <Tooltip />
         <Legend />
 
+        <Bar dataKey="Asia" stackId="outgoing" fill="var(--color-blue200)" />
+        <Bar dataKey="Europe" stackId="outgoing" fill="#FF7555" />
+        <Bar dataKey="North America" stackId="outgoing" fill="#F215A4" />
+        <Bar dataKey="Oceania" stackId="outgoing" fill="#8849A5" />
+        <Bar dataKey="South America" stackId="outgoing" fill="#C1D30C" />
+        <Bar dataKey="Multiple Regions" stackId="outgoing" fill="#59CEC5" />
         <Bar
-          dataKey="Asia.outgoing"
-          stackId="outgoing"
-          fill="var(--color-blue200)"
-        />
-        <Bar dataKey="Europe.outgoing" stackId="outgoing" fill="#FF7555" />
-        <Bar
-          dataKey="North America.outgoing"
-          stackId="outgoing"
-          fill="#F215A4"
-        />
-        <Bar dataKey="Oceania.outgoing" stackId="outgoing" fill="#8849A5" />
-        <Bar
-          dataKey="South America.outgoing"
-          stackId="outgoing"
-          fill="#C1D30C"
-        />
-        <Bar
-          dataKey="Multiple Regions.outgoing"
-          stackId="outgoing"
-          fill="#59CEC5"
-        />
-        <Bar
-          dataKey="Uncategorized.outgoing"
+          dataKey="Uncategorized"
           stackId="outgoing"
           fill="var(--color-blue-purple)"
         />
