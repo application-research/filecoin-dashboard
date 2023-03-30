@@ -113,8 +113,9 @@ export default function SectionData() {
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (
         <OverviewDataGrowth
-          totalClients={totalClientCount}
-          allData={totalClients}
+          totalClientCount={totalClientCount}
+          totalClients={totalClients}
+          allDataFiltered={allDataFiltered}
         />
       )}
       <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
