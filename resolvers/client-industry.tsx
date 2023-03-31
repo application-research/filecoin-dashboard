@@ -7,18 +7,14 @@ import {
   CLIENT_ADDRESS_BY_INDUSTRY_FIXTURE,
   INDUSTRY_KEYWORDS_MAP_FIXTURE,
 } from "@root/fixtures/industry-fixtures";
-import { CLIENT_ADDRESS_BY_REGION_FIXTURE } from "@root/fixtures/regions-fixtures";
-import { Value } from "sass";
 
 export function updateClientIndustry(industry, address) {
   if (!industry || typeof industry !== "string") {
-    console.log(industry, address, "industry");
-
     if (address) {
       const formattedAddressId = formatKeywordForComparison(address);
       let matchedIndustry = null;
 
-      Object.entries(CLIENT_ADDRESS_BY_REGION_FIXTURE).forEach(
+      Object.entries(CLIENT_ADDRESS_BY_INDUSTRY_FIXTURE).forEach(
         ([key, value]) => {
           if (
             value.map(formatKeywordForComparison).includes(formattedAddressId)
@@ -28,7 +24,6 @@ export function updateClientIndustry(industry, address) {
         }
       );
       if (matchedIndustry) {
-        console.log(matchedIndustry, "matched industry");
         return { industry: matchedIndustry };
       }
     }

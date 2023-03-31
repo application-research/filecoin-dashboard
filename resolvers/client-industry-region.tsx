@@ -14,7 +14,6 @@ export default function clientRegionIndustryResolver(clients: AllData[]) {
       client.industry,
       client.address
     );
-
     client.industry = clientsByIndustry.industry;
     client.region = (clientsByRegions as any).region;
   });
