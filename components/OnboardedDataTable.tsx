@@ -1,6 +1,7 @@
 import styles from "@components/OnboardedDataTable.module.scss";
 import ShortAddress from "./ShortAddress";
 import { bytesToSize } from "@root/common/utilities";
+import GithubSVG from "./svgs/GithubSVG";
 
 function TableHeadings() {
   return (
@@ -48,17 +49,20 @@ export default function OnboardedDataTable({
         return (
           <div className={styles.row} key={index}>
             <div className={styles.col32}>
-              {/*To be Added when we have logos: <div className={styles.left}>
-                <img
-                  src={
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Solid_blue.svg/800px-Solid_blue.svg.png"
-                  }
-                  className={styles.image}
-                />
-              </div> */}
+              <div className={styles.left}>
+                {each?.allowanceArray[0]?.auditTrail && (
+                  <a href={each?.allowanceArray[0]?.auditTrail} target="_blank">
+                    <GithubSVG className={styles.image} />
+                  </a>
+                )}
+              </div>
               <div className={styles.right}>
                 <div className={styles.name}>
-                  <a className={styles.link} href={each?.url} target="_blank">
+                  <a
+                    className={styles.link}
+                    href={each?.allowanceArray[0]?.auditTrail}
+                    target="_blank"
+                  >
                     {each.name}
                   </a>
                 </div>
