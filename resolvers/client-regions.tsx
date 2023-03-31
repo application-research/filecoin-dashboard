@@ -38,7 +38,7 @@ export function updateClientRegions(clients) {
   return updatedClients;
 }
 
-export function updateClientRegion(region, addressId = null) {
+export function updateClientRegion(region, addressId) {
   if (!region || typeof region !== "string") {
     if (addressId) {
       const formattedAddressId = formatKeywordForComparison(addressId);
@@ -55,6 +55,8 @@ export function updateClientRegion(region, addressId = null) {
       );
 
       if (matchedRegion) {
+        console.log(matchedRegion, "matched region");
+
         return { region: matchedRegion };
       }
     }
