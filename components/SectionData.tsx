@@ -46,8 +46,10 @@ export default function SectionData() {
           itemsPerPage,
           currentPage
         );
-        let resolvedClients = clientRegionIndustryResolver(data);
-        setClients(resolvedClients);
+
+        // let resolvedClients = clientRegionIndustryResolver(data);
+        // setClients(resolvedClients);
+        setClients(clients);
         setTotalClientCount(count);
 
         const totalClients = await fetchTotalClients();
