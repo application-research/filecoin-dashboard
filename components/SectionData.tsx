@@ -47,7 +47,8 @@ export default function SectionData() {
           itemsPerPage,
           currentPage
         );
-        setClients(data);
+        let resolvedClients = clientRegionIndustryResolver(data);
+        setClients(resolvedClients);
         setTotalClientCount(count);
 
         const totalClients = await fetchTotalClients();
@@ -108,7 +109,7 @@ export default function SectionData() {
   if (Object.keys(allData).length > 0) {
     allDataFiltered = clientRegionIndustryResolver(allData as any);
   }
-
+  console.log(clients, "clients");
   return (
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (

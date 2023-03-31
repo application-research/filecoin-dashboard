@@ -34,20 +34,20 @@ export function updateClientRegions(clients) {
     const updatedRegion = updateClientRegion(client.region, client.name);
     return { ...client, region: (updatedRegion as any).region };
   });
-
   return updatedClients;
 }
 
-export function updateClientRegion(region, addressId = null) {
+export function updateClientRegion(region, address) {
   if (!region || typeof region !== "string") {
-    if (addressId) {
-      const formattedAddressId = formatKeywordForComparison(addressId);
+    console.log(address, "address");
+    if (address) {
+      const formattedAddress = formatKeywordForComparison(address);
       let matchedRegion = null;
 
       Object.entries(CLIENT_ADDRESS_BY_REGION_FIXTURE).forEach(
         ([key, value]) => {
           if (
-            value.map(formatKeywordForComparison).includes(formattedAddressId)
+            value.map(formatKeywordForComparison).includes(formattedAddress)
           ) {
             matchedRegion = key;
           }

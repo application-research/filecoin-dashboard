@@ -6,9 +6,14 @@ export default function clientRegionIndustryResolver(clients: AllData[]) {
   const clientsArray = Array.from(clients);
 
   clientsArray.map((client) => {
-    const clientsByRegions = updateClientRegion(client?.region, client?.name);
-    const clientsByIndustry = updateClientIndustry(client.industry);
-
+    const clientsByRegions = updateClientRegion(
+      client?.region,
+      client?.address
+    );
+    const clientsByIndustry = updateClientIndustry(
+      client.industry,
+      client.address
+    );
     client.industry = clientsByIndustry.industry;
     client.region = (clientsByRegions as any).region;
   });

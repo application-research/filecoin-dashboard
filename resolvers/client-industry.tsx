@@ -1,12 +1,33 @@
-import { AllData, Client } from "@root/common/types";
+import { Client } from "@root/common/types";
 import {
   byteInPetabyte,
   formatKeywordForComparison,
 } from "@root/common/utilities";
-import { INDUSTRY_KEYWORDS_MAP_FIXTURE } from "@root/fixtures/industry-fixtures";
+import {
+  CLIENT_ADDRESS_BY_INDUSTRY_FIXTURE,
+  INDUSTRY_KEYWORDS_MAP_FIXTURE,
+} from "@root/fixtures/industry-fixtures";
 
-export function updateClientIndustry(industry) {
-  if (!industry) {
+export function updateClientIndustry(industry, address) {
+  if (!industry || typeof industry !== "string") {
+    if (address) {
+      const formattedAddressId = formatKeywordForComparison(address);
+      let matchedIndustry = null;
+
+      Object.entries(CLIENT_ADDRESS_BY_INDUSTRY_FIXTURE).forEach(
+        ([key, value]) => {
+          if (
+            value.map(formatKeywordForComparison).includes(formattedAddressId)
+          ) {
+            matchedIndustry = key;
+          }
+        }
+      );
+      if (matchedIndustry) {
+        return { industry: matchedIndustry };
+      }
+    }
+
     return { industry: "Other" };
   }
 
