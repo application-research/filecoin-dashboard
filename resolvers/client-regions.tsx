@@ -39,7 +39,6 @@ export function updateClientRegions(clients) {
 
 export function updateClientRegion(region, address) {
   if (!region || typeof region !== "string") {
-    console.log(address, "address");
     if (address) {
       const formattedAddress = formatKeywordForComparison(address);
       let matchedRegion = null;
