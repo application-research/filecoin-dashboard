@@ -9,11 +9,7 @@ export const PARTNERS_FIXTURE = [
     logo: "https://user-images.githubusercontent.com/28320272/228911806-637c7324-bbf8-4492-a0b8-34648e9843f4.svg",
     link: "",
   },
-  {
-    type: "image",
-    logo: "https://user-images.githubusercontent.com/28320272/228911982-1299cc71-6e91-40e3-bcfd-22d06154cf7d.svg",
-    link: "",
-  },
+
   {
     type: "image",
     logo: "https://user-images.githubusercontent.com/28320272/228911984-1f7fa583-0bd3-4040-9c69-478a8155e320.svg",
@@ -26,7 +22,7 @@ export const PARTNERS_FIXTURE = [
   },
   {
     type: "image",
-    logo: "https://user-images.githubusercontent.com/28320272/228913321-589a3b14-8f55-4f9e-891d-abeb2f5b6b9e.png",
+    logo: "https://user-images.githubusercontent.com/28320272/229003251-f459a75e-9ae3-4608-b6ad-dc9899aba0f5.png",
     link: "",
   },
   {
@@ -47,32 +43,7 @@ export const PARTNERS_FIXTURE = [
   },
   {
     type: "image",
-    logo: "https://user-images.githubusercontent.com/28320272/228914050-5e2e0d82-7464-46f8-919c-fa138d1df0e3.png",
+    logo: "https://user-images.githubusercontent.com/28320272/229003067-a87e48a1-bfa1-49c9-98ad-a5b488318cf0.png",
     link: "",
   },
-  // {
-  //   type: "image",
-  //   logo: "https://user-images.githubusercontent.com/28320272/226717503-c514ebb6-c091-45d5-bcbf-2e54c493b0b8.png",
-  //   link: "https://www.gutenberg.org/",
-  // },
-  // {
-  //   type: "image",
-  //   logo: "https://user-images.githubusercontent.com/28320272/226717985-eb538a51-b73a-4919-8edf-895de4b8f5d8.png",
-  //   link: "https://www.bacalhau.org/",
-  // },
-  // {
-  //   type: "image",
-  //   logo: "https://user-images.githubusercontent.com/28320272/228914264-6ae8c571-028c-4e1b-b2e5-56185f7590ec.png",
-  //   link: "https://en.wikipedia.org/wiki/Wikipedia:About",
-  // },
-  // {
-  //   type: "image",
-  //   logo: "https://user-images.githubusercontent.com/28320272/226717897-77b3230b-4fc7-4cc6-9d01-73af68b58b75.png",
-  //   link: "https://zora.co/",
-  // },
-  // {
-  //   type: "image",
-  //   logo: "https://user-images.githubusercontent.com/28320272/226718368-80ffd702-96fd-4312-bea1-18d06d01837e.png",
-  //   link: "https://opendata.cityofnewyork.us/",
-  // },
 ];
