@@ -37,8 +37,10 @@ export default function SectionData() {
   const itemsPerPage = 15;
   const currentDate = new Date();
   const intervalEndTimestamp = Math.round(currentDate.getTime() / 1000);
-  const secondsInTenWeeks = 10 * 7 * 24 * 60 * 60;
-  const intervalStartTimestamp = intervalEndTimestamp - secondsInTenWeeks;
+  // const secondsInTenWeeks = 10 * 7 * 24 * 60 * 60;
+  const secondsInOneYear = 31536000;
+
+  const intervalStartTimestamp = intervalEndTimestamp - secondsInOneYear;
 
   useEffect(() => {
     async function fetchPaginatedAndTotalData() {
@@ -79,6 +81,7 @@ export default function SectionData() {
           intervalStartTimestamp,
           intervalEndTimestamp
         );
+        console.log("all", allClients);
         setAllData(allClients as any);
         setIsLoading(false);
 
@@ -105,7 +108,7 @@ export default function SectionData() {
   }
 
   let allDataFiltered;
-
+  console.log("all clients", allData);
   if (Object.keys(allData).length > 0) {
     allDataFiltered = clientRegionIndustryResolver(allData as any);
   }

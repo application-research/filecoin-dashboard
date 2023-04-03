@@ -181,7 +181,8 @@ export function formatKeywordForComparison(keyword) {
 }
 
 export const CACHE_KEY = "allClients";
-export const CACHE_EXPIRATION_TIME = 56 * 60 * 60 * 1000;
+// export const CACHE_EXPIRATION_TIME = 56 * 60 * 60 * 1000;
+export const CACHE_EXPIRATION_TIME = 0;
 
 export function saveToLocalStorage(key, data) {
   const dataToSave = {

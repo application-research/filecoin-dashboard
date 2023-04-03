@@ -12,10 +12,8 @@ export default async function Page() {
       <div style={{ background: "black" }}>
         <Navbar />
         <Hero />
-        <div style={{ display: "grid", rowGap: "var(--p-large-xxl)" }}>
-          <SectionData />
-          <Footer />
-        </div>
+        <SectionData />
+        <Footer />
       </div>
     </DefaultLayout>
   );

@@ -16,9 +16,10 @@ export async function fetchAllClients(
   let page = 1;
   const limit = 49;
 
-  while (page < 11) {
+  while (true) {
     const res = await fetch(
-      `https://api.datacapstats.io/api/getVerifiedClientsExtended?page=${page}&limit=${limit}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
+      `https://api.datacapstats.io/api/getVerifiedClientsDatacapUsage?page=${page}&limit=${limit}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
+      // `https://api.datacapstats.io/api/getVerifiedClientsExtended?page=${page}&limit=${limit}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
     );
 
     const clients = await res.json();
@@ -31,7 +32,7 @@ export async function fetchAllClients(
     page++;
 
     //wait 2 seconds before the next request
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
   return allClients;
@@ -41,7 +42,8 @@ export async function fetchClientsPerPage(itemsPerPage, currentPage) {
   const res = await fetch(
     `https://api.datacapstats.io/api/getVerifiedClients?limit=${itemsPerPage}&page=${currentPage}&count=true`
   );
-
+  //api.datacapstats.io/api/getVerifiedClientsDatacapUsage?limit=10&page=4&intervalStartTimestamp=1642346814&intervalEndTimestamp=1673882814
+  //   const res = await fetch(      `https://api.datacapstats.io/api/getVerifiedClientsDatacapUsage?page=${page}&limit=${limit}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`    );
   const { count, data } = await res.json();
 
   return { count, data };
