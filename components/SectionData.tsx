@@ -22,10 +22,10 @@ import OverviewDataGrowth from "./OverviewDataGrowth";
 import Partners from "./Partners";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
 import SectionGraphByRegion from "./SectionGraphByRegion";
+import GraphWithFilters from "./GraphWithFilters";
 
 export default function SectionData() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
-
   const [clients, setClients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
@@ -37,8 +37,8 @@ export default function SectionData() {
   const itemsPerPage = 15;
   const currentDate = new Date();
   const intervalEndTimestamp = Math.round(currentDate.getTime() / 1000);
-  const secondsInTenWeeks = 10 * 7 * 24 * 60 * 60;
-  const intervalStartTimestamp = intervalEndTimestamp - secondsInTenWeeks;
+  const secondsInAYear = 31536000;
+  const intervalStartTimestamp = intervalEndTimestamp - secondsInAYear;
 
   useEffect(() => {
     async function fetchPaginatedAndTotalData() {
@@ -109,7 +109,7 @@ export default function SectionData() {
   if (Object.keys(allData).length > 0) {
     allDataFiltered = clientRegionIndustryResolver(allData as any);
   }
-
+  console.log("clients", clients);
   return (
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (

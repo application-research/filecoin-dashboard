@@ -16,7 +16,7 @@ export async function fetchAllClients(
   let page = 1;
   const limit = 49;
 
-  while (page < 11) {
+  while (true) {
     const res = await fetch(
       `https://api.datacapstats.io/api/getVerifiedClientsExtended?page=${page}&limit=${limit}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
     );
@@ -31,7 +31,7 @@ export async function fetchAllClients(
     page++;
 
     //wait 2 seconds before the next request
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   return allClients;

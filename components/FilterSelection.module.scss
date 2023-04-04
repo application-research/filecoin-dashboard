@@ -1,0 +1,12 @@
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .filterBarOption {
+    font-family: "Clash Display";
+    font-size: var(--font-size-small);
+    border: 1px solid var(--color-blue200);
+    padding: 0.5rem;
+  }
+}

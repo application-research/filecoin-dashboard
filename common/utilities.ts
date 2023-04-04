@@ -181,7 +181,7 @@ export function formatKeywordForComparison(keyword) {
 }
 
 export const CACHE_KEY = "allClients";
-export const CACHE_EXPIRATION_TIME = 56 * 60 * 60 * 1000;
+export const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000;
 
 export function saveToLocalStorage(key, data) {
   const dataToSave = {
@@ -202,4 +202,26 @@ export function isCacheValid(cachedData, expirationTime) {
   }
   const currentTime = new Date().getTime();
   return currentTime - cachedData.timestamp < expirationTime;
+}
+
+export function changeIntervalToCurrentDate(interval) {
+  const currentDate = new Date();
+
+  switch (interval) {
+    case "month":
+      return currentDate.setMonth(currentDate.getMonth() - 1);
+    case "3month":
+      return currentDate.setMonth(currentDate.getMonth() - 3);
+    case "6month":
+      return currentDate.setMonth(currentDate.getMonth() - 6);
+    default:
+      break;
+  }
+
+  //check if the current interval currentDate touches the previous years
+  if (currentDate.getMonth() < 0) {
+    currentDate.setFullYear(currentDate.getFullYear() - 1);
+    currentDate.setMonth(currentDate.getMonth() + 12);
+  }
+  return currentDate;
 }
