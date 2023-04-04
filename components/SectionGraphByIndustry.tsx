@@ -2,6 +2,7 @@ import { groupClientsByWeekAndIndustry } from "@root/resolvers/client-industry";
 import { IndustryStackedBarChart } from "./IndustryStackedBarChart";
 import { AllData } from "@root/common/types";
 import { useState } from "react";
+import FilterSelection from "./FilterSelection";
 
 interface SectionGraphByIndustryProps {
   allData: AllData[];
@@ -35,22 +36,40 @@ export default function SectionGraphByIndustry({
       return dateA.getTime() - dateB.getTime();
     }
   );
-  // .slice(2)
-  // .slice(-15);
 
+  const options = [
+    {
+      text: "last month",
+      value: "month",
+    },
+    {
+      text: "3 months",
+      value: "3month",
+    },
+    {
+      text: "6 months",
+      value: "6month",
+    },
+  ];
   return (
     <>
-      {" "}
-      <div>
-        Interval
-        <select value={selectedInterval} onChange={handleIntervalChange}>
-          <option value="month">month</option>
-          <option value="3month">3 months</option>
-          {/* <option value="6month">6 months</option>
-          <option value="1month">1 year</option> */}
-        </select>
-        <IndustryStackedBarChart graphData={sortedEightWeeks} />
+      <div
+        style={{
+          paddingRight: "1.6rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          gap: "1rem",
+        }}
+      >
+        Filter
+        <FilterSelection
+          options={options}
+          value={selectedInterval}
+          onChange={handleIntervalChange}
+        />
       </div>
+      <IndustryStackedBarChart graphData={sortedEightWeeks} />
     </>
   );
 }

@@ -39,9 +39,6 @@ export default function SectionData() {
   const intervalEndTimestamp = Math.round(currentDate.getTime() / 1000);
   const secondsInAYear = 31536000;
   const intervalStartTimestamp = intervalEndTimestamp - secondsInAYear;
-  // const intervalEndTimestamp = Math.round(currentDate.getTime() / 1000);
-  // const secondsInTenWeeks = 10 * 7 * 24 * 60 * 60;
-  // const intervalStartTimestamp = intervalEndTimestamp - secondsInTenWeeks;
 
   useEffect(() => {
     async function fetchPaginatedAndTotalData() {
@@ -138,8 +135,6 @@ export default function SectionData() {
           Object.keys(allDataFiltered).length > 0 && (
             <>
               <GutterContainer>
-                {/* <GraphWithFilters allData={allDataFiltered} /> */}
-
                 <div className={styles.red}>
                   <div className={styles.headingContainer}>
                     <h2 className={styles.colorBlue}>

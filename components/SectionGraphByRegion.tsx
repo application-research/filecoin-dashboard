@@ -5,6 +5,7 @@ import {
   updateClientRegions,
 } from "@root/resolvers/client-regions";
 import { useState } from "react";
+import FilterSelection from "./FilterSelection";
 
 interface SectionGraphByRegionProps {
   allData: AllData[];
@@ -20,10 +21,7 @@ export default function SectionGroupedGraphByRegion({ allData }) {
   >("month");
 
   const clientsArray = Array.from(allData);
-  const updatedKnownClientsRegions = updateClientRegions(
-    clientsArray,
-    selectedInterval
-  );
+  const updatedKnownClientsRegions = updateClientRegions(clientsArray);
   const handleIntervalChange = (event) => {
     setSelectedInterval(event.target.value);
   };
@@ -32,31 +30,47 @@ export default function SectionGroupedGraphByRegion({ allData }) {
     selectedInterval
   );
 
-  // const sortedEightWeeks = groupedClients.sort(
-  //   (a: GraphByRegionProps, b: GraphByRegionProps) => {
-  //     const dateA = new Date(a.date.replace(",", ""));
-  //     const dateB = new Date(b.date.replace(",", ""));
-  //     return dateA.getTime() - dateB.getTime();
-  //   }
-  // );
-  const sortedData = groupedClients.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
+  const sortedEightWeeks = groupedClients.sort(
+    (a: GraphByRegionProps, b: GraphByRegionProps) => {
+      const dateA = new Date(a.date.replace(",", ""));
+      const dateB = new Date(b.date.replace(",", ""));
+      return dateA.getTime() - dateB.getTime();
+    }
   );
-  // .slice(2)
-  // .slice(-15);
 
+  const options = [
+    {
+      text: "last month",
+      value: "month",
+    },
+    {
+      text: "3 months",
+      value: "3month",
+    },
+    {
+      text: "6 months",
+      value: "6month",
+    },
+  ];
   return (
     <>
-      <div>
-        Interval
-        <select value={selectedInterval} onChange={handleIntervalChange}>
-          <option value="month">month</option>
-          <option value="3month">3 months</option>
-          {/* <option value="6month">6 months</option>
-          <option value="1month">1 year</option> */}
-        </select>
+      <div
+        style={{
+          paddingRight: "1.6rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          gap: "1rem",
+        }}
+      >
+        Filter
+        <FilterSelection
+          options={options}
+          value={selectedInterval}
+          onChange={handleIntervalChange}
+        />
       </div>
-      <RegionStackedBarChart graphData={sortedData} />
+      <RegionStackedBarChart graphData={sortedEightWeeks} />
     </>
   );
 }

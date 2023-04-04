@@ -31,7 +31,7 @@ export async function fetchAllClients(
     page++;
 
     //wait 2 seconds before the next request
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   return allClients;

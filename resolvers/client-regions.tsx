@@ -1,6 +1,7 @@
 import { Client } from "@root/common/types";
 import {
   byteInPetabyte,
+  changeIntervalToCurrentDate,
   formatKeywordForComparison,
 } from "@root/common/utilities";
 import {
@@ -75,17 +76,10 @@ export function updateClientRegion(region, address) {
   return "Uncategorized";
 }
 
-function getWeekStartDate(year, week) {
-  const firstDayOfYear = new Date(year, 0, 1);
-  const weekStart = new Date(firstDayOfYear.getTime());
-  weekStart.setDate(
-    firstDayOfYear.getDate() + 7 * (week - 1) - firstDayOfYear.getDay() + 1
-  );
-  return weekStart;
-}
-
 export function groupClientsByWeekAndRegion(clients, interval) {
   const groupedData = {};
+
+  const startDate = changeIntervalToCurrentDate(interval);
 
   clients?.forEach((client) => {
     if (!client.usedDc || client.usedDc.length === 0) {
@@ -98,22 +92,12 @@ export function groupClientsByWeekAndRegion(clients, interval) {
       const week = record.week;
       const year = record.year;
 
-      let date;
-
-      if (interval === "month") {
-        date = new Date(Date.UTC(year, 0, week - 1, 1));
-      } else if (interval === "3month") {
-        const monthIndex = Math.floor((week - 1) / 3); //round to nearest integer, group by month index
-        date = new Date(Date.UTC(year, monthIndex * 3, 1));
-      } else if (interval === "6months") {
-        const monthIndex = Math.floor((week - 1) / 6);
-        date = new Date(Date.UTC(year, monthIndex * 6, 1));
-      } else if (interval === "12months") {
-        const monthIndex = Math.floor((week - 1) / 12);
-        date = new Date(Date.UTC(year, monthIndex));
+      const clientReadableDate = new Date(year, 0, 1 + (week - 1) * 7);
+      if (clientReadableDate < startDate) {
+        return;
       }
 
-      const dateString = date.toLocaleDateString("en-US", {
+      const dateString = clientReadableDate.toLocaleDateString("en-US", {
         year: "2-digit",
         month: "short",
         day: "numeric",
