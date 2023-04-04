@@ -1,4 +1,3 @@
-import { Client } from "@root/common/types";
 import {
   byteInPetabyte,
   changeIntervalToCurrentDate,
@@ -78,7 +77,6 @@ export function updateClientRegion(region, address) {
 
 export function groupClientsByWeekAndRegion(clients, interval) {
   const groupedData = {};
-
   const startDate = changeIntervalToCurrentDate(interval);
 
   clients?.forEach((client) => {
