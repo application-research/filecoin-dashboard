@@ -11,11 +11,12 @@ export default async function Page() {
     <DefaultLayout>
       <div style={{ background: "black" }}>
         <Navbar />
-        <Hero />
-        <div style={{ display: "grid", rowGap: "var(--p-large-xxl)" }}>
+        <div style={{ overflow: "hidden", position: "relative" }}>
+          <Hero />
           <SectionData />
-          <Footer />
         </div>
+
+        <Footer />
       </div>
     </DefaultLayout>
   );

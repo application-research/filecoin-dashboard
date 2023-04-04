@@ -126,38 +126,47 @@ export default function SectionData() {
       <div
         style={{
           display: "grid",
-          rowGap: "var(--p-large-x)",
+          rowGap: "var(--p-large-xxl)",
           background: "white",
           paddingTop: "4rem",
         }}
       >
-        {allDataFiltered.length > 0 &&
-          Object.keys(allDataFiltered).length > 0 && (
-            <>
-              <GutterContainer>
-                <div className={styles.red}>
+        <GutterContainer>
+          {allDataFiltered.length > 0 &&
+            Object.keys(allDataFiltered).length > 0 && (
+              <div>
+                <div>
                   <div className={styles.headingContainer}>
                     <h2 className={styles.colorBlue}>
                       Onboarded Data by Regions
                     </h2>
+                    <p>
+                      Explore the regions where the data is being onboarded from
+                    </p>
                   </div>
 
                   <SectionGraphByRegion allData={allDataFiltered} />
                 </div>
-              </GutterContainer>
-              <GutterContainer>
-                <div>
-                  <div className={styles.headingContainer}>
-                    <h2 className={styles.colorBlue}>
-                      Onboarded Data by Industries
-                    </h2>
-                  </div>
+
+                <div
+                  className={styles.headingContainer}
+                  style={{
+                    paddingTop: "4rem",
+                  }}
+                >
+                  <h2 className={styles.colorBlue}>
+                    Onboarded Data by Industries
+                  </h2>
+                  <p>
+                    Explore the industries where the data is being onboarded
+                    from
+                  </p>
+
+                  <SectionGraphByIndustry allData={allDataFiltered} />
                 </div>
-                <SectionGraphByIndustry allData={allDataFiltered} />
-              </GutterContainer>
-            </>
-          )}
-        <GutterContainer>
+              </div>
+            )}
+
           <div style={{ paddingBottom: "4rem", paddingTop: "2rem" }}>
             <div className={styles.backgroundTable}>
               <div className={styles.headingContainer}>
