@@ -22,7 +22,6 @@ import OverviewDataGrowth from "./OverviewDataGrowth";
 import Partners from "./Partners";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
 import SectionGraphByRegion from "./SectionGraphByRegion";
-import GraphWithFilters from "./GraphWithFilters";
 
 export default function SectionData() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
