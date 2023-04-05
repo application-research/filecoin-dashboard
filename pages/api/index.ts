@@ -30,7 +30,7 @@ export async function fetchAllClients(
     allClients = allClients.concat(clients.data);
     page++;
 
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   return allClients;

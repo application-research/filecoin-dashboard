@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@components/SectionData.module.scss";
+import styles from "@components/SectionDataDesignTwo.module.scss";
 import { AllData } from "@root/common/types";
 import {
   CACHE_EXPIRATION_TIME,
