@@ -3,15 +3,13 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   row-gap: 1.5rem;
   grid-gap: 1.5rem;
-  padding: 2.5rem 0rem 4rem;
+  padding: 2.5rem 0rem 2rem;
+  z-index: var(--z-index-small);
+  position: relative;
 }
 
 .body {
   padding: 2rem 0rem;
-  background-image: url("https://user-images.githubusercontent.com/28320272/230406987-1fd3832a-bf54-42f6-b583-83166813aeb4.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .dataTitle {
@@ -50,7 +48,8 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   gap: 2rem;
-
+  position: relative;
+  z-index: var(--z-index-small);
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -69,4 +68,15 @@
 .caption {
   color: var(--color-white);
   padding-bottom: 1rem;
+  z-index: var(--z-index-small);
+  position: relative;
+}
+
+.video {
+  height: 60vh;
+  object-fit: cover;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -136,12 +136,7 @@ export default function SectionDataNew() {
               <div>
                 <div>
                   <div className={styles.headingContainer}>
-                    <h2 style={{ color: "var(--color-black)" }}>
-                      Onboarded Data by Regions
-                    </h2>
-                    <p>
-                      Explore the regions where the data is being onboarded from
-                    </p>
+                    <h2 style={{ color: "var(--color-black)" }}>By Regions</h2>
                   </div>
 
                   <SectionGraphByRegion allData={allDataFiltered} />
@@ -153,13 +148,7 @@ export default function SectionDataNew() {
                     paddingTop: "4rem",
                   }}
                 >
-                  <h2 style={{ color: "var(--color-black)" }}>
-                    Onboarded Data by Industries
-                  </h2>
-                  <p>
-                    Explore the industries where the data is being onboarded
-                    from
-                  </p>
+                  <h2 style={{ color: "var(--color-black)" }}>By Industries</h2>
 
                   <SectionGraphByIndustry allData={allDataFiltered} />
                 </div>
