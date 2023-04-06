@@ -1,0 +1,72 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 1.5rem;
+  grid-gap: 1.5rem;
+  padding: 2.5rem 0rem 4rem;
+}
+
+.body {
+  padding: 2rem 0rem;
+  background-image: url("https://user-images.githubusercontent.com/28320272/230406987-1fd3832a-bf54-42f6-b583-83166813aeb4.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dataTitle {
+  color: var(--color-white);
+}
+
+.data {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-blue);
+  font-size: var(--font-size-largePlus);
+
+  @media (max-width: 1050px) {
+    font-size: var(--font-size-regular);
+  }
+}
+
+.headline {
+  font-family: "Clash Display";
+  font-weight: var(--font-weight-medium);
+  font-size: 4rem;
+  max-width: 20ch;
+  line-height: var(--line-height-regular);
+  color: var(--color-white);
+
+  @media (max-width: 768px) {
+    font-size: var(--font-size-large);
+    max-width: none;
+    line-height: 3rem;
+  }
+}
+
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.button {
+  color: var(--color-white);
+  background: var(--color-blue);
+  border: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: "Clash Display";
+  cursor: pointer;
+}
+
+.caption {
+  color: var(--color-white);
+  padding-bottom: 1rem;
+}

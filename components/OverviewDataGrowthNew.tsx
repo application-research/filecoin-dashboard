@@ -1,10 +1,10 @@
-import styles from "@components/OverviewDataGrowth.module.scss";
+import styles from "@components/OverviewDataGrowthNew.module.scss";
 import { bytesToSize } from "@root/common/utilities";
 import GutterContainer from "./GutterContainer";
-import Hero from "./Hero";
+
 import HeroNew from "./HeroNew";
 
-export default function OverviewDataGrowth({
+export default function OverviewDataGrowthNew({
   allDataFiltered,
   totalClients,
   totalClientCount,
@@ -20,6 +20,11 @@ export default function OverviewDataGrowth({
   return (
     <div className={styles.body}>
       <GutterContainer>
+        <div className={styles.heroContainer}>
+          <h1 className={styles.headline} style={{ paddingBottom: "1rem" }}>
+            Filecoin<br></br> user explorer
+          </h1>
+        </div>
         <div className={styles.container}>
           <div>
             <h4 className={styles.data}>{totalInitialAllowance}</h4>
@@ -30,6 +35,10 @@ export default function OverviewDataGrowth({
             <p className={styles.dataTitle}>Clients served</p>
           </div>
         </div>
+        <p className={styles.caption}>
+          Leave rising costs, service outages and vendor lock-in behind.{" "}
+        </p>
+        {/* <button className={styles.button}>Learn More</button> */}
       </GutterContainer>
     </div>
   );

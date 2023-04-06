@@ -1,6 +1,56 @@
 export const PARTNERS_FIXTURE = [
   {
     type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230409193-cd3949b0-6981-491b-889e-30ab4e9f458e.png",
+    link: "",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230409297-80ef6cd2-866d-4e4c-af62-540d3dc499b1.png",
+    link: "",
+  },
+
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230409557-2c2f28c7-bb03-4920-85da-34c6ac5f4606.png",
+    link: "",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230409819-a10156c2-1b80-489d-abeb-0f236f7550ff.png",
+    link: "",
+  },
+  // {
+  //   type: "image",
+  //   logo: "https://user-images.githubusercontent.com/28320272/229003251-f459a75e-9ae3-4608-b6ad-dc9899aba0f5.png",
+  //   link: "",
+  // },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230409931-b6dd6436-3f52-41f1-8c44-d2dc281f2e22.png",
+    link: "https://archive.org/",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230410839-bbee57f9-50b6-46d9-aad5-33bb51b4a4dd.png",
+    link: "",
+  },
+
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230410300-6176cb73-e766-4c51-bd34-7bfaef2cb91c.png",
+    link: "",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230410314-a6867d15-2caf-4d64-a835-d7ee60410148.png",
+    link: "",
+  },
+];
+
+export const PARTNERS_FIXTURE_OLD = [
+  {
+    type: "image",
     logo: "https://user-images.githubusercontent.com/28320272/228911798-9b6c0476-c324-4a8b-bbf8-7163d464e5f7.png",
     link: "",
   },
@@ -38,12 +88,12 @@ export const PARTNERS_FIXTURE = [
 
   {
     type: "image",
-    logo: "https://user-images.githubusercontent.com/28320272/228915121-6b12328f-dac3-4813-8cd6-834d148ba93f.png",
+    logo: "https://user-images.githubusercontent.com/28320272/230410300-6176cb73-e766-4c51-bd34-7bfaef2cb91c.png",
     link: "",
   },
   {
     type: "image",
-    logo: "https://user-images.githubusercontent.com/28320272/229003067-a87e48a1-bfa1-49c9-98ad-a5b488318cf0.png",
+    logo: "https://user-images.githubusercontent.com/28320272/230410314-a6867d15-2caf-4d64-a835-d7ee60410148.png",
     link: "",
   },
 ];

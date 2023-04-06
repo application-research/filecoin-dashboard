@@ -1,0 +1,130 @@
+.container {
+  padding: 2rem 0rem;
+}
+
+.partnerGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-gap: 2rem;
+  padding-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 1rem;
+    row-gap: 1rem;
+  }
+}
+
+.logo {
+  max-width: 8rem;
+
+  @media (max-width: 1050px) {
+    width: 6rem;
+  }
+
+  @media (max-width: 500px) {
+    width: 4rem;
+  }
+
+  @media (max-width: 302px) {
+    width: 3rem;
+  }
+}
+
+.partner {
+  align-items: center;
+  display: flex;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
+
+.folder {
+  width: 100%;
+  position: absolute;
+  top: -6rem;
+  left: 3rem;
+}
+.folderSVG {
+  width: 50%;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.headingTitle {
+  color: var(--color-text);
+  font-size: var(--font-size-large);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding-bottom: 1rem;
+}
+
+.viewMoreButton {
+  color: var(--color-text);
+  background: none;
+  border: none;
+  font-size: var(--font-size-mini);
+  border-bottom: 1px solid var(--color-black);
+  font-family: "Clash Display";
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerBlue {
+  background: var(--color-blue);
+  padding: 2rem 0 2rem 0rem;
+}
+
+.carouselRow {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow: hidden;
+  gap: 2rem;
+}
+
+.heading {
+  padding-bottom: 2rem;
+  color: var(--color-white);
+}
+
+.image {
+  max-width: 18rem;
+}
+
+.resources {
+  color: var(--color-white);
+}
+
+.caption {
+  color: var(--color-white);
+}
+
+.imageCaption {
+  color: var(--color-white);
+  position: absolute;
+  margin-top: -4rem;
+  margin-left: 1rem;
+  font-size: var(--font-size-miniPlus);
+}
+
+.heading {
+  padding: 4rem 0rem 2rem 0rem;
+  color: var(--color-black);
+}
+
+.caption {
+  color: var(--color-black);
+}
