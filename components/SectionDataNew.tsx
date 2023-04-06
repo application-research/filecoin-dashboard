@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@components/SectionData.module.scss";
+import styles from "@components/SectionDataNew.module.scss";
 import { AllData } from "@root/common/types";
 import {
   CACHE_EXPIRATION_TIME,
@@ -17,13 +17,14 @@ import {
 import clientRegionIndustryResolver from "@root/resolvers/client-industry-region";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
-import OnboardedDataTable from "./OnboardedDataTable";
-import OverviewDataGrowth from "./OverviewDataGrowth";
-import Partners from "./Partners";
+import OnboardedDataTable from "./OnboardedDataTableNew";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
 import SectionGraphByRegion from "./SectionGraphByRegion";
+import PartnersNew from "./PartnersNew";
+import OverviewDataGrowthNew from "./OverviewDataGrowthNew";
+import OnboardedDataTableNew from "./OnboardedDataTableNew";
 
-export default function SectionData() {
+export default function SectionDataNew() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
   const [clients, setClients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -112,14 +113,14 @@ export default function SectionData() {
   return (
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (
-        <OverviewDataGrowth
+        <OverviewDataGrowthNew
           totalClientCount={totalClientCount}
           totalClients={totalClients}
           allDataFiltered={allDataFiltered}
         />
       )}
-      <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
-        <Partners partners={partners} />
+      <div style={{}}>
+        <PartnersNew partners={partners} />
       </div>
 
       <div
@@ -127,7 +128,7 @@ export default function SectionData() {
           display: "grid",
           rowGap: "var(--p-large-xxl)",
           background: "white",
-          paddingTop: "4rem",
+          // paddingTop: "4rem",
         }}
       >
         <GutterContainer>
@@ -136,7 +137,7 @@ export default function SectionData() {
               <div>
                 <div>
                   <div className={styles.headingContainer}>
-                    <h2 className={styles.colorBlue}>
+                    <h2 style={{ color: "var(--color-black)" }}>
                       Onboarded Data by Regions
                     </h2>
                     <p>
@@ -153,7 +154,7 @@ export default function SectionData() {
                     paddingTop: "4rem",
                   }}
                 >
-                  <h2 className={styles.colorBlue}>
+                  <h2 style={{ color: "var(--color-black)" }}>
                     Onboarded Data by Industries
                   </h2>
                   <p>
@@ -166,13 +167,13 @@ export default function SectionData() {
               </div>
             )}
 
-          <div style={{ paddingBottom: "4rem", paddingTop: "2rem" }}>
+          <div style={{ paddingBottom: "4rem", paddingTop: "4rem" }}>
             <div className={styles.backgroundTable}>
               <div className={styles.headingContainer}>
-                <h2 className={styles.colorBlue}> Onboarded Data</h2>
+                <h2 style={{ color: "var(--color-black)" }}> Onboarded Data</h2>
                 <p>{totalClientCount} clients </p>
               </div>
-              <OnboardedDataTable
+              <OnboardedDataTableNew
                 clients={clients}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}

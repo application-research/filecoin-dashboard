@@ -1,4 +1,4 @@
-export default function GithubSVG(props) {
+export default function GithubSVG(props, fill) {
   return (
     <svg
       {...props}
@@ -17,7 +17,7 @@ export default function GithubSVG(props) {
       </g>
       <defs>
         <clipPath id="clip0_34_482">
-          <rect width="20" height="20" fill="white" />
+          <rect width="20" height="20" fill={fill ? fill : "white"} />
         </clipPath>
       </defs>
     </svg>

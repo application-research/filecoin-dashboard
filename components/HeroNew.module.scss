@@ -1,0 +1,52 @@
+.body {
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+}
+
+.headline {
+  font-family: "Clash Display";
+  font-weight: var(--font-weight-medium);
+  font-size: 4rem;
+  max-width: 20ch;
+  line-height: var(--line-height-regular);
+
+  @media (max-width: 768px) {
+    font-size: var(--font-size-large);
+    max-width: none;
+    line-height: 3rem;
+  }
+}
+
+.container {
+  background: url("https://user-images.githubusercontent.com/28320272/230406987-1fd3832a-bf54-42f6-b583-83166813aeb4.png");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.heroImage {
+  width: 30rem;
+
+  margin: 0 auto 0 auto;
+
+  .image {
+    width: 24rem;
+    top: 4rem;
+    left: 60%;
+
+    position: absolute;
+  }
+
+  @media (max-width: 768px) {
+    width: 20rem;
+  }
+}
