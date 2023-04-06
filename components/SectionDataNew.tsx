@@ -17,7 +17,6 @@ import {
 import clientRegionIndustryResolver from "@root/resolvers/client-industry-region";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
-import OnboardedDataTable from "./OnboardedDataTableNew";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
 import SectionGraphByRegion from "./SectionGraphByRegion";
 import PartnersNew from "./PartnersNew";
@@ -119,7 +118,7 @@ export default function SectionDataNew() {
           allDataFiltered={allDataFiltered}
         />
       )}
-      <div style={{}}>
+      <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
         <PartnersNew partners={partners} />
       </div>
 
