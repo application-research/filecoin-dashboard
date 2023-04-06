@@ -17,7 +17,7 @@ import {
 import clientRegionIndustryResolver from "@root/resolvers/client-industry-region";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
-import OnboardedDataTable from "./OnboardedDataTable";
+import OnboardedDataTable from "./OnboardedDataTableNew";
 import OverviewDataGrowth from "./OverviewDataGrowth";
 import Partners from "./Partners";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
