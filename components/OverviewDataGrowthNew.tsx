@@ -2,8 +2,6 @@ import styles from "@components/OverviewDataGrowthNew.module.scss";
 import { bytesToSize } from "@root/common/utilities";
 import GutterContainer from "./GutterContainer";
 
-import HeroNew from "./HeroNew";
-
 export default function OverviewDataGrowthNew({
   allDataFiltered,
   totalClients,
@@ -19,6 +17,14 @@ export default function OverviewDataGrowthNew({
 
   return (
     <div className={styles.body}>
+      <video className={styles.video} autoPlay muted loop>
+        <source
+          src="https://user-images.githubusercontent.com/28320272/230458369-7a393957-7a5f-489c-bd16-2c2e9cf267b4.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
       <GutterContainer>
         <div className={styles.heroContainer}>
           <h1 className={styles.headline} style={{ paddingBottom: "1rem" }}>
@@ -36,9 +42,11 @@ export default function OverviewDataGrowthNew({
           </div>
         </div>
         <p className={styles.caption}>
-          Leave rising costs, service outages and vendor lock-in behind.{" "}
+          Leave rising costs, service outages and vendor lock-in behind.
+          <br></br>
+          Checkout the network partners that have onboarded data onto Filecoin
+          Network
         </p>
-        {/* <button className={styles.button}>Learn More</button> */}
       </GutterContainer>
     </div>
   );

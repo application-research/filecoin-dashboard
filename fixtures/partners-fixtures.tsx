@@ -46,6 +46,16 @@ export const PARTNERS_FIXTURE = [
     logo: "https://user-images.githubusercontent.com/28320272/230410314-a6867d15-2caf-4d64-a835-d7ee60410148.png",
     link: "",
   },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230461588-edd3a6d7-3fd3-4e6d-8a62-9dc76a0144af.png",
+    link: "",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/230461694-b421ea98-536b-4721-8a80-c87836a16d36.png",
+    link: "",
+  },
 ];
 
 export const PARTNERS_FIXTURE_OLD = [
