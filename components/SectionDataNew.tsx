@@ -109,11 +109,20 @@ export default function SectionDataNew() {
     allDataFiltered = clientRegionIndustryResolver(allData as any);
   }
 
+  let totalClientsWithDeals = 0;
+
+  totalClients.map((client) => {
+    if (client.dealCount > 1) {
+      totalClientsWithDeals += 1;
+    }
+  });
+  console.log("total clients", totalClients);
+
   return (
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (
         <OverviewDataGrowthNew
-          totalClientCount={totalClientCount}
+          totalClientCount={totalClientsWithDeals}
           totalClients={totalClients}
           allDataFiltered={allDataFiltered}
         />
@@ -183,7 +192,9 @@ export default function SectionDataNew() {
                   Get additional details about the client data that’s being
                   stored on Filecoin.
                 </p>
-                <p>{totalClientCount} clients </p>
+                <p style={{ fontWeight: "800", fontSize: "1.5rem" }}>
+                  {totalClientsWithDeals} clients{" "}
+                </p>
               </div>
             </GutterContainer>
 
