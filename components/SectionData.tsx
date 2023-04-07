@@ -11,7 +11,6 @@ import {
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners-fixtures";
 import {
   fetchAllClients,
-  fetchAllClientsLatest,
   fetchClientsPerPage,
   fetchTotalClients,
 } from "@root/pages/api";
@@ -66,7 +65,7 @@ export default function SectionData() {
         const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
         // console.log(cachedData, "cached data");
         if (isCacheValid(cachedData, CACHE_EXPIRATION_TIME)) {
-          console.log("Fetching CACHED data");
+          // console.log("Fetching CACHED data");
           setAllData(cachedData.data);
           setIsLoading(false);
           return;
