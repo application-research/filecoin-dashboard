@@ -8,33 +8,33 @@ export async function apiIndex(req, res) {
   res.json({ succes: true });
 }
 
-export async function fetchAllClientsLatest(
-  intervalStartTimestamp,
-  intervalEndTimestamp
-) {
-  let allClients = [];
-  let page = 1;
-  const limit = 49;
+// export async function fetchAllClientsLatest(
+//   intervalStartTimestamp,
+//   intervalEndTimestamp
+// ) {
+//   let allClients = [];
+//   let page = 1;
+//   const limit = 49;
 
-  while (page < 80) {
-    const res = await fetch(
-      `https://api.datacapstats.io/api/getVerifiedClientsDatacapUsage?&limit=${limit}&page=${page}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
-    );
+//   while (page < 80) {
+//     const res = await fetch(
+//       `https://api.datacapstats.io/api/getVerifiedClientsDatacapUsage?&limit=${limit}&page=${page}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
+//     );
 
-    const clients = await res.json();
+//     const clients = await res.json();
 
-    if (clients.data.length === 0) {
-      break;
-    }
+//     if (clients.data.length === 0) {
+//       break;
+//     }
 
-    allClients = allClients.concat(clients.data);
-    page++;
+//     allClients = allClients.concat(clients.data);
+//     page++;
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-  }
+//     await new Promise((resolve) => setTimeout(resolve, 2000));
+//   }
 
-  return allClients;
-}
+//   return allClients;
+// }
 
 export async function fetchAllClients(
   intervalStartTimestamp,
@@ -58,7 +58,7 @@ export async function fetchAllClients(
     allClients = allClients.concat(clients.data);
     page++;
 
-    await new Promise((resolve) => setTimeout(resolve, 1700));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   return allClients;

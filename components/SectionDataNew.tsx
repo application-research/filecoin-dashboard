@@ -64,7 +64,7 @@ export default function SectionDataNew() {
     async function fetchAllData() {
       try {
         const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
-
+        // console.log(cachedData, "cached data");
         if (isCacheValid(cachedData, CACHE_EXPIRATION_TIME)) {
           // console.log("Fetching CACHED data");
           setAllData(cachedData.data);
