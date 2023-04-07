@@ -84,7 +84,7 @@
 
 .containerBlue {
   background: var(--color-blue);
-  padding: 2rem 0 2rem 0rem;
+  padding: 4rem 0 4rem 0rem;
 }
 
 .carouselRow {
@@ -102,6 +102,7 @@
 
 .image {
   max-width: 18rem;
+  border-radius: 0.25rem;
 }
 
 .resources {
@@ -115,8 +116,8 @@
 .imageCaption {
   color: var(--color-white);
   position: absolute;
-  margin-top: -4rem;
-  margin-left: 1rem;
+  margin-top: -16rem;
+  margin-left: 1.5rem;
   font-size: var(--font-size-miniPlus);
 }
 
@@ -134,4 +135,21 @@
 
 .containerBlue {
   background: var(--color-blue);
+}
+
+.link {
+  border: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.caption {
+  max-width: 24ch;
+  line-height: 1.8rem;
+  color: var(--color-white);
+  position: absolute;
+  margin-top: -12rem;
+  margin-left: 1.5rem;
+  font-size: 14px;
+  font-weight: var(--font-weight-light);
 }

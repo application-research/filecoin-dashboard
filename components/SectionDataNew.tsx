@@ -133,12 +133,7 @@ export default function SectionDataNew() {
           {allDataFiltered.length > 0 &&
             Object.keys(allDataFiltered).length > 0 && (
               <div>
-                <div
-                  className={styles.headingContainer}
-                  style={{
-                    paddingTop: "4rem",
-                  }}
-                >
+                <div className={styles.headingContainer}>
                   <h2 style={{ color: "var(--color-black)" }}>
                     Data Stored by Industry
                   </h2>
@@ -150,7 +145,12 @@ export default function SectionDataNew() {
                 </div>
                 <div>
                   <div className={styles.headingContainer}>
-                    <h2 style={{ color: "var(--color-black)" }}>
+                    <h2
+                      style={{
+                        color: "var(--color-black)",
+                        paddingTop: "4rem",
+                      }}
+                    >
                       Data Stored by Region
                     </h2>
                     <p>

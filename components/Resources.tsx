@@ -7,7 +7,7 @@ export default function Resources() {
       text: "Whitepapers",
       href: "https://destor.io/idc-decentralized-storage-white-paper",
       original:
-        "https://user-images.githubusercontent.com/28320272/230427956-9b34d7e8-5256-428e-b775-c00c704c3200.png",
+        "https://user-images.githubusercontent.com/28320272/230531152-69546ac4-b6df-4a5a-aec9-192982878a97.png",
       thumbnail:
         "https://user-images.githubusercontent.com/28320272/230425368-fe2e00cd-31ac-408e-bf94-0d0f7cddd715.png",
     },
@@ -15,15 +15,14 @@ export default function Resources() {
       text: "Case Studies",
       href: "https://destor.io/resources/case-studies",
       original:
-        "https://user-images.githubusercontent.com/28320272/230427945-702bf35b-338a-4f65-b34f-613ea3b9e7c4.png",
+        "https://user-images.githubusercontent.com/28320272/230531976-93a5f39d-9654-4e54-a8e8-b0b59f0135b9.png",
       thumbnail:
         "https://user-images.githubusercontent.com/28320272/230425368-fe2e00cd-31ac-408e-bf94-0d0f7cddd715.png",
     },
     {
       text: "Events",
       href: "https://destor.io/resources/events",
-      original:
-        "https://filecoin.io/uploads/community-presentation_huc51d10bc690943e16520d1278fee0308_288562_900x0_resize_q90_linear.jpg",
+      original: "https://protocol.ai/images/pl_vision.jpg",
       thumbnail:
         "https://user-images.githubusercontent.com/28320272/230425368-fe2e00cd-31ac-408e-bf94-0d0f7cddd715.png",
     },
@@ -39,8 +38,10 @@ export default function Resources() {
             {resources.map((resource, index) => {
               return (
                 <div key={index}>
-                  <a href={resource?.href ?? ""}>
-                    <img src={resource.original} className={styles.image} />
+                  <a href={resource?.href ?? ""} target="_blank">
+                    <div className={styles.imageContainer}>
+                      <img src={resource.original} className={styles.image} />
+                    </div>
                     <h4 className={styles.imageCaption}>{resource.text}</h4>
                   </a>
                 </div>
@@ -58,7 +59,12 @@ export default function Resources() {
               We’re ready to help you find the right solution to solve your data
               challenges.
             </p>
-            <button className={styles.button}>Get Started</button>
+            <a
+              href="https://destor.io/contact/connect-with-an-expert"
+              className={styles.link}
+            >
+              <button className={styles.button}>Get Started</button>
+            </a>
           </div>
         </GutterContainer>
       </div>
