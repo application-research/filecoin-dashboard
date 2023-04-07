@@ -50,7 +50,7 @@ export default function OnboardedDataTableNew({
         return (
           <div className={styles.row} key={index}>
             <div className={styles.col32}>
-              <div className={styles.left}>
+              <div className={`${styles.left} ${styles.githubLink}`}>
                 {each?.allowanceArray[0]?.auditTrail && (
                   <a href={each?.allowanceArray[0]?.auditTrail} target="_blank">
                     <GithubSVG className={styles.image} />
@@ -80,11 +80,15 @@ export default function OnboardedDataTableNew({
             <span className={styles.col18}>
               {dataCapAvailable != "NaN undefined" ? dataCapAvailable : "-"}
             </span>
-            <span className={styles.col18}>
+            <span className={`${styles.col18} ${styles.regions}`}>
               {each.region ?? "Uncategorized"}
             </span>
-            <span className={styles.col18}>{each.industry ?? "Other"}</span>
-            <span className={styles.col18}>{each.dealCount ?? "0"}</span>
+            <span className={`${styles.col18} ${styles.industries}`}>
+              {each.industry ?? "Other"}
+            </span>
+            <span className={`${styles.col18} ${styles.deals}`}>
+              {each.dealCount ?? "0"}
+            </span>
           </div>
         );
       })}

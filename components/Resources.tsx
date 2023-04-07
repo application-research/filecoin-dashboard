@@ -39,9 +39,9 @@ export default function Resources() {
               return (
                 <div key={index}>
                   <a href={resource?.href ?? ""} target="_blank">
-                    <div className={styles.imageContainer}>
-                      <img src={resource.original} className={styles.image} />
-                    </div>
+                    <figure className={styles.imageContainer}>
+                      <img className={styles.image} src={resource.original} />
+                    </figure>
                     <h4 className={styles.imageCaption}>{resource.text}</h4>
                   </a>
                 </div>

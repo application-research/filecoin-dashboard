@@ -53,7 +53,6 @@ const resources = [
 
 function Modal({ allPartners, onClose }) {
   return (
-    // <GutterContainer>
     <div className={styles.modal}>
       <h3 className={styles.modalTitle}>Clients and Builders</h3>
 
@@ -78,7 +77,6 @@ function Modal({ allPartners, onClose }) {
         Close
       </button>
     </div>
-    // </GutterContainer>
   );
 }
 
@@ -175,7 +173,9 @@ export default function PartnersNew({ partners }) {
                 return (
                   <div key={index}>
                     <a href={resource?.href ?? ""} className={styles.link}>
-                      <img src={resource.original} className={styles.image} />
+                      <figure className={styles.imageContainer}>
+                        <img src={resource.original} className={styles.image} />
+                      </figure>
                       <h4 className={styles.imageCaption}>{resource.text}</h4>
                       <p className={styles.caption}>{resource.caption}</p>
                     </a>
