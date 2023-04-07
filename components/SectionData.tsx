@@ -11,6 +11,7 @@ import {
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners-fixtures";
 import {
   fetchAllClients,
+  fetchAllClientsLatest,
   fetchClientsPerPage,
   fetchTotalClients,
 } from "@root/pages/api";
@@ -63,9 +64,9 @@ export default function SectionData() {
     async function fetchAllData() {
       try {
         const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
-
+        // console.log(cachedData, "cached data");
         if (isCacheValid(cachedData, CACHE_EXPIRATION_TIME)) {
-          // console.log("Fetching CACHED data");
+          console.log("Fetching CACHED data");
           setAllData(cachedData.data);
           setIsLoading(false);
           return;
@@ -103,7 +104,9 @@ export default function SectionData() {
   }
 
   let allDataFiltered;
+  allDataFiltered = allData;
 
+  // console.log(allDataFiltered, "all data filtered");
   if (Object.keys(allData).length > 0) {
     allDataFiltered = clientRegionIndustryResolver(allData as any);
   }
