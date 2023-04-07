@@ -1,7 +1,12 @@
+"use client";
 import styles from "@components/PartnersNew.module.scss";
 import GutterContainer from "./GutterContainer";
 import Marquee from "./Marquee";
-import { PARTNERS_TWO_FIXTURE } from "@root/fixtures/partners-fixtures";
+import {
+  ALL_PARTNERS_FIXTURE,
+  PARTNERS_TWO_FIXTURE,
+} from "@root/fixtures/partners-fixtures";
+import { useState } from "react";
 
 const resources = [
   {
@@ -46,13 +51,63 @@ const resources = [
   },
 ];
 
+function Modal({ allPartners, onClose }) {
+  return (
+    <div className={styles.modal}>
+      <h3 className={styles.modalTitle}>Clients and Builders</h3>
+
+      <div className={styles.logoGrid}>
+        {allPartners.map((partner, index) => {
+          return (
+            <a
+              key={index}
+              href={partner.link}
+              style={{ cursor: "pointer" }}
+              target="_blank"
+            >
+              {partner.logo && (
+                <img src={partner.logo} className={styles.logo} />
+              )}
+            </a>
+          );
+        })}
+      </div>
+
+      <button className={styles.button} onClick={onClose}>
+        Close
+      </button>
+    </div>
+  );
+}
+
 export default function PartnersNew({ partners }) {
+<<<<<<< HEAD
   const partnersRowTwo = PARTNERS_TWO_FIXTURE;
+=======
+  const [showModal, setShowModal] = useState(false);
+  const partnersRowTwo = PARTNERS_TWO_FIXTURE;
+  const allPartners = ALL_PARTNERS_FIXTURE;
+
+  const handleViewMoreClick = () => {
+    setShowModal(true);
+  };
+
+  const handleOnCloseModal = () => {
+    setShowModal(false);
+  };
+
+>>>>>>> bb418ab (updated styles and gaps)
   return (
     <div className={styles.container}>
       <div style={{ display: "grid", rowGap: "var(--p-medium)" }}>
         <GutterContainer>
-          <div style={{ paddingTop: "4rem", paddingBottom: "0.5rem" }}>
+          <div
+            style={{
+              paddingTop: "4rem",
+              paddingBottom: "0.5rem",
+              position: "relative",
+            }}
+          >
             <h3 className={` ${styles.headingTitle}`}>Featured Clients</h3>
           </div>
         </GutterContainer>
@@ -92,8 +147,17 @@ export default function PartnersNew({ partners }) {
         </Marquee>
         <GutterContainer>
           <div className={styles.center} style={{ paddingBottom: "4rem" }}>
-            <button className={styles.viewMoreButton}>View More</button>
+            <button
+              className={styles.viewMoreButton}
+              onClick={handleViewMoreClick}
+            >
+              View More
+            </button>
           </div>
+
+          {showModal && (
+            <Modal allPartners={allPartners} onClose={handleOnCloseModal} />
+          )}
         </GutterContainer>
 
         <div className={styles.containerBlue}>
@@ -109,7 +173,9 @@ export default function PartnersNew({ partners }) {
                 return (
                   <div key={index}>
                     <a href={resource?.href ?? ""} className={styles.link}>
-                      <img src={resource.original} className={styles.image} />
+                      <figure className={styles.imageContainer}>
+                        <img src={resource.original} className={styles.image} />
+                      </figure>
                       <h4 className={styles.imageCaption}>{resource.text}</h4>
                       <p className={styles.caption}>{resource.caption}</p>
                     </a>

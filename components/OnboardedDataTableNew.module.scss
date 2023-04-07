@@ -25,6 +25,10 @@
   &:hover {
     background: var(--color-blue-blurr);
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .rowHeading {
@@ -140,5 +144,27 @@
 
   &:hover {
     background: var(--color-blue250);
+  }
+
+  @media (max-width: 768px) {
+    margin: 0;
+  }
+}
+
+.regions {
+  @media (max-width: 1050px) {
+    display: none;
+  }
+}
+
+.industries {
+  @media (max-width: 1050px) {
+    display: none;
+  }
+}
+
+.githubLink {
+  @media (max-width: 1050px) {
+    display: none;
   }
 }
