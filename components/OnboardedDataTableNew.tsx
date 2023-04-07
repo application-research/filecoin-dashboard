@@ -88,22 +88,9 @@ export default function OnboardedDataTableNew({
         );
       })}
 
-      <div className={styles.pagination} style={{ paddingTop: "1rem" }}>
-        {pageNumbers.map((pageNumber) => {
-          return (
-            <button
-              key={pageNumber}
-              onClick={() => onPageChange(pageNumber)}
-              aria-label={`Page Number ${pageNumber}`}
-              className={
-                pageNumber === currentPage ? styles.active : styles.notActive
-              }
-            >
-              {pageNumber}
-            </button>
-          );
-        })}
-      </div>
+      <a href="https://datacapstats.io/clients" className={styles.link}>
+        <button className={styles.button}>View More</button>
+      </a>
     </div>
   );
 }

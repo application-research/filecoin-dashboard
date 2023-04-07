@@ -40,16 +40,16 @@ export default function SectionGroupedGraphByRegion({ allData }) {
 
   const options = [
     {
-      text: "last month",
-      value: "month",
+      text: "6 months",
+      value: "6month",
     },
     {
       text: "3 months",
       value: "3month",
     },
     {
-      text: "6 months",
-      value: "6month",
+      text: "last month",
+      value: "month",
     },
   ];
   return (

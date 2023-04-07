@@ -8,9 +8,9 @@
   position: relative;
 }
 
-.body {
-  padding: 2rem 0rem;
-}
+// .body {
+//   padding: 2rem 0rem;
+// }
 
 .dataTitle {
   color: var(--color-white);
@@ -27,7 +27,7 @@
 }
 
 .headline {
-  font-family: "Clash Display";
+  font-family: "Poppins";
   font-weight: var(--font-weight-medium);
   font-size: 4rem;
   max-width: 20ch;
@@ -61,7 +61,7 @@
   border: none;
   padding: 1rem;
   border-radius: 0.5rem;
-  font-family: "Clash Display";
+  font-family: "Poppins";
   cursor: pointer;
 }
 
@@ -73,10 +73,10 @@
 }
 
 .video {
-  height: 60vh;
   object-fit: cover;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  height: 450px;
 }

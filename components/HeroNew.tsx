@@ -6,7 +6,7 @@ export default function HeroNew() {
     <div className={styles.body}>
       <div className={styles.container}>
         <div>
-          <h1 className={styles.headline} style={{ paddingBottom: "1rem" }}>
+          <h1 className={styles.headline}>
             Filecoin<br></br> user explorer
           </h1>
           <p>Explore the data onboarding growth to the Filecoin Network</p>

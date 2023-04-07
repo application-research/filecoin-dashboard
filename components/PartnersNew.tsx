@@ -4,7 +4,7 @@ import GutterContainer from "./GutterContainer";
 const resources = [
   {
     text: "Higher-Education",
-    href: "",
+    href: "https://destor.io/solutions/education",
     original:
       "https://user-images.githubusercontent.com/28320272/230436431-4aad873b-28e0-403c-ac5d-e2f2de037bd0.png",
     thumbnail:
@@ -12,7 +12,7 @@ const resources = [
   },
   {
     text: "Research",
-    href: "",
+    href: "https://destor.io/solutions/research",
     original:
       "https://user-images.githubusercontent.com/28320272/230436475-ecc1a8aa-2258-4765-ae99-11e33fd65604.png",
     thumbnail:
@@ -20,7 +20,7 @@ const resources = [
   },
   {
     text: "Backup & Recovery",
-    href: "",
+    href: "https://destor.io/solutions/backup",
     original:
       "https://user-images.githubusercontent.com/28320272/230436577-d0a6e0a6-8088-45d2-bcd3-99beebce548e.png",
     thumbnail:
@@ -28,7 +28,7 @@ const resources = [
   },
   {
     text: "Archival",
-    href: "",
+    href: "https://destor.io/solutions/archival",
     original:
       "https://user-images.githubusercontent.com/28320272/230436639-b95be430-7f98-4fd2-aadc-72f1494d7059.png",
     thumbnail:
@@ -39,12 +39,10 @@ const resources = [
 export default function PartnersNew({ partners }) {
   return (
     <div className={styles.container}>
-      <GutterContainer>
-        <div className={styles.container}>
-          <div style={{ display: "grid", rowGap: "var(--p-medium)" }}>
-            <h3 className={` ${styles.headingTitle}`}>
-              Global Partners & Builders
-            </h3>
+      <div style={{ display: "grid", rowGap: "var(--p-medium)" }}>
+        <div style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
+          <GutterContainer>
+            <h3 className={` ${styles.headingTitle}`}>Featured Clients</h3>
             <div className={styles.partnerGrid}>
               {partners.map((partner, index) => {
                 return (
@@ -61,12 +59,15 @@ export default function PartnersNew({ partners }) {
             <div className={styles.center}>
               <button className={styles.viewMoreButton}>View More</button>
             </div>
+          </GutterContainer>
+        </div>
+
+        <div className={styles.containerBlue}>
+          <GutterContainer>
             <div className={styles.heading}>
-              <h3>Solve your data storage challenges with Filecoin</h3>
-              <p className={styles.caption}>
-                You know the story – more data, more problems. Filecoin provides
-                compelling cloud storage solutions for a variety of use cases.
-              </p>
+              <h3 style={{ color: "var(--color-white)" }}>
+                Solve your data storage challenges with Filecoin
+              </h3>
             </div>
 
             <div className={styles.carouselRow}>
@@ -81,9 +82,9 @@ export default function PartnersNew({ partners }) {
                 );
               })}
             </div>
-          </div>
+          </GutterContainer>
         </div>
-      </GutterContainer>
+      </div>
     </div>
   );
 }

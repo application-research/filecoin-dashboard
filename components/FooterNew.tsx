@@ -15,18 +15,8 @@ export default function FooterNew() {
             </a>
             <p className={styles.filecoinLogo}>Filecoin</p>
           </div>
-          <p className={styles.copyright}>
-            Copyright of Protocol Labs. Trademark 2023
-          </p>
 
           <div className={styles.socialContainer}>
-            <a
-              className={styles.textButtonLink}
-              href="https://protocol.ai/"
-              target="_blank"
-            >
-              <button className={styles.textButton}>Protocol Labs</button>
-            </a>
             <div className={styles.socialIconsRow}>
               <a
                 className={styles.link}

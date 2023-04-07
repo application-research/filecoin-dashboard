@@ -45,17 +45,13 @@ export function RegionStackedBarChart({ graphData }: BarGraphProps) {
         <Tooltip />
         <Legend />
 
-        <Bar dataKey="Asia" stackId="outgoing" fill="var(--color-blue200)" />
-        <Bar dataKey="Europe" stackId="outgoing" fill="#FF7555" />
-        <Bar dataKey="North America" stackId="outgoing" fill="#F215A4" />
-        <Bar dataKey="Oceania" stackId="outgoing" fill="#8849A5" />
-        <Bar dataKey="South America" stackId="outgoing" fill="#C1D30C" />
-        <Bar dataKey="Multiple Regions" stackId="outgoing" fill="#59CEC5" />
-        <Bar
-          dataKey="Uncategorized"
-          stackId="outgoing"
-          fill="var(--color-blue-purple)"
-        />
+        <Bar dataKey="Asia" stackId="outgoing" fill="#0090FF" />
+        <Bar dataKey="Europe" stackId="outgoing" fill="#66BCFF" />
+        <Bar dataKey="North America" stackId="outgoing" fill="#C2DEF3" />
+        <Bar dataKey="Oceania" stackId="outgoing" fill="#004477" />
+        <Bar dataKey="South America" stackId="outgoing" fill="#006341" />
+        <Bar dataKey="Multiple Regions" stackId="outgoing" fill="#1A8D66" />
+        <Bar dataKey="Uncategorized" stackId="outgoing" fill="#CFCFCF" />
       </BarChart>
     </ResponsiveContainer>
   );

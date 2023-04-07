@@ -27,8 +27,8 @@ export default function OverviewDataGrowthNew({
 
       <GutterContainer>
         <div className={styles.heroContainer}>
-          <h1 className={styles.headline} style={{ paddingBottom: "1rem" }}>
-            Filecoin<br></br> user explorer
+          <h1 className={styles.headline} style={{ paddingTop: "2rem" }}>
+            Filecoin<br></br> Client Explorer
           </h1>
         </div>
         <div className={styles.container}>
@@ -42,10 +42,8 @@ export default function OverviewDataGrowthNew({
           </div>
         </div>
         <p className={styles.caption}>
-          Leave rising costs, service outages and vendor lock-in behind.
-          <br></br>
-          Checkout the network partners that have onboarded data onto Filecoin
-          Network
+          View real-time and historical information about client data storage on
+          the Filecoin Network
         </p>
       </GutterContainer>
     </div>

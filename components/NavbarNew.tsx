@@ -1,10 +1,8 @@
 import styles from "@components/NavbarNew.module.scss";
 import GutterContainer from "./GutterContainer";
 import FilecoinSVG from "./svgs/FilecoinSVG";
-import GithubSVG from "./svgs/GithubSVG";
-import TwitterSVG from "./svgs/TwitterSVG";
-import TwitterBlackSVG from "./svgs/TwitterBlackSVG";
 import GithubBlackSVG from "./svgs/GithubBlackSVG";
+import TwitterBlackSVG from "./svgs/TwitterBlackSVG";
 
 export default function NavbarNew() {
   return (
@@ -23,9 +21,7 @@ export default function NavbarNew() {
               className={styles.textButtonLink}
               href="https://protocol.ai/"
               target="_blank"
-            >
-              <button className={styles.textButton}>Protocol Labs</button>
-            </a>
+            ></a>
 
             <div className={styles.socialIconsRow}>
               <a
