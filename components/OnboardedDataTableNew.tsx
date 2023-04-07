@@ -2,6 +2,7 @@ import styles from "@components/OnboardedDataTableNew.module.scss";
 import ShortAddress from "./ShortAddress";
 import { bytesToSize } from "@root/common/utilities";
 import GithubSVG from "./svgs/GithubSVG";
+import GutterContainer from "./GutterContainer";
 
 function TableHeadings() {
   return (
@@ -39,7 +40,7 @@ export default function OnboardedDataTableNew({
   pageNumbers,
 }) {
   return (
-    <div>
+    <GutterContainer>
       <TableHeadings />
 
       {clients?.map((each, index) => {
@@ -91,6 +92,6 @@ export default function OnboardedDataTableNew({
       <a href="https://datacapstats.io/clients" className={styles.link}>
         <button className={styles.button}>View More</button>
       </a>
-    </div>
+    </GutterContainer>
   );
 }

@@ -127,7 +127,6 @@ export default function SectionDataNew() {
           display: "grid",
           rowGap: "var(--p-large-xxl)",
           background: "white",
-          // paddingTop: "4rem",
         }}
       >
         <GutterContainer>
@@ -164,9 +163,16 @@ export default function SectionDataNew() {
                 </div>
               </div>
             )}
-
-          <div style={{ paddingBottom: "4rem", paddingTop: "4rem" }}>
-            <div className={styles.backgroundTable}>
+        </GutterContainer>
+        <div
+          style={{
+            paddingBottom: "4rem",
+            paddingTop: "4rem",
+            background: "var(--color-light-blue)",
+          }}
+        >
+          <div className={styles.backgroundTable}>
+            <GutterContainer>
               <div className={styles.headingContainer}>
                 <h2 style={{ color: "var(--color-black)" }}>
                   Data Onboarding Details
@@ -177,15 +183,16 @@ export default function SectionDataNew() {
                 </p>
                 <p>{totalClientCount} clients </p>
               </div>
-              <OnboardedDataTableNew
-                clients={clients}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-                pageNumbers={pageNumbers}
-              />
-            </div>
+            </GutterContainer>
+
+            <OnboardedDataTableNew
+              clients={clients}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+              pageNumbers={pageNumbers}
+            />
           </div>
-        </GutterContainer>
+        </div>
       </div>
     </div>
   );
