@@ -109,11 +109,34 @@ export default function SectionDataNew() {
     allDataFiltered = clientRegionIndustryResolver(allData as any);
   }
 
+  let totalClientsWithDeals = 0;
+
+  totalClients.map((client) => {
+    if (client.dealCount > 1) {
+      totalClientsWithDeals += 1;
+    }
+  });
+
+  let clientsWithDeals = [];
+  let shouldStop = false;
+
+  totalClients.forEach((client) => {
+    if (shouldStop) return;
+
+    if (client.dealCount > 1) {
+      clientsWithDeals.push(client);
+    }
+
+    if (clientsWithDeals.length >= 16) {
+      shouldStop = true;
+    }
+  });
+
   return (
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (
         <OverviewDataGrowthNew
-          totalClientCount={totalClientCount}
+          totalClientCount={totalClientsWithDeals}
           totalClients={totalClients}
           allDataFiltered={allDataFiltered}
         />
@@ -157,7 +180,7 @@ export default function SectionDataNew() {
                     </h2>
                     <p>
                       Filecoin provides a range of storage solutions for a
-                      global clientele.
+                      global client.
                     </p>
                   </div>
 
@@ -183,12 +206,14 @@ export default function SectionDataNew() {
                   Get additional details about the client data that’s being
                   stored on Filecoin.
                 </p>
-                <p>{totalClientCount} clients </p>
+                <p style={{ fontWeight: "800", fontSize: "1.5rem" }}>
+                  {totalClientsWithDeals} clients{" "}
+                </p>
               </div>
             </GutterContainer>
 
             <OnboardedDataTableNew
-              clients={clients}
+              clients={clientsWithDeals}
               currentPage={currentPage}
               onPageChange={handlePageChange}
               pageNumbers={pageNumbers}

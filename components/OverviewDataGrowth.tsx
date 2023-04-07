@@ -1,8 +1,6 @@
 import styles from "@components/OverviewDataGrowth.module.scss";
 import { bytesToSize } from "@root/common/utilities";
 import GutterContainer from "./GutterContainer";
-import Hero from "./Hero";
-import HeroNew from "./HeroNew";
 
 export default function OverviewDataGrowth({
   allDataFiltered,
