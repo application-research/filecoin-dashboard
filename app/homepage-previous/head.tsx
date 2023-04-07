@@ -1,9 +1,9 @@
 import DefaultMetaTags from "@components/DefaultMetaTags";
 
 export default async function Head({ params }) {
-  const title = "Filecoin User Explorer";
-  const description = "Welcome to filecoin user explorer";
-  const url = "filecoin.user.explorer";
+  const title = "Filecoin Client Explorer";
+  const description = "Welcome to Filecoin Client Explorer";
+  const url = "filecoin-discover.com";
 
   // SUMMARY_LARGE_IMAGE: 1500x785
   return (

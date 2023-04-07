@@ -14,7 +14,7 @@ export default async function Page() {
   return (
     <DefaultLayout>
       <NavbarNew />
-      <div style={{ overflow: "hidden", position: "relative" }}>
+      <div style={{ position: "relative" }}>
         <SectionDataNew />
       </div>
 

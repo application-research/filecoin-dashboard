@@ -8,9 +8,9 @@
   position: relative;
 }
 
-.body {
-  padding: 2rem 0rem;
-}
+// .body {
+//   padding: 2rem 0rem;
+// }
 
 .dataTitle {
   color: var(--color-white);
@@ -73,10 +73,10 @@
 }
 
 .video {
-  height: 60vh;
   object-fit: cover;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  height: 450px;
 }

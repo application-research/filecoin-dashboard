@@ -40,20 +40,22 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
         </YAxis>
         <Tooltip />
         <Legend />
-
-        <Bar dataKey="Education" stackId="a" fill="#40B884" />
-        <Bar dataKey="Life Science / Healthcare" stackId="a" fill="#FF7555" />
-        <Bar dataKey="Environment" stackId="a" fill="#F215A4" />
         <Bar
           dataKey="Information, Media & Telecommunications"
           stackId="a"
-          fill="#8849A5"
+          fill="#004477"
         />
-        <Bar dataKey="IT & Technology Services" stackId="a" fill="#59CEC5" />
-        <Bar dataKey="Web3" stackId="a" fill="var(--color-blue200)" />
-        <Bar dataKey="Financial Services" stackId="a" fill="green" />
+        <Bar dataKey="Education" stackId="a" fill="#004F8C" />
 
-        <Bar dataKey="Other" stackId="a" fill="var(--color-blue-purple)" />
+        <Bar dataKey="IT & Technology Services" stackId="a" fill="#006341" />
+
+        <Bar dataKey="Environment" stackId="a" fill="#1A8D66" />
+
+        <Bar dataKey="Web3" stackId="a" fill="var(--color-blue)" />
+
+        <Bar dataKey="Life Science / Healthcare" stackId="a" fill="#66BCFF" />
+        <Bar dataKey="Financial Services" stackId="a" fill="#C2DEF3" />
+        <Bar dataKey="Other" stackId="a" fill="#CFCFCF" />
       </BarChart>
     </ResponsiveContainer>
   );

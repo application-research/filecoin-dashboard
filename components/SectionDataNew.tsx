@@ -134,23 +134,33 @@ export default function SectionDataNew() {
           {allDataFiltered.length > 0 &&
             Object.keys(allDataFiltered).length > 0 && (
               <div>
-                <div>
-                  <div className={styles.headingContainer}>
-                    <h2 style={{ color: "var(--color-black)" }}>By Regions</h2>
-                  </div>
-
-                  <SectionGraphByRegion allData={allDataFiltered} />
-                </div>
-
                 <div
                   className={styles.headingContainer}
                   style={{
                     paddingTop: "4rem",
                   }}
                 >
-                  <h2 style={{ color: "var(--color-black)" }}>By Industries</h2>
-
+                  <h2 style={{ color: "var(--color-black)" }}>
+                    Data Stored by Industry
+                  </h2>
+                  <p>
+                    Leading industries choose Filecoin to protect their most
+                    important data.
+                  </p>
                   <SectionGraphByIndustry allData={allDataFiltered} />
+                </div>
+                <div>
+                  <div className={styles.headingContainer}>
+                    <h2 style={{ color: "var(--color-black)" }}>
+                      Data Stored by Region
+                    </h2>
+                    <p>
+                      Filecoin provides a range of storage solutions for a
+                      global clientele.
+                    </p>
+                  </div>
+
+                  <SectionGraphByRegion allData={allDataFiltered} />
                 </div>
               </div>
             )}
@@ -158,7 +168,13 @@ export default function SectionDataNew() {
           <div style={{ paddingBottom: "4rem", paddingTop: "4rem" }}>
             <div className={styles.backgroundTable}>
               <div className={styles.headingContainer}>
-                <h2 style={{ color: "var(--color-black)" }}> Onboarded Data</h2>
+                <h2 style={{ color: "var(--color-black)" }}>
+                  Data Onboarding Details
+                </h2>
+                <p>
+                  Get additional details about the client data that’s being
+                  stored on Filecoin.
+                </p>
                 <p>{totalClientCount} clients </p>
               </div>
               <OnboardedDataTableNew

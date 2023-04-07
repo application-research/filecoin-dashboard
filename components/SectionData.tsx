@@ -19,7 +19,6 @@ import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
 import OnboardedDataTable from "./OnboardedDataTableNew";
 import OverviewDataGrowth from "./OverviewDataGrowth";
-import Partners from "./Partners";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
 import SectionGraphByRegion from "./SectionGraphByRegion";
 
@@ -118,9 +117,6 @@ export default function SectionData() {
           allDataFiltered={allDataFiltered}
         />
       )}
-      <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
-        <Partners partners={partners} />
-      </div>
 
       <div
         style={{

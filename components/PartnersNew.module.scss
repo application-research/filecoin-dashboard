@@ -1,5 +1,5 @@
 .container {
-  padding: 2rem 0rem;
+  padding: 5rem 0rem 4rem 0rem;
 }
 
 .partnerGrid {
@@ -91,7 +91,6 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  overflow: hidden;
   gap: 2rem;
   flex-wrap: wrap;
 }
@@ -122,7 +121,7 @@
 }
 
 .heading {
-  padding: 4rem 0rem 2rem 0rem;
+  padding: 0rem 0rem 2rem 0rem;
   color: var(--color-black);
 }
 
@@ -131,4 +130,8 @@
   max-width: 75ch;
   line-height: 2rem;
   font-size: var(--font-size-mini);
+}
+
+.containerBlue {
+  background: var(--color-blue);
 }

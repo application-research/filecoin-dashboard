@@ -39,12 +39,10 @@ const resources = [
 export default function PartnersNew({ partners }) {
   return (
     <div className={styles.container}>
-      <GutterContainer>
-        <div className={styles.container}>
-          <div style={{ display: "grid", rowGap: "var(--p-medium)" }}>
-            <h3 className={` ${styles.headingTitle}`}>
-              Global Partners & Builders
-            </h3>
+      <div style={{ display: "grid", rowGap: "var(--p-medium)" }}>
+        <div style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
+          <GutterContainer>
+            <h3 className={` ${styles.headingTitle}`}>Featured Clients</h3>
             <div className={styles.partnerGrid}>
               {partners.map((partner, index) => {
                 return (
@@ -61,12 +59,15 @@ export default function PartnersNew({ partners }) {
             <div className={styles.center}>
               <button className={styles.viewMoreButton}>View More</button>
             </div>
+          </GutterContainer>
+        </div>
+
+        <div className={styles.containerBlue}>
+          <GutterContainer>
             <div className={styles.heading}>
-              <h3>Solve your data storage challenges with Filecoin</h3>
-              <p className={styles.caption}>
-                You know the story – more data, more problems. Filecoin provides
-                compelling cloud storage solutions for a variety of use cases.
-              </p>
+              <h3 style={{ color: "var(--color-white)" }}>
+                Solve your data storage challenges with Filecoin
+              </h3>
             </div>
 
             <div className={styles.carouselRow}>
@@ -81,9 +82,9 @@ export default function PartnersNew({ partners }) {
                 );
               })}
             </div>
-          </div>
+          </GutterContainer>
         </div>
-      </GutterContainer>
+      </div>
     </div>
   );
 }
