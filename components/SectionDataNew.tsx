@@ -133,7 +133,9 @@ export default function SectionDataNew() {
           {allDataFiltered.length > 0 &&
             Object.keys(allDataFiltered).length > 0 && (
               <div>
-                <div className={styles.headingContainer}>
+                <div
+                  className={`${styles.headingContainer} ${styles.graphMobile}`}
+                >
                   <h2 style={{ color: "var(--color-black)" }}>
                     Data Stored by Industry
                   </h2>
