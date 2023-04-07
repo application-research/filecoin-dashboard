@@ -1,7 +1,9 @@
-@font-face {
-  font-family: "Clash Display";
-  src: url("/public/fonts/ClashDisplay-Regular.otf") format(".otf");
-}
+// @font-face {
+//   font-family: "Clash Display";
+//   src: url("https://fonts.gstatic.com") format(".otf");
+// }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 html,
 body,
@@ -141,6 +143,7 @@ body {
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semi-bold: 600;
+  --font-weight-bold: 610;
 
   //Letter Spacing
   --letter-spacing-small: 0.02rem;
@@ -180,19 +183,22 @@ body {
   h5 {
     color: inherit;
     letter-spacing: var(--letter-spacing-small);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-bold);
   }
 
   h1 {
     font-size: var(--font-size-largePlus);
+    font-weight: var(--font-weight-bold);
   }
 
   h2 {
     font-size: var(--font-size-large);
+    font-weight: var(--font-weight-bold);
   }
 
   h3 {
     font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-bold);
   }
 
   p {

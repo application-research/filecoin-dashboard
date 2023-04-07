@@ -27,10 +27,7 @@ export default function OverviewDataGrowthNew({
 
       <GutterContainer>
         <div className={styles.heroContainer}>
-          <h1
-            className={styles.headline}
-            style={{ paddingBottom: "1rem", paddingTop: "2rem" }}
-          >
+          <h1 className={styles.headline} style={{ paddingTop: "2rem" }}>
             Filecoin<br></br> Client Explorer
           </h1>
         </div>

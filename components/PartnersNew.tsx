@@ -4,7 +4,7 @@ import GutterContainer from "./GutterContainer";
 const resources = [
   {
     text: "Higher-Education",
-    href: "",
+    href: "https://destor.io/solutions/education",
     original:
       "https://user-images.githubusercontent.com/28320272/230436431-4aad873b-28e0-403c-ac5d-e2f2de037bd0.png",
     thumbnail:
@@ -12,7 +12,7 @@ const resources = [
   },
   {
     text: "Research",
-    href: "",
+    href: "https://destor.io/solutions/research",
     original:
       "https://user-images.githubusercontent.com/28320272/230436475-ecc1a8aa-2258-4765-ae99-11e33fd65604.png",
     thumbnail:
@@ -20,7 +20,7 @@ const resources = [
   },
   {
     text: "Backup & Recovery",
-    href: "",
+    href: "https://destor.io/solutions/backup",
     original:
       "https://user-images.githubusercontent.com/28320272/230436577-d0a6e0a6-8088-45d2-bcd3-99beebce548e.png",
     thumbnail:
@@ -28,7 +28,7 @@ const resources = [
   },
   {
     text: "Archival",
-    href: "",
+    href: "https://destor.io/solutions/archival",
     original:
       "https://user-images.githubusercontent.com/28320272/230436639-b95be430-7f98-4fd2-aadc-72f1494d7059.png",
     thumbnail:

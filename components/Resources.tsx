@@ -5,7 +5,7 @@ export default function Resources() {
   const resources = [
     {
       text: "Whitepapers",
-      href: "",
+      href: "https://destor.io/idc-decentralized-storage-white-paper",
       original:
         "https://user-images.githubusercontent.com/28320272/230427956-9b34d7e8-5256-428e-b775-c00c704c3200.png",
       thumbnail:
@@ -13,7 +13,7 @@ export default function Resources() {
     },
     {
       text: "Case Studies",
-      href: "",
+      href: "https://destor.io/resources/case-studies",
       original:
         "https://user-images.githubusercontent.com/28320272/230427945-702bf35b-338a-4f65-b34f-613ea3b9e7c4.png",
       thumbnail:
@@ -21,7 +21,7 @@ export default function Resources() {
     },
     {
       text: "Events",
-      href: "",
+      href: "https://destor.io/resources/events",
       original:
         "https://user-images.githubusercontent.com/28320272/230427940-0a24acce-d026-4744-83b9-9fdee7f22722.png",
       thumbnail:
