@@ -81,9 +81,6 @@ function Modal({ allPartners, onClose }) {
 }
 
 export default function PartnersNew({ partners }) {
-<<<<<<< HEAD
-  const partnersRowTwo = PARTNERS_TWO_FIXTURE;
-=======
   const [showModal, setShowModal] = useState(false);
   const partnersRowTwo = PARTNERS_TWO_FIXTURE;
   const allPartners = ALL_PARTNERS_FIXTURE;
@@ -96,7 +93,6 @@ export default function PartnersNew({ partners }) {
     setShowModal(false);
   };
 
->>>>>>> bb418ab (updated styles and gaps)
   return (
     <div className={styles.container}>
       <div style={{ display: "grid", rowGap: "var(--p-medium)" }}>
