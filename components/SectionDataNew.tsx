@@ -116,7 +116,21 @@ export default function SectionDataNew() {
       totalClientsWithDeals += 1;
     }
   });
-  console.log("total clients", totalClients);
+
+  let clientsWithDeals = [];
+  let shouldStop = false;
+
+  totalClients.forEach((client) => {
+    if (shouldStop) return;
+
+    if (client.dealCount > 1) {
+      clientsWithDeals.push(client);
+    }
+
+    if (clientsWithDeals.length >= 16) {
+      shouldStop = true;
+    }
+  });
 
   return (
     <div className={styles.body}>
@@ -166,7 +180,7 @@ export default function SectionDataNew() {
                     </h2>
                     <p>
                       Filecoin provides a range of storage solutions for a
-                      global clientele.
+                      global client.
                     </p>
                   </div>
 
@@ -199,7 +213,7 @@ export default function SectionDataNew() {
             </GutterContainer>
 
             <OnboardedDataTableNew
-              clients={clients}
+              clients={clientsWithDeals}
               currentPage={currentPage}
               onPageChange={handlePageChange}
               pageNumbers={pageNumbers}
