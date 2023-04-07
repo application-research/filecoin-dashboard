@@ -40,17 +40,16 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
         </YAxis>
         <Tooltip />
         <Legend />
+        <Bar dataKey="IT & Technology Services" stackId="a" fill="#004477" />
+
+        <Bar dataKey="Education" stackId="a" fill="#147bc9" />
+
+        <Bar dataKey="Environment" stackId="a" fill="#1A8D66" />
         <Bar
           dataKey="Information, Media & Telecommunications"
           stackId="a"
-          fill="#004477"
+          fill="#006341"
         />
-        <Bar dataKey="Education" stackId="a" fill="#004F8C" />
-
-        <Bar dataKey="IT & Technology Services" stackId="a" fill="#006341" />
-
-        <Bar dataKey="Environment" stackId="a" fill="#1A8D66" />
-
         <Bar dataKey="Web3" stackId="a" fill="var(--color-blue)" />
 
         <Bar dataKey="Life Science / Healthcare" stackId="a" fill="#66BCFF" />

@@ -89,7 +89,11 @@ export default function OnboardedDataTableNew({
         );
       })}
 
-      <a href="https://datacapstats.io/clients" className={styles.link}>
+      <a
+        href="https://datacapstats.io/clients"
+        target="_blank"
+        className={styles.link}
+      >
         <button className={styles.button}>View More</button>
       </a>
     </GutterContainer>

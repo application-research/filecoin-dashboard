@@ -208,12 +208,12 @@ export function changeIntervalToCurrentDate(interval) {
   const currentDate = new Date();
 
   switch (interval) {
-    case "month":
-      return currentDate.setMonth(currentDate.getMonth() - 1);
-    case "3month":
-      return currentDate.setMonth(currentDate.getMonth() - 3);
     case "6month":
       return currentDate.setMonth(currentDate.getMonth() - 6);
+    case "3month":
+      return currentDate.setMonth(currentDate.getMonth() - 3);
+    case "month":
+      return currentDate.setMonth(currentDate.getMonth() - 1);
     default:
       break;
   }
