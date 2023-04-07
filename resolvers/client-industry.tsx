@@ -83,7 +83,7 @@ export function groupClientsByWeekAndIndustry(clients: Client[], interval) {
       if (!groupedData[dateString]) {
         groupedData[dateString] = {
           date: dateString,
-          Education: 0,
+          Research: 0,
           "Financial Services": 0,
           Environment: 0,
           Web3: 0,

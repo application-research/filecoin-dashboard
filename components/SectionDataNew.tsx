@@ -22,6 +22,7 @@ import SectionGraphByRegion from "./SectionGraphByRegion";
 import PartnersNew from "./PartnersNew";
 import OverviewDataGrowthNew from "./OverviewDataGrowthNew";
 import OnboardedDataTableNew from "./OnboardedDataTableNew";
+import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
 
 export default function SectionDataNew() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
@@ -33,6 +34,8 @@ export default function SectionDataNew() {
   const [totalClients, setTotalClients] = useState([]);
   const [totalClientCount, setTotalClientCount] = useState(0);
   const partners = PARTNERS_FIXTURE;
+  const clientsTableData = CLIENTS_WITH_DEALS_FIXTURE;
+
   const itemsPerPage = 15;
   const currentDate = new Date();
   const intervalEndTimestamp = Math.round(currentDate.getTime() / 1000);
@@ -109,11 +112,35 @@ export default function SectionDataNew() {
     allDataFiltered = clientRegionIndustryResolver(allData as any);
   }
 
+  let totalClientsWithDeals = 0;
+
+  totalClients.map((client) => {
+    if (client.dealCount > 1) {
+      totalClientsWithDeals += 1;
+    }
+  });
+
+  let clientsWithDeals = [];
+  let shouldStop = false;
+
+  totalClients.forEach((client) => {
+    if (shouldStop) return;
+
+    if (client.dealCount > 1) {
+      clientsWithDeals.push(client);
+    }
+
+    if (clientsWithDeals.length >= 16) {
+      shouldStop = true;
+    }
+  });
+
+  console.log(clientsWithDeals, "clients with deals");
   return (
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (
         <OverviewDataGrowthNew
-          totalClientCount={totalClientCount}
+          totalClientCount={totalClientsWithDeals}
           totalClients={totalClients}
           allDataFiltered={allDataFiltered}
         />
@@ -143,7 +170,7 @@ export default function SectionDataNew() {
                     Leading industries choose Filecoin to protect their most
                     important data.
                   </p>
-                  <SectionGraphByIndustry allData={allDataFiltered} />
+                  {/* <SectionGraphByIndustry allData={allDataFiltered} /> */}
                 </div>
                 <div>
                   <div className={styles.headingContainer}>
@@ -153,15 +180,15 @@ export default function SectionDataNew() {
                         paddingTop: "4rem",
                       }}
                     >
-                      Data Stored by Region
+                      Data Stored by Where the Owner Lives
                     </h2>
                     <p>
                       Filecoin provides a range of storage solutions for a
-                      global clientele.
+                      global client.
                     </p>
                   </div>
 
-                  <SectionGraphByRegion allData={allDataFiltered} />
+                  {/* <SectionGraphByRegion allData={allDataFiltered} /> */}
                 </div>
               </div>
             )}
@@ -183,16 +210,13 @@ export default function SectionDataNew() {
                   Get additional details about the client data that’s being
                   stored on Filecoin.
                 </p>
-                <p>{totalClientCount} clients </p>
+                <p style={{ fontWeight: "800", fontSize: "1.5rem" }}>
+                  {totalClientsWithDeals} clients{" "}
+                </p>
               </div>
             </GutterContainer>
 
-            <OnboardedDataTableNew
-              clients={clients}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-              pageNumbers={pageNumbers}
-            />
+            <OnboardedDataTableNew clients={clientsTableData} />
           </div>
         </div>
       </div>

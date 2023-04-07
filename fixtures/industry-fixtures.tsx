@@ -1,5 +1,5 @@
 export const INDUSTRY_KEYWORDS_MAP_FIXTURE = {
-  Education: ["Education", "Education & Training"],
+  Research: ["Education", "Research", "Education & Training"],
   Environment: [
     "Environment",
     "Resources",
@@ -237,7 +237,7 @@ export const CLIENT_ADDRESS_BY_INDUSTRY_FIXTURE = {
     "f3r4catwzlk6jfau54tsnp6qesf47rhcu5kesn5v7jatzwrsgqc4tagftwpignluubpohyikhqmgmwm6kuebkq",
     "f3wkyhvuzimh5oal56b5r63fewtfrv3majwg6g5yeu2gydwgjrlhytkgjzombho3eflntbvpyjj54xpowq5z3q",
   ],
-  Education: [
+  Research: [
     "f3uils5cdx3ezyzszjjfnulugknbdsanmqtisd7x7xkfcljdnshp4jspnrgxpldt5b4aafuz4q4rkebpjykeha",
     "f1osfyyilycluozpnzpeodvet5mnwrs2g3eyv4tpy",
     "f13jjxdga5w74gwxivoqxksgds23a5cbkwn6lbs6i",

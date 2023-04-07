@@ -3,7 +3,7 @@
 //   src: url("https://fonts.gstatic.com") format(".otf");
 // }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800");
 
 html,
 body,
@@ -148,6 +148,7 @@ body {
   --font-weight-medium: 500;
   --font-weight-semi-bold: 600;
   --font-weight-bold: 610;
+  --font-weight-semi-black: 650;
 
   //Letter Spacing
   --letter-spacing-small: 0.02rem;

@@ -10,8 +10,16 @@ export default function Footer() {
       <GutterContainer>
         <div className={styles.container}>
           <div className={styles.logoContainer}>
-            <a href="https://filecoin.io/" target="_blank">
-              <FilecoinSVG style={{ width: "2.5rem" }} />
+            <a
+              href="https://filecoin.io/"
+              target="_blank"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <FilecoinSVG />
             </a>
             <p className={styles.filecoinLogo}>Filecoin</p>
           </div>

@@ -15,9 +15,27 @@
   }
 }
 
+.logoModal {
+  max-width: 10rem;
+  padding-right: 2rem;
+
+  @media (max-width: 1050px) {
+    width: 6rem;
+  }
+
+  @media (max-width: 500px) {
+    width: 4rem;
+  }
+
+  @media (max-width: 302px) {
+    width: 3rem;
+  }
+}
+
 .logo {
-  max-width: 8rem;
-  padding-right: 1.5rem;
+  max-width: 14rem;
+  padding-right: 2rem;
+
   @media (max-width: 1050px) {
     width: 6rem;
   }
