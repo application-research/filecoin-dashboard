@@ -18,7 +18,11 @@ export default function Partners({ partners }) {
               {partners.map((partner, index) => {
                 return (
                   <div className={styles.partner} key={index}>
-                    <a href={partner.link} style={{ cursor: "pointer" }}>
+                    <a
+                      href={partner.link}
+                      style={{ cursor: "pointer" }}
+                      target="_blank"
+                    >
                       {partner.logo && (
                         <img src={partner.logo} className={styles.logo} />
                       )}

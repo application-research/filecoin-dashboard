@@ -17,7 +17,7 @@
 }
 
 .data {
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   color: var(--color-blue);
   font-size: var(--font-size-largePlus);
 
@@ -28,7 +28,7 @@
 
 .headline {
   font-family: "Poppins";
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   font-size: 4rem;
   max-width: 20ch;
   line-height: var(--line-height-regular);
@@ -63,6 +63,8 @@
   border-radius: 0.5rem;
   font-family: "Poppins";
   cursor: pointer;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .caption {

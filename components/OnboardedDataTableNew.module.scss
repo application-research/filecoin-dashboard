@@ -128,10 +128,17 @@
   text-align: center;
   justify-content: center;
   margin: 0 auto 0 auto;
-  background: var(--color-blue);
+  background-color: var(--color-blue);
   color: var(--color-white);
   padding: 1rem;
   border: none;
   border-radius: 0.5rem;
   margin-top: 2rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 200ms ease background-color;
+
+  &:hover {
+    background: var(--color-blue250);
+  }
 }
