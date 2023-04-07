@@ -1,5 +1,6 @@
 import styles from "@components/PartnersNew.module.scss";
 import GutterContainer from "./GutterContainer";
+import Marquee from "./Marquee";
 
 const resources = [
   {
@@ -40,27 +41,30 @@ export default function PartnersNew({ partners }) {
   return (
     <div className={styles.container}>
       <div style={{ display: "grid", rowGap: "var(--p-medium)" }}>
-        <div style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-          <GutterContainer>
+        <GutterContainer>
+          <div style={{ paddingTop: "4rem", paddingBottom: "0.5rem" }}>
             <h3 className={` ${styles.headingTitle}`}>Featured Clients</h3>
-            <div className={styles.partnerGrid}>
-              {partners.map((partner, index) => {
-                return (
-                  <div className={styles.partner} key={index}>
-                    <a href={partner.link} style={{ cursor: "pointer" }}>
-                      {partner.logo && (
-                        <img src={partner.logo} className={styles.logo} />
-                      )}
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-            <div className={styles.center}>
-              <button className={styles.viewMoreButton}>View More</button>
-            </div>
-          </GutterContainer>
-        </div>
+          </div>
+        </GutterContainer>
+        <Marquee marqueeColor="transparent" direction="right">
+          {partners.map((partner, index) => {
+            return (
+              <div key={index}>
+                <a href={partner.link} style={{ cursor: "pointer" }}>
+                  {partner.logo && (
+                    <img src={partner.logo} className={styles.logo} />
+                  )}
+                </a>
+              </div>
+            );
+          })}
+        </Marquee>
+
+        <GutterContainer>
+          <div className={styles.center} style={{ paddingBottom: "4rem" }}>
+            <button className={styles.viewMoreButton}>View More</button>
+          </div>
+        </GutterContainer>
 
         <div className={styles.containerBlue}>
           <GutterContainer>

@@ -23,7 +23,7 @@ export default function Resources() {
       text: "Events",
       href: "https://destor.io/resources/events",
       original:
-        "https://user-images.githubusercontent.com/28320272/230427940-0a24acce-d026-4744-83b9-9fdee7f22722.png",
+        "https://filecoin.io/uploads/community-presentation_huc51d10bc690943e16520d1278fee0308_288562_900x0_resize_q90_linear.jpg",
       thumbnail:
         "https://user-images.githubusercontent.com/28320272/230425368-fe2e00cd-31ac-408e-bf94-0d0f7cddd715.png",
     },

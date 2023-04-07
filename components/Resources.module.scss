@@ -18,6 +18,10 @@
 
 .image {
   max-width: 20rem;
+
+  @media (max-width: 980px) {
+    max-width: 100%;
+  }
 }
 
 .resources {
