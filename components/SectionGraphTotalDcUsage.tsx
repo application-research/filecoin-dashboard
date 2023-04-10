@@ -1,13 +1,13 @@
 import { AllData } from "@root/common/types";
 import { RegionStackedBarChart } from "./RegionStackedBarChart";
 import {
+  groupClientsByWeek,
   groupClientsByWeekAndRegion,
-  groupClientsByWeekAndRegionWithUsedDc,
   updateClientRegions,
-  updateClientRegionsWithUsedDc,
 } from "@root/resolvers/client-regions";
 import { useState } from "react";
 import FilterSelection from "./FilterSelection";
+import { StackedBarChart } from "./StackedBarChart";
 
 interface SectionGraphByRegionProps {
   allData: AllData[];
@@ -17,19 +17,20 @@ interface GraphByRegionProps extends SectionGraphByRegionProps {
   date: string;
 }
 
-export default function SectionGraphByRegion({ allData }) {
+export default function SectionGraphTotalDcUsage({ allData }) {
   const [selectedInterval, setSelectedInterval] = useState<
     "month" | "3month" | "6month" | "12month"
   >("6month");
 
-  const clientsArray = Array.from(allData);
-  const updatedKnownClientsRegions =
-    updateClientRegionsWithUsedDc(clientsArray);
-
+  // const clientsArray = Array.from(allData);
+  // console.log(clientsArray, "clients arr");
+  const updatedKnownClientsRegions = updateClientRegions(allData);
+  console.log("updatedKnownClientsRegions", updatedKnownClientsRegions);
   const handleIntervalChange = (event) => {
     setSelectedInterval(event.target.value);
   };
-  const groupedClients = groupClientsByWeekAndRegionWithUsedDc(
+
+  const groupedClients = groupClientsByWeekAndRegion(
     updatedKnownClientsRegions,
     selectedInterval
   );
@@ -56,7 +57,6 @@ export default function SectionGraphByRegion({ allData }) {
       value: "6month",
     },
   ];
-
   return (
     <>
       <div
@@ -75,7 +75,7 @@ export default function SectionGraphByRegion({ allData }) {
           onChange={handleIntervalChange}
         />
       </div>
-      <RegionStackedBarChart graphData={sortedEightWeeks} />
+      <StackedBarChart graphData={sortedEightWeeks} />
     </>
   );
 }

@@ -11,6 +11,7 @@ import {
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners-fixtures";
 import {
   fetchAllClients,
+  fetchAllClientsLatest,
   fetchClientsPerPage,
   fetchTotalClients,
 } from "@root/pages/api";
@@ -18,11 +19,13 @@ import clientRegionIndustryResolver from "@root/resolvers/client-industry-region
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
-import SectionGraphByRegion from "./SectionGraphByRegion";
 import PartnersNew from "./PartnersNew";
 import OverviewDataGrowthNew from "./OverviewDataGrowthNew";
 import OnboardedDataTableNew from "./OnboardedDataTableNew";
 import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
+import SectionGraphTotalDcUsage from "./SectionGraphTotalDcUsage";
+import { REGIONS_INDUSTRIES_TEST } from "@root/fixtures/regions-fixtures";
+import SectionGraphByRegion from "./SectionGraphByRegion";
 
 export default function SectionDataNew() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
@@ -106,6 +109,7 @@ export default function SectionDataNew() {
     setCurrentPage(pageNumber);
   }
 
+  console.log(allData, "all data new");
   let allDataFiltered;
 
   if (Object.keys(allData).length > 0) {
@@ -162,6 +166,8 @@ export default function SectionDataNew() {
                 <div
                   className={`${styles.headingContainer} ${styles.graphMobile}`}
                 >
+                  <h2>Total Dc Usage</h2>
+                  {/* <SectionGraphTotalDcUsage allData={REGIONS_INDUSTRIES_TEST} /> */}
                   <h2 style={{ color: "var(--color-black)" }}>
                     Data Stored by Industry
                   </h2>
@@ -169,7 +175,7 @@ export default function SectionDataNew() {
                     Leading industries choose Filecoin to protect their most
                     important data.
                   </p>
-                  <SectionGraphByIndustry allData={allDataFiltered} />
+                  {/* <SectionGraphByIndustry allData={allDataFiltered} /> */}
                 </div>
                 <div>
                   <div className={styles.headingContainer}>
@@ -187,7 +193,7 @@ export default function SectionDataNew() {
                     </p>
                   </div>
 
-                  <SectionGraphByRegion allData={allDataFiltered} />
+                  {/* <SectionGraphByRegion allData={allDataFiltered} /> */}
                 </div>
               </div>
             )}

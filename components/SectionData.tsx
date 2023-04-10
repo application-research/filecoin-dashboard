@@ -20,7 +20,7 @@ import GutterContainer from "./GutterContainer";
 import OnboardedDataTable from "./OnboardedDataTableNew";
 import OverviewDataGrowth from "./OverviewDataGrowth";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
-import SectionGraphByRegion from "./SectionGraphByRegion";
+import SectionGraphByRegion from "./SectionGraphTotalDcUsage";
 
 export default function SectionData() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });

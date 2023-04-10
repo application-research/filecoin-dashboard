@@ -94,7 +94,7 @@ export function groupClientsByWeekAndIndustry(clients: Client[], interval) {
         };
       }
 
-      const dataOutgoing = BigInt(record.incomingDatacap);
+      const dataOutgoing = record.incomingDatacap;
       const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
 
       groupedData[dateString][client.industry] += Number(

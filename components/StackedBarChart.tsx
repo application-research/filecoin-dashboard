@@ -44,14 +44,21 @@ export function StackedBarChart({ graphData }: BarGraphProps) {
         </YAxis>
         <Tooltip />
         <Legend />
+        <Bar dataKey="North America" stackId="outgoing" fill="#004477" />
+        <Bar dataKey="Asia" stackId="outgoing" fill="#0090FF" />
+        <Bar dataKey="Europe" stackId="outgoing" fill="#66BCFF" />
+        <Bar dataKey="Oceania" stackId="outgoing" fill="#C2DEF3" />
+        <Bar dataKey="South America" stackId="outgoing" fill="#006341" />
+        <Bar dataKey="Multiple Regions" stackId="outgoing" fill="#1A8D66" />
+        <Bar dataKey="Uncategorized" stackId="outgoing" fill="#CFCFCF" />
 
-        {graphData?.map((data) => {
+        {/* {graphData?.map((data) => {
           <Bar
             dataKey={data.dataKey}
             stackId={data.stackId}
             fill={data.fill}
           />;
-        })}
+        })} */}
       </BarChart>
     </ResponsiveContainer>
   );

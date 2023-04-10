@@ -1,12 +1,15 @@
 import { AllData } from "@root/common/types";
 import { updateClientIndustry } from "./client-industry";
-import { updateClientRegion } from "./client-regions";
+import {
+  updateClientRegion,
+  updateClientRegionWithUsedDc,
+} from "./client-regions";
 
 export default function clientRegionIndustryResolver(clients: AllData[]) {
   const clientsArray = Array.from(clients);
 
   clientsArray.map((client) => {
-    const clientsByRegions = updateClientRegion(
+    const clientsByRegions = updateClientRegionWithUsedDc(
       client?.region,
       client?.address
     );
