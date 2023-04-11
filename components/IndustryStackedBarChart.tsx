@@ -42,7 +42,7 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
         <Legend />
         <Bar dataKey="IT & Technology Services" stackId="a" fill="#004477" />
 
-        <Bar dataKey="Education" stackId="a" fill="#147bc9" />
+        <Bar dataKey="Research" stackId="a" fill="#147bc9" />
 
         <Bar dataKey="Environment" stackId="a" fill="#1A8D66" />
         <Bar

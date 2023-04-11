@@ -27,24 +27,25 @@ export default function OverviewDataGrowthNew({
 
       <GutterContainer>
         <div className={styles.heroContainer}>
-          <h1 className={styles.headline} style={{ paddingTop: "2rem" }}>
+          <h1 className={styles.headline}>
             Filecoin<br></br> Client Explorer
           </h1>
-        </div>
-        <div className={styles.container}>
-          <div>
-            <h4 className={styles.data}>{totalInitialAllowance}</h4>
-            <p className={styles.dataTitle}>Data onboarded</p>
+
+          <p className={styles.caption}>
+            View real-time and historical information about client data storage
+            on the Filecoin Network
+          </p>
+          <div className={styles.container}>
+            <div>
+              <h4 className={styles.data}>{totalInitialAllowance}</h4>
+              <p className={styles.dataTitle}>Data onboarded</p>
+            </div>
+            <div>
+              <h4 className={styles.data}>{totalClientCount}</h4>
+              <p className={styles.dataTitle}>Clients served</p>
+            </div>
           </div>
-          <div>
-            <h4 className={styles.data}>{totalClientCount}</h4>
-            <p className={styles.dataTitle}>Clients served</p>
-          </div>
         </div>
-        <p className={styles.caption}>
-          View real-time and historical information about client data storage on
-          the Filecoin Network
-        </p>
       </GutterContainer>
     </div>
   );

@@ -22,6 +22,7 @@ import SectionGraphByRegion from "./SectionGraphByRegion";
 import PartnersNew from "./PartnersNew";
 import OverviewDataGrowthNew from "./OverviewDataGrowthNew";
 import OnboardedDataTableNew from "./OnboardedDataTableNew";
+import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
 
 export default function SectionDataNew() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
@@ -33,6 +34,8 @@ export default function SectionDataNew() {
   const [totalClients, setTotalClients] = useState([]);
   const [totalClientCount, setTotalClientCount] = useState(0);
   const partners = PARTNERS_FIXTURE;
+  const clientsTableData = CLIENTS_WITH_DEALS_FIXTURE;
+
   const itemsPerPage = 15;
   const currentDate = new Date();
   const intervalEndTimestamp = Math.round(currentDate.getTime() / 1000);
@@ -176,7 +179,7 @@ export default function SectionDataNew() {
                         paddingTop: "4rem",
                       }}
                     >
-                      Data Stored by Region
+                      Data Stored by Where the Owner Lives
                     </h2>
                     <p>
                       Filecoin provides a range of storage solutions for a
@@ -212,12 +215,7 @@ export default function SectionDataNew() {
               </div>
             </GutterContainer>
 
-            <OnboardedDataTableNew
-              clients={clientsWithDeals}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-              pageNumbers={pageNumbers}
-            />
+            <OnboardedDataTableNew clients={clientsTableData} />
           </div>
         </div>
       </div>

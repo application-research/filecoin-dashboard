@@ -11,7 +11,14 @@ export default function Navbar() {
         <div className={styles.navContainer}>
           <div className={styles.logoContainer}>
             <a href="https://filecoin.io/" target="_blank">
-              <FilecoinSVG style={{ width: "2.5rem" }} />
+              <FilecoinSVG
+                style={{
+                  width: "2.5rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              />
             </a>
             <p className={styles.filecoinLogo}>Filecoin</p>
           </div>

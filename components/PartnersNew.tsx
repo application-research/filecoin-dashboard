@@ -66,7 +66,7 @@ function Modal({ allPartners, onClose }) {
               target="_blank"
             >
               {partner.logo && (
-                <img src={partner.logo} className={styles.logo} />
+                <img src={partner.logo} className={styles.logoModal} />
               )}
             </a>
           );
