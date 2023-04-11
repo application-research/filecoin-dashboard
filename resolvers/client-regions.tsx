@@ -36,7 +36,6 @@ export function updateClientRegions(clients) {
 
     const updatedClientData = clientData.map((clientItem) => {
       const { region = "Uncategorized", addressId, week } = clientItem;
-      console.log(region, addressId, week, "client regin add");
 
       const updatedRegion = updateClientRegion(region, addressId);
       return { ...clientItem, region: updatedRegion.region };
@@ -45,46 +44,45 @@ export function updateClientRegions(clients) {
     return { [clientKey]: updatedClientData };
   });
 
-  console.log(updatedClients, "new updated clients");
   return updatedClients;
 }
 
 export function updateClientRegion(region, address) {
-  console.log(region, address, "new updated clients:region and address");
   if (!region || typeof region !== "string") {
-    if (address) {
-      const formattedAddress = formatKeywordForComparison(address);
-      let matchedRegion = null;
+    // if (address) {
+    //   const formattedAddress = formatKeywordForComparison(address);
+    //   let matchedRegion = null;
+    //   // console.log("address", address);
 
-      Object.entries(CLIENT_ADDRESS_BY_REGION_FIXTURE).forEach(
-        ([key, value]) => {
-          if (
-            value.map(formatKeywordForComparison).includes(formattedAddress)
-          ) {
-            matchedRegion = key;
-          }
-        }
-      );
-
-      if (matchedRegion) {
-        return { region: matchedRegion };
-      }
-    }
+    //   Object.entries(CLIENT_ADDRESS_BY_REGION_FIXTURE).forEach(
+    //     ([key, value]) => {
+    //       if (
+    //         value.map(formatKeywordForComparison).includes(formattedAddress)
+    //       ) {
+    //         matchedRegion = key;
+    //       }
+    //     }
+    //   );
+    //   // console.log("matched region", matchedRegion);
+    //   if (matchedRegion) {
+    //     return { region: matchedRegion };
+    //   }
+    // }
     return { region: "Uncategorized" };
   }
 
   const lowerCaseRegion = region.toLowerCase();
-
+  // console.log(lowerCaseRegion, "region");
   for (const [key, keywords] of Object.entries(REGIONS_KEYWORDS_MAP_FIXTURE)) {
     if (
-      keywords.some((keyword) =>
-        lowerCaseRegion.includes(keyword.toLowerCase())
-      )
+      keywords.some((keyword) => {
+        // console.log("lowerCaseRegion", lowerCaseRegion, keyword),
+        lowerCaseRegion.includes(keyword.toLowerCase());
+      })
     ) {
       return { region: key };
     }
   }
-
   return "Uncategorized";
 }
 
@@ -191,7 +189,6 @@ export function groupClientsByWeekAndRegion(clients, interval) {
       });
     });
   });
-  console.log("grouped data", groupedData);
   return Object.values(groupedData);
 }
 

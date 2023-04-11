@@ -22,10 +22,7 @@ export default function SectionGraphTotalDcUsage({ allData }) {
     "month" | "3month" | "6month" | "12month"
   >("6month");
 
-  // const clientsArray = Array.from(allData);
-  // console.log(clientsArray, "clients arr");
   const updatedKnownClientsRegions = updateClientRegions(allData);
-  console.log("updatedKnownClientsRegions", updatedKnownClientsRegions);
   const handleIntervalChange = (event) => {
     setSelectedInterval(event.target.value);
   };

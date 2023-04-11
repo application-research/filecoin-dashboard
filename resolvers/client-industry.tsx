@@ -56,7 +56,10 @@ export function updateClientIndustry(industry, address) {
   return { industry: "Other" };
 }
 
-export function groupClientsByWeekAndIndustry(clients: Client[], interval) {
+export function groupClientsByWeekAndIndustryWithUsedDc(
+  clients: Client[],
+  interval
+) {
   const groupedData = {};
   const startDate = changeIntervalToCurrentDate(interval);
 
@@ -97,6 +100,49 @@ export function groupClientsByWeekAndIndustry(clients: Client[], interval) {
       const dataOutgoing = record.incomingDatacap;
       const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
 
+      groupedData[dateString][client.industry] += Number(
+        dataOutgoingInPetabytes
+      );
+    });
+  });
+
+  return Object.values(groupedData);
+}
+
+export function groupClientsByWeekAndIndustry(clients: Client[], interval) {
+  const groupedData = {};
+  const startDate = changeIntervalToCurrentDate(interval);
+  clients?.forEach((client) => {
+    client.datacapUsage.map((record) => {
+      const week = record.week;
+      const year = record.year;
+
+      const clientReadableDate = new Date(year, 0, 1 + (week - 1) * 7);
+      if (clientReadableDate < startDate) {
+        return;
+      }
+
+      const dateString = clientReadableDate.toLocaleDateString("en-US", {
+        year: "2-digit",
+        month: "short",
+        day: "numeric",
+      });
+
+      if (!groupedData[dateString]) {
+        groupedData[dateString] = {
+          date: dateString,
+          Research: 0,
+          "Financial Services": 0,
+          Environment: 0,
+          Web3: 0,
+          "Information, Media & Telecommunications": 0,
+          "IT & Technology Services": 0,
+          "Life Science / Healthcare": 0,
+          Other: 0,
+        };
+      }
+      const dataOutgoing = record.outgoingDatacap;
+      const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
       groupedData[dateString][client.industry] += Number(
         dataOutgoingInPetabytes
       );

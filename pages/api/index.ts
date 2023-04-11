@@ -18,7 +18,7 @@ export async function fetchAllClientsLatest(
 
   while (page < 100) {
     const res = await fetch(
-      `https://api.datacapstats.io/api/getVerifiedClientsDatacapUsage?&limit=${limit}&page=${page}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
+      `https://api.datacapstats.io/api/v2/getVerifiedClientsDatacapUsage?&limit=${limit}&page=${page}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
     );
 
     const clients = await res.json();
@@ -32,7 +32,6 @@ export async function fetchAllClientsLatest(
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
   }
-
   return allClients;
 }
 

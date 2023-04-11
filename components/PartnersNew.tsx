@@ -99,7 +99,6 @@ export default function PartnersNew({ partners }) {
         <GutterContainer>
           <div
             style={{
-              paddingTop: "4rem",
               paddingBottom: "0.5rem",
               position: "relative",
             }}

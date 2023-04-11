@@ -8,38 +8,28 @@ import {
   isCacheValid,
   saveToLocalStorage,
 } from "@root/common/utilities";
+import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners-fixtures";
-import {
-  fetchAllClients,
-  fetchAllClientsLatest,
-  fetchClientsPerPage,
-  fetchTotalClients,
-} from "@root/pages/api";
+import { fetchAllClientsLatest, fetchTotalClients } from "@root/pages/api";
 import clientRegionIndustryResolver from "@root/resolvers/client-industry-region";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
-import SectionGraphByIndustry from "./SectionGraphByIndustry";
-import PartnersNew from "./PartnersNew";
-import OverviewDataGrowthNew from "./OverviewDataGrowthNew";
 import OnboardedDataTableNew from "./OnboardedDataTableNew";
-import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
-import SectionGraphTotalDcUsage from "./SectionGraphTotalDcUsage";
-import { REGIONS_INDUSTRIES_TEST } from "@root/fixtures/regions-fixtures";
+import OverviewDataGrowthNew from "./OverviewDataGrowthNew";
+import PartnersNew from "./PartnersNew";
+import SectionGraphByIndustry from "./SectionGraphByIndustry";
 import SectionGraphByRegion from "./SectionGraphByRegion";
 
 export default function SectionDataNew() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
-  const [clients, setClients] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [pageNumbers, setPageNumbers] = useState([]);
+
   const [totalClients, setTotalClients] = useState([]);
   const [totalClientCount, setTotalClientCount] = useState(0);
   const partners = PARTNERS_FIXTURE;
   const clientsTableData = CLIENTS_WITH_DEALS_FIXTURE;
 
-  const itemsPerPage = 15;
   const currentDate = new Date();
   const intervalEndTimestamp = Math.round(currentDate.getTime() / 1000);
   const secondsInAYear = 31536000;
@@ -48,14 +38,6 @@ export default function SectionDataNew() {
   useEffect(() => {
     async function fetchPaginatedAndTotalData() {
       try {
-        const { count, data } = await fetchClientsPerPage(
-          itemsPerPage,
-          currentPage
-        );
-        let resolvedClients = clientRegionIndustryResolver(data);
-        setClients(resolvedClients);
-        setTotalClientCount(count);
-
         const totalClients = await fetchTotalClients();
         setTotalClients(totalClients.data);
       } catch (error) {
@@ -64,7 +46,7 @@ export default function SectionDataNew() {
     }
 
     fetchPaginatedAndTotalData();
-  }, [currentPage, itemsPerPage, totalClientCount]);
+  }, [totalClientCount]);
 
   useEffect(() => {
     async function fetchAllData() {
@@ -80,7 +62,7 @@ export default function SectionDataNew() {
 
         // console.log("Fetching new data");
 
-        const allClients = await fetchAllClients(
+        const allClients = await fetchAllClientsLatest(
           intervalStartTimestamp,
           intervalEndTimestamp
         );
@@ -97,19 +79,6 @@ export default function SectionDataNew() {
     fetchAllData();
   }, [intervalEndTimestamp, intervalStartTimestamp]);
 
-  useEffect(() => {
-    const totalPages = Math.ceil(totalClientCount / itemsPerPage);
-    const pageNumbers = Array.from(Array(totalPages).keys()).map(
-      (pageNumber) => pageNumber + 1
-    );
-    setPageNumbers(pageNumbers);
-  }, [totalClientCount]);
-
-  function handlePageChange(pageNumber) {
-    setCurrentPage(pageNumber);
-  }
-
-  console.log(allData, "all data new");
   let allDataFiltered;
 
   if (Object.keys(allData).length > 0) {
@@ -139,6 +108,7 @@ export default function SectionDataNew() {
     }
   });
 
+  console.log("alldatafiltered", allDataFiltered);
   return (
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (
@@ -166,8 +136,6 @@ export default function SectionDataNew() {
                 <div
                   className={`${styles.headingContainer} ${styles.graphMobile}`}
                 >
-                  <h2>Total Dc Usage</h2>
-                  {/* <SectionGraphTotalDcUsage allData={REGIONS_INDUSTRIES_TEST} /> */}
                   <h2 style={{ color: "var(--color-black)" }}>
                     Data Stored by Industry
                   </h2>
@@ -175,7 +143,7 @@ export default function SectionDataNew() {
                     Leading industries choose Filecoin to protect their most
                     important data.
                   </p>
-                  {/* <SectionGraphByIndustry allData={allDataFiltered} /> */}
+                  <SectionGraphByIndustry allData={allDataFiltered} />
                 </div>
                 <div>
                   <div className={styles.headingContainer}>
@@ -193,7 +161,7 @@ export default function SectionDataNew() {
                     </p>
                   </div>
 
-                  {/* <SectionGraphByRegion allData={allDataFiltered} /> */}
+                  <SectionGraphByRegion allData={allDataFiltered} />
                 </div>
               </div>
             )}

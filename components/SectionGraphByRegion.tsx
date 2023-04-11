@@ -29,7 +29,7 @@ export default function SectionGraphByRegion({ allData }) {
   const handleIntervalChange = (event) => {
     setSelectedInterval(event.target.value);
   };
-  const groupedClients = groupClientsByWeekAndRegionWithUsedDc(
+  const groupedClients = groupClientsByWeekAndRegion(
     updatedKnownClientsRegions,
     selectedInterval
   );

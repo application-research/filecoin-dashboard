@@ -21,6 +21,7 @@ export default function SectionGraphByIndustry({
   >("6month");
 
   const clientsArray = Array.from(allData);
+
   const handleIntervalChange = (event) => {
     return setSelectedInterval(event.target.value);
   };
