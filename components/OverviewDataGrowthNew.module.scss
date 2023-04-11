@@ -1,16 +1,12 @@
 .container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   row-gap: 1.5rem;
-  grid-gap: 1.5rem;
+  grid-gap: 2.5rem;
   padding: 0rem 0rem 2rem;
   z-index: var(--z-index-small);
   position: relative;
 }
-
-// .body {
-//   padding: 2rem 0rem;
-// }
 
 .dataTitle {
   color: var(--color-white);
@@ -46,10 +42,13 @@
   flex-direction: column;
   align-items: flex-start;
   padding-top: 4rem;
-  // padding-bottom: 1rem;
   gap: 2rem;
   position: relative;
+  align-items: flex-start;
+  justify-content: center;
+  height: 60vh;
   z-index: var(--z-index-small);
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -80,15 +79,5 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 500px;
-
-  @media (max-width: 1920px) {
-    height: 450px;
-  }
-  @media (max-width: 768px) {
-    height: 500px;
-  }
-  @media (max-width: 380px) {
-    height: 580px;
-  }
+  height: 60vh;
 }

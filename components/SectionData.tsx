@@ -170,12 +170,12 @@ export default function SectionData() {
                 <h2 className={styles.colorBlue}> Onboarded Data</h2>
                 <p>{totalClientCount} clients </p>
               </div>
-              <OnboardedDataTable
+              {/* <OnboardedDataTable
                 clients={clients}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
                 pageNumbers={pageNumbers}
-              />
+              /> */}
             </div>
           </div>
         </GutterContainer>

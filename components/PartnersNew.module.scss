@@ -34,10 +34,11 @@
 
 .logo {
   max-width: 14rem;
-  padding-right: 2rem;
+  padding-right: 3rem;
 
   @media (max-width: 1050px) {
     width: 6rem;
+    padding-right: 0.5rem;
   }
 
   @media (max-width: 500px) {

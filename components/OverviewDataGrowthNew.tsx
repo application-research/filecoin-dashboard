@@ -27,7 +27,7 @@ export default function OverviewDataGrowthNew({
 
       <GutterContainer>
         <div className={styles.heroContainer}>
-          <h1 className={styles.headline} className={styles.}>
+          <h1 className={styles.headline}>
             Filecoin<br></br> Client Explorer
           </h1>
 

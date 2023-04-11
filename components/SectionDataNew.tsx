@@ -135,7 +135,6 @@ export default function SectionDataNew() {
     }
   });
 
-  console.log(clientsWithDeals, "clients with deals");
   return (
     <div className={styles.body}>
       {Object.keys(allData).length > 0 && (
@@ -170,7 +169,7 @@ export default function SectionDataNew() {
                     Leading industries choose Filecoin to protect their most
                     important data.
                   </p>
-                  {/* <SectionGraphByIndustry allData={allDataFiltered} /> */}
+                  <SectionGraphByIndustry allData={allDataFiltered} />
                 </div>
                 <div>
                   <div className={styles.headingContainer}>
@@ -188,7 +187,7 @@ export default function SectionDataNew() {
                     </p>
                   </div>
 
-                  {/* <SectionGraphByRegion allData={allDataFiltered} /> */}
+                  <SectionGraphByRegion allData={allDataFiltered} />
                 </div>
               </div>
             )}

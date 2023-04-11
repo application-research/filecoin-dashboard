@@ -58,7 +58,6 @@ export default function OnboardedDataTableNew({ clients }) {
               <div className={`${styles.left} ${styles.githubLink}`}>
                 <a href={each.github} target="_blank">
                   <img src={each.logo} className={styles.imageLogo} />
-                  {/* <GithubSVG className={styles.image} /> */}
                 </a>
               </div>
               <div className={styles.right}>
@@ -111,11 +110,4 @@ export default function OnboardedDataTableNew({ clients }) {
       </a>
     </GutterContainer>
   );
-}
-
-{
-  /* <span className={`${styles.col18} ${styles.regions}`}>
-              {each.region ?? "Uncategorized"}
-            </span>
-           */
 }
