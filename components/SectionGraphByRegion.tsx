@@ -15,7 +15,7 @@ interface GraphByRegionProps extends SectionGraphByRegionProps {
   date: string;
 }
 
-export default function SectionGroupedGraphByRegion({ allData }) {
+export default function SectionGraphByRegion({ allData }) {
   const [selectedInterval, setSelectedInterval] = useState<
     "month" | "3month" | "6month" | "12month"
   >("6month");
