@@ -112,7 +112,7 @@ export function groupClientsByWeekAndRegion(clients, interval) {
           Uncategorized: 0,
         };
       }
-      const dataOutgoing = BigInt(record.incomingDatacap);
+      const dataOutgoing = BigInt(record.outgoingDatacap);
       const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
 
       groupedData[dateString][regionKey] += Number(dataOutgoingInPetabytes);
