@@ -20,7 +20,8 @@ import GutterContainer from "./GutterContainer";
 import OnboardedDataTable from "./OnboardedDataTableNew";
 import OverviewDataGrowth from "./OverviewDataGrowth";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
-import SectionGraphByRegion from "./SectionGraphByRegion";
+import SectionGraphByRegion from "./SectionGraphByRegion.module.scss";
+import SectionGroupedGraphByRegion from "./SectionGraphByRegion";
 
 export default function SectionData() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
@@ -142,7 +143,7 @@ export default function SectionData() {
                     </p>
                   </div>
 
-                  <SectionGraphByRegion allData={allDataFiltered} />
+                  <SectionGroupedGraphByRegion allData={allDataFiltered} />
                 </div>
 
                 <div

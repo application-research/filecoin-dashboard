@@ -18,11 +18,11 @@ import clientRegionIndustryResolver from "@root/resolvers/client-industry-region
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
-import SectionGraphByRegion from "./SectionGraphByRegion";
 import PartnersNew from "./PartnersNew";
 import OverviewDataGrowthNew from "./OverviewDataGrowthNew";
 import OnboardedDataTableNew from "./OnboardedDataTableNew";
 import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
+import SectionGraphByRegion from "./SectionGraphByRegion";
 
 export default function SectionDataNew() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
@@ -154,23 +154,32 @@ export default function SectionDataNew() {
           background: "white",
         }}
       >
-        <GutterContainer>
-          {allDataFiltered.length > 0 &&
-            Object.keys(allDataFiltered).length > 0 && (
-              <div>
-                <div
-                  className={`${styles.headingContainer} ${styles.graphMobile}`}
-                >
-                  <h2 style={{ color: "var(--color-black)" }}>
+        {allDataFiltered.length > 0 &&
+          Object.keys(allDataFiltered).length > 0 && (
+            <div>
+              <div
+                className={`${styles.headingContainer} ${styles.graphMobile}`}
+              >
+                <GutterContainer>
+                  <h2
+                    style={{
+                      color: "var(--color-black)",
+                      paddingBottom: "1rem",
+                    }}
+                  >
                     Data Stored by Industry
                   </h2>
                   <p>
                     Leading industries choose Filecoin to protect their most
                     important data.
                   </p>
+                </GutterContainer>
+                <div className={styles.graph}>
                   <SectionGraphByIndustry allData={allDataFiltered} />
                 </div>
-                <div>
+              </div>
+              <div>
+                <GutterContainer>
                   <div className={styles.headingContainer}>
                     <h2
                       style={{
@@ -185,12 +194,14 @@ export default function SectionDataNew() {
                       global client.
                     </p>
                   </div>
-
+                </GutterContainer>
+                <div className={styles.graph}>
                   <SectionGraphByRegion allData={allDataFiltered} />
                 </div>
               </div>
-            )}
-        </GutterContainer>
+            </div>
+          )}
+
         <div
           style={{
             paddingBottom: "6rem",
@@ -214,13 +225,7 @@ export default function SectionDataNew() {
                 <p className={styles.totalClientsWithDeals}>
                   Total Clients: {totalClientsWithDeals}
                 </p>
-                <div
-                  style={{
-                    paddingBottom: "1rem",
-                    display: "flex",
-                    gap: "1rem",
-                  }}
-                >
+                <div className={styles.reference}>
                   <strong>Reference:</strong> 1 Pib data is ={"  "}
                   <img
                     src="https://user-images.githubusercontent.com/28320272/231327138-355178af-c631-4954-92a2-c0bbfd606f40.png"

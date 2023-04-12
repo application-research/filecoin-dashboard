@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import {
@@ -20,10 +18,8 @@ export interface BarGraphProps {
 
 export function RegionStackedBarChart({ graphData }: BarGraphProps) {
   return (
-    <ResponsiveContainer height={500}>
+    <ResponsiveContainer width="100%" height={500}>
       <BarChart
-        width={500}
-        height={300}
         data={graphData}
         margin={{
           top: 20,

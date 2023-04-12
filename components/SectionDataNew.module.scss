@@ -35,3 +35,25 @@
   justify-content: center;
   margin-top: -0.2rem;
 }
+
+.reference {
+  padding-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.graph {
+  padding: var(--page-gutters-desktop);
+  max-width: var(--page-width);
+  margin: 0 auto 0 auto;
+  width: 100%;
+
+  @media (max-width: 900px) {
+    padding: 0;
+    max-width: none;
+  }
+}
