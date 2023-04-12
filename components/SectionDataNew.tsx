@@ -67,7 +67,6 @@ export default function SectionDataNew() {
     async function fetchAllData() {
       try {
         const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
-        // console.log(cachedData, "cached data");
         if (isCacheValid(cachedData, CACHE_EXPIRATION_TIME)) {
           // console.log("Fetching CACHED data");
           setAllData(cachedData.data);
@@ -194,24 +193,41 @@ export default function SectionDataNew() {
         </GutterContainer>
         <div
           style={{
-            paddingBottom: "4rem",
-            paddingTop: "4rem",
+            paddingBottom: "6rem",
+            paddingTop: "6rem",
             background: "var(--color-light-blue)",
           }}
         >
           <div className={styles.backgroundTable}>
             <GutterContainer>
               <div className={styles.headingContainer}>
-                <h2 style={{ color: "var(--color-black)" }}>
-                  Data Onboarding Details
-                </h2>
-                <p>
+                <div className={styles.backgroundTableTitle}>
+                  <h2 style={{ color: "var(--color-black)" }}>
+                    Data Onboarding Details
+                  </h2>
+                </div>
+
+                <p style={{ paddingBottom: "2rem" }}>
                   Get additional details about the client data that’s being
                   stored on Filecoin.
                 </p>
-                <p style={{ fontWeight: "800", fontSize: "1.5rem" }}>
-                  {totalClientsWithDeals} clients{" "}
+                <p className={styles.totalClientsWithDeals}>
+                  Total Clients: {totalClientsWithDeals}
                 </p>
+                <div
+                  style={{
+                    paddingBottom: "1rem",
+                    display: "flex",
+                    gap: "1rem",
+                  }}
+                >
+                  <strong>Reference:</strong> 1 Pib data is ={"  "}
+                  <img
+                    src="https://user-images.githubusercontent.com/28320272/231327138-355178af-c631-4954-92a2-c0bbfd606f40.png"
+                    className={styles.referenceIcon}
+                  />
+                  {"  "}1 million high resolution movies.
+                </div>
               </div>
             </GutterContainer>
 
