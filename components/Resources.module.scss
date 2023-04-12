@@ -13,14 +13,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2rem;
-
-  @media (max-width: 768px) {
-    gap: 1rem;
-  }
 }
 
 .heading {
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   color: var(--color-white);
 }
 
@@ -104,6 +100,7 @@
   font-family: "Poppins";
   cursor: pointer;
   font-weight: 800;
+  text-transform: uppercase;
   transition: 200ms ease background-color;
 
   &:hover {

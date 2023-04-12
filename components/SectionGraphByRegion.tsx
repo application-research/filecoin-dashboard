@@ -1,3 +1,5 @@
+import styles from "@root/components/SectionGraphByRegion.module.scss";
+
 import { AllData } from "@root/common/types";
 import { RegionStackedBarChart } from "./RegionStackedBarChart";
 import {
@@ -53,7 +55,7 @@ export default function SectionGraphByRegion({ allData }) {
     },
   ];
   return (
-    <>
+    <div>
       <div
         style={{
           paddingRight: "1.6rem",
@@ -70,7 +72,9 @@ export default function SectionGraphByRegion({ allData }) {
           onChange={handleIntervalChange}
         />
       </div>
-      <RegionStackedBarChart graphData={sortedEightWeeks} />
-    </>
+      <div className={styles.chartContainer}>
+        <RegionStackedBarChart graphData={sortedEightWeeks} />
+      </div>
+    </div>
   );
 }

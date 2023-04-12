@@ -25,10 +25,11 @@
 .headline {
   font-family: "Poppins";
   font-weight: var(--font-weight-bold);
-  font-size: 4rem;
+  font-size: 3.5rem;
   max-width: 20ch;
   line-height: var(--line-height-regular);
   color: var(--color-white);
+  text-transform: uppercase;
 
   @media (max-width: 768px) {
     font-size: var(--font-size-large);
@@ -51,6 +52,7 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
+    height: 500px;
   }
 }
 
@@ -79,4 +81,8 @@
   top: 0;
   left: 0;
   height: 60vh;
+
+  @media (max-width: 768px) {
+    height: 500px;
+  }
 }

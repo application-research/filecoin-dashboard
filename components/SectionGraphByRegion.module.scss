@@ -1,0 +1,11 @@
+.chartContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .chartContainer {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+}

@@ -37,7 +37,7 @@ export default function Resources() {
           <div className={styles.carouselRow}>
             {resources.map((resource, index) => {
               return (
-                <div key={index}>
+                <div key={index} className={styles.carouselColumn}>
                   <a href={resource?.href ?? ""} target="_blank">
                     <figure className={styles.imageContainer}>
                       <img className={styles.image} src={resource.original} />

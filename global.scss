@@ -168,6 +168,7 @@ body {
 
   //Line Height
   --line-height-regular: 4rem;
+  --line-height-small: 2.5rem;
 
   font-size: 16px;
   background: var(--color-background);
@@ -189,21 +190,25 @@ body {
     color: inherit;
     letter-spacing: var(--letter-spacing-small);
     font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-small);
   }
 
   h1 {
     font-size: var(--font-size-largePlus);
     font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-small);
   }
 
   h2 {
     font-size: var(--font-size-large);
     font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-small);
   }
 
   h3 {
     font-size: var(--font-size-regular);
     font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-small);
   }
 
   p {
