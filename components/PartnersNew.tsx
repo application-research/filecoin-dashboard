@@ -15,7 +15,7 @@ const resources = [
       "Filecoin helps universities reduce their data storage budgets by providing cost-effective storage solutions that traditional providers can’t match.",
     href: "https://destor.io/solutions/education",
     original:
-      "https://user-images.githubusercontent.com/28320272/230436431-4aad873b-28e0-403c-ac5d-e2f2de037bd0.png",
+      "https://user-images.githubusercontent.com/28320272/231351253-2fdd7bd1-67d3-481b-8241-70f2ee8fa955.png",
     thumbnail:
       "https://user-images.githubusercontent.com/28320272/230425368-fe2e00cd-31ac-408e-bf94-0d0f7cddd715.png",
   },
@@ -99,7 +99,6 @@ export default function PartnersNew({ partners }) {
         <GutterContainer>
           <div
             style={{
-              paddingTop: "4rem",
               paddingBottom: "0.5rem",
               position: "relative",
             }}
@@ -142,7 +141,7 @@ export default function PartnersNew({ partners }) {
           })}
         </Marquee>
         <GutterContainer>
-          <div className={styles.center} style={{ paddingBottom: "4rem" }}>
+          <div className={styles.center} style={{ paddingBottom: "6rem" }}>
             <button
               className={styles.viewMoreButton}
               onClick={handleViewMoreClick}
@@ -167,7 +166,7 @@ export default function PartnersNew({ partners }) {
             <div className={styles.carouselRow}>
               {resources.map((resource, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index} className={styles.carouselColumn}>
                     <a href={resource?.href ?? ""} className={styles.link}>
                       <figure className={styles.imageContainer}>
                         <img src={resource.original} className={styles.image} />
