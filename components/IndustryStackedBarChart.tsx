@@ -53,8 +53,8 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
         <Bar dataKey="Web3" stackId="a" fill="var(--color-blue)" />
 
         <Bar dataKey="Life Science / Healthcare" stackId="a" fill="#66BCFF" />
-        <Bar dataKey="Financial Services" stackId="a" fill="#C2DEF3" />
-        <Bar dataKey="Other" stackId="a" fill="#CFCFCF" />
+        <Bar dataKey="Financial Services" stackId="a" fill="#96D1FF" />
+        <Bar dataKey="Other" stackId="a" fill="#C2DEF3" />
       </BarChart>
     </ResponsiveContainer>
   );
