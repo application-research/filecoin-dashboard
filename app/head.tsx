@@ -4,8 +4,9 @@ export default async function Head({ params }) {
   const title = "Filecoin Client Explorer";
   const description = "Welcome to Filecoin Client Explorer";
   const url = "filecoin-discover.com";
+  const img =
+    "https://user-images.githubusercontent.com/28320272/231632725-db8f9109-a491-44a8-a4ee-b52f945b6454.png";
 
-  // SUMMARY_LARGE_IMAGE: 1500x785
   return (
     <>
       <title>{title}</title>
@@ -17,13 +18,13 @@ export default async function Head({ params }) {
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="" />
+      <meta property="og:image" content={img} />
 
-      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:card" content={img} />
       <meta property="twitter:url" content={url} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content="" />
+      <meta property="twitter:image" content={img} />
     </>
   );
 }

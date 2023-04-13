@@ -56,7 +56,7 @@ export default function OnboardedDataTableNew({ clients }) {
           <div className={styles.row} key={index}>
             <div className={styles.col32}>
               <div className={`${styles.left} ${styles.githubLink}`}>
-                <a href={each.github} target="_blank">
+                <a href={each.website} target="_blank">
                   <img src={each.logo} className={styles.imageLogo} />
                 </a>
               </div>

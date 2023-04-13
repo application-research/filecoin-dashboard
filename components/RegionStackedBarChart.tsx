@@ -46,7 +46,7 @@ export function RegionStackedBarChart({ graphData }: BarGraphProps) {
         <Bar dataKey="Oceania" stackId="outgoing" fill="#C2DEF3" />
         <Bar dataKey="South America" stackId="outgoing" fill="#006341" />
         <Bar dataKey="Multiple Regions" stackId="outgoing" fill="#1A8D66" />
-        <Bar dataKey="Uncategorized" stackId="outgoing" fill="#CFCFCF" />
+        <Bar dataKey="Uncategorized" stackId="outgoing" fill="#C2DEF3" />
       </BarChart>
     </ResponsiveContainer>
   );

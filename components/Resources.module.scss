@@ -7,6 +7,10 @@
   }
 }
 
+.paddingBottom {
+  padding-bottom: 4rem;
+}
+
 .carouselRow {
   display: flex;
   align-items: center;
@@ -18,6 +22,11 @@
 .heading {
   padding-bottom: 2rem;
   color: var(--color-white);
+}
+
+.caption {
+  margin-top: -1rem;
+  padding-bottom: 2rem;
 }
 
 .imageContainer {
@@ -86,6 +95,14 @@
   font-size: var(--font-size-miniPlus);
 }
 
+.imageHeading {
+  color: var(--color-white);
+  position: absolute;
+  margin-top: -6rem;
+  margin-left: 2rem;
+  font-size: var(--font-size-miniPlus);
+}
+
 .gradientContainer {
   padding: 4rem 0 4rem 0;
   background: linear-gradient(90deg, #000000 -44.48%, #0090ff 100%);
@@ -119,5 +136,102 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+  }
+}
+
+.carouselRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+.carouselColumn {
+  grid-column: span 1;
+}
+
+.imageContainer {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 0.5rem;
+  height: 19rem;
+
+  @media (max-width: 1280px) {
+    max-width: 100%;
+    max-height: 20rem;
+  }
+
+  @media (max-width: 980px) {
+    max-width: 100%;
+  }
+
+  .carouselImage {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    min-height: 10rem;
+    object-fit: cover;
+    transition: all 0.7s;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    &:hover {
+      min-height: 10rem;
+      border-radius: 0.25rem;
+      transform: scale(1.3) rotate(5deg);
+    }
+  }
+}
+
+// .carouselImage {
+//   max-width: 17rem;
+//   border-radius: 0.25rem;
+
+//   @media (max-width: 1355px) {
+//     max-width: 20rem;
+//   }
+
+//   @media (max-width: 1050px) {
+//     max-width: 20rem;
+//   }
+
+//   @media (max-width: 768px) {
+//     max-width: 17rem;
+//   }
+
+//   @media (max-width: 604px) {
+//     max-width: 100%;
+//   }
+// }
+
+.imageCaption {
+  color: var(--color-white);
+  position: absolute;
+  margin-top: -16rem;
+  margin-left: 1.5rem;
+  font-size: var(--font-size-miniPlus);
+}
+
+.carouselCaption {
+  max-width: 24ch;
+  line-height: 1.8rem;
+  color: var(--color-white);
+  position: absolute;
+  margin-top: -12rem;
+  margin-left: 1.5rem;
+  font-size: 14px;
+  font-weight: var(--font-weight-light);
+
+  @media (max-width: 1150px) {
+    max-width: 32ch;
   }
 }
