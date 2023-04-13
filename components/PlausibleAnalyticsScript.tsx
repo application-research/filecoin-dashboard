@@ -5,7 +5,7 @@ export default function PlausibleAnalyticsScript() {
     <Script
       defer
       data-domain="filecoin-explorer.com"
-      src="https://plausible.io/js/script.js"
+      src="https://plausible.io/js/script.outbound-links.js"
     />
   );
 }
