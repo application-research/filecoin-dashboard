@@ -2,13 +2,7 @@
 
 import styles from "@components/SectionDataNew.module.scss";
 import { AllData } from "@root/common/types";
-import {
-  CACHE_EXPIRATION_TIME,
-  CACHE_KEY,
-  isCacheValid,
-  saveToLocalStorage,
-} from "@root/common/utilities";
-import { fetchAllClients } from "@root/pages/api";
+import { formatDataToCamelCase } from "@root/common/utilities";
 import clientRegionIndustryResolver from "@root/resolvers/client-industry-region";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
@@ -16,41 +10,23 @@ import SectionGraphByIndustry from "./SectionGraphByIndustry";
 
 export default function SectionIndustryGraph() {
   const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
-  const [error, setError] = useState(null);
-
-  const currentDate = new Date();
-  const intervalEndTimestamp = Math.round(currentDate.getTime() / 1000);
-  const secondsInAYear = 31536000;
-  const intervalStartTimestamp = intervalEndTimestamp - secondsInAYear;
 
   useEffect(() => {
-    async function fetchAllData() {
-      try {
-        const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
-        // console.log(cachedData, "cached data");
-        if (isCacheValid(cachedData, CACHE_EXPIRATION_TIME)) {
-          // console.log("Fetching CACHED data");
-          setAllData(cachedData.data);
-
-          return;
+    fetch("/api/db")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
         }
-
-        // console.log("Fetching new data");
-
-        const allClients = await fetchAllClients(
-          intervalStartTimestamp,
-          intervalEndTimestamp
-        );
-        setAllData(allClients as any);
-
-        saveToLocalStorage(CACHE_KEY, allClients);
-      } catch (error) {
-        setError(error);
-      }
-    }
-
-    fetchAllData();
-  }, [intervalEndTimestamp, intervalStartTimestamp]);
+        return response.json();
+      })
+      .then((data) => {
+        const camelCaseData = data.map((item) => formatDataToCamelCase(item));
+        setAllData(camelCaseData as any);
+      })
+      .catch((error) => {
+        console.error("Error getting data", error.message);
+      });
+  }, []);
 
   let allDataFiltered;
 
