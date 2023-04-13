@@ -9,10 +9,12 @@ import Hero from "@root/components/Hero";
 import SectionDataNew from "@root/components/SectionDataNew";
 import FooterNew from "@root/components/FooterNew";
 import Resources from "@root/components/Resources";
+import PlausibleAnalyticsScript from "@root/components/PlausibleAnalyticsScript";
 
 export default async function Page() {
   return (
     <DefaultLayout>
+      <PlausibleAnalyticsScript />
       <NavbarNew />
       <div style={{ position: "relative" }}>
         <SectionDataNew />
