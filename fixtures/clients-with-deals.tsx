@@ -55,7 +55,7 @@ export const CLIENTS_WITH_DEALS_FIXTURE = [
     usedDatacapChange: "3316298868064256",
     verifierAddressId: "f01549256",
     verifierName: "LDN v3.1 multisig",
-    website: "https://www.sealstorage.io/",
+    website: "https://www.utah.edu/",
     github:
       "https://github.com/filecoin-project/filecoin-plus-large-datasets/issues/1281",
   },
@@ -76,7 +76,7 @@ export const CLIENTS_WITH_DEALS_FIXTURE = [
     usedDatacapChange: "3316298868064256",
     verifierAddressId: "f01549256",
     verifierName: "LDN # 425 Victor Chang Cardiac Research Institute",
-    website: "https://archive.org/",
+    website: "https://www.victorchang.edu.au/",
     github:
       "https://github.com/filecoin-project/filecoin-plus-large-datasets/issues/425",
   },
