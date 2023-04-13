@@ -46,20 +46,6 @@ export default function SectionRegionGraph() {
         <GutterContainer>
           <div>
             <div className={`${styles.headingContainer} ${styles.graphMobile}`}>
-              <div className={styles.headingContainer}>
-                <h2
-                  style={{
-                    color: "var(--color-black)",
-                    paddingTop: "4rem",
-                  }}
-                >
-                  Data Stored by Where the Owner Lives
-                </h2>
-                <p>
-                  Filecoin provides a range of storage solutions for a global
-                  client.
-                </p>
-              </div>
               {allDataFiltered.length > 0 &&
                 Object.keys(allDataFiltered).length > 0 && (
                   <SectionGraphByRegion allData={allDataFiltered} />
