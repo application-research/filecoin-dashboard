@@ -46,13 +46,6 @@ export default function SectionIndustryGraph() {
         <GutterContainer>
           <div>
             <div className={`${styles.headingContainer} ${styles.graphMobile}`}>
-              <h2 style={{ color: "var(--color-black)" }}>
-                Data Stored by Industry
-              </h2>
-              <p>
-                Leading industries choose Filecoin to protect their most
-                important data.
-              </p>
               {allDataFiltered.length > 0 &&
                 Object.keys(allDataFiltered).length > 0 && (
                   <SectionGraphByIndustry allData={allDataFiltered} />
