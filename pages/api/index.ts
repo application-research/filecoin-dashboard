@@ -44,7 +44,7 @@ export async function fetchAllClients(
   let page = 1;
   const limit = 49;
 
-  while (page < 30) {
+  while (page < 100) {
     const res = await fetch(
       `https://api.datacapstats.io/api/getVerifiedClientsExtended?page=${page}&limit=${limit}&intervalStartTimestamp=${intervalStartTimestamp}&intervalEndTimestamp=${intervalEndTimestamp}`
     );
