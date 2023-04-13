@@ -47,8 +47,8 @@ export default function SectionData() {
           currentPage
         );
 
-        // let resolvedClients = clientRegionIndustryResolver(data);
-        // setClients(resolvedClients);
+        let resolvedClients = clientRegionIndustryResolver(data);
+        setClients(resolvedClients);
         setClients(clients);
         setTotalClientCount(count);
 
@@ -108,7 +108,6 @@ export default function SectionData() {
   let allDataFiltered;
   allDataFiltered = allData;
 
-  // console.log(allDataFiltered, "all data filtered");
   if (Object.keys(allData).length > 0) {
     allDataFiltered = clientRegionIndustryResolver(allData as any);
   }

@@ -2,7 +2,7 @@ import { AllData } from "@root/common/types";
 import { updateClientIndustry } from "./client-industry";
 import { updateClientRegion } from "./client-regions";
 
-export default function clientRegionIndustryResolver(clients: AllData[]) {
+export default function ClientRegionIndustryResolver(clients: AllData[]) {
   const clientsArray = Array.from(clients);
 
   clientsArray.map((client) => {

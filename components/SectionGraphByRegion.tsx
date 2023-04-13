@@ -32,7 +32,7 @@ export default function SectionGraphByRegion({ allData }) {
     selectedInterval
   );
 
-  const sortedEightWeeks = groupedClients.sort(
+  const sortedData = groupedClients.sort(
     (a: GraphByRegionProps, b: GraphByRegionProps) => {
       const dateA = new Date(a.date.replace(",", ""));
       const dateB = new Date(b.date.replace(",", ""));
@@ -73,7 +73,7 @@ export default function SectionGraphByRegion({ allData }) {
         />
       </div>
       <div className={styles.chartContainer}>
-        <RegionStackedBarChart graphData={sortedEightWeeks} />
+        <RegionStackedBarChart graphData={sortedData} />
       </div>
     </div>
   );

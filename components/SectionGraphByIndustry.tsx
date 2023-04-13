@@ -29,7 +29,7 @@ export default function SectionGraphByIndustry({
     selectedInterval
   );
 
-  const sortedEightWeeks = groupedClients.sort(
+  const sortedData = groupedClients.sort(
     (a: GraphByIndustryProps, b: GraphByIndustryProps) => {
       const dateA = new Date(a.date.replace(",", ""));
       const dateB = new Date(b.date.replace(",", ""));
@@ -51,6 +51,7 @@ export default function SectionGraphByIndustry({
       value: "6month",
     },
   ];
+
   return (
     <>
       <div
@@ -69,7 +70,7 @@ export default function SectionGraphByIndustry({
           onChange={handleIntervalChange}
         />
       </div>
-      <IndustryStackedBarChart graphData={sortedEightWeeks} />
+      <IndustryStackedBarChart graphData={sortedData} />
     </>
   );
 }

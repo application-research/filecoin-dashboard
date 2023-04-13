@@ -223,3 +223,22 @@ export function changeIntervalToCurrentDate(interval) {
   }
   return currentDate;
 }
+
+function toCamelCase(str) {
+  //g = global, i= case sensitive
+  return str.replace(/([-_].)/g, (matchedSubstring) => {
+    // Remove the '-' or '_' character and convert the following letter to uppercase
+    return matchedSubstring.charAt(1).toUpperCase();
+  });
+}
+
+export function formatDataToCamelCase(dataDictionary) {
+  const formattedObject = {};
+
+  Object.keys(dataDictionary).forEach((key) => {
+    const camelCasedKey = toCamelCase(key);
+    formattedObject[camelCasedKey] = dataDictionary[key];
+  });
+
+  return formattedObject;
+}
