@@ -1,8 +1,8 @@
+import knex from "knex";
+
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-
-import knex from "knex";
 
 const ssl = process.env.DOCUMENT_DATABASE_HOST === "127.0.0.1" ? false : true;
 
