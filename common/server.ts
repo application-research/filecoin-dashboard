@@ -1,5 +1,4 @@
 import Cors from "@modules/cors";
-import knex from "knex";
 
 export function initMiddleware(middleware) {
   return (req, res) =>

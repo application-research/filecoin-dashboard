@@ -9,14 +9,6 @@ import {
 import { useState } from "react";
 import FilterSelection from "./FilterSelection";
 
-interface SectionGraphByRegionProps {
-  allData: AllData[];
-}
-
-interface GraphByRegionProps extends SectionGraphByRegionProps {
-  date: string;
-}
-
 export default function SectionGraphByRegion({ allData }) {
   const [selectedInterval, setSelectedInterval] = useState<
     "month" | "3month" | "6month" | "12month"
@@ -34,13 +26,11 @@ export default function SectionGraphByRegion({ allData }) {
     selectedInterval
   );
 
-  const sortedData = groupedClients.sort(
-    (a: GraphByRegionProps, b: GraphByRegionProps) => {
-      const dateA = new Date(a.date.replace(",", ""));
-      const dateB = new Date(b.date.replace(",", ""));
-      return dateA.getTime() - dateB.getTime();
-    }
-  );
+  const sortedData = groupedClients.sort((a, b) => {
+    const dateA = new Date((a as any).date.replace(",", ""));
+    const dateB = new Date((b as any).date.replace(",", ""));
+    return dateA.getTime() - dateB.getTime();
+  });
 
   const options = [
     {
