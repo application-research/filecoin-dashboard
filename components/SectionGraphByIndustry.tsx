@@ -1,15 +1,8 @@
-import {
-  groupClientsByIndustryWithDates,
-  groupClientsByWeekAndIndustry,
-} from "@root/resolvers/client-industry";
+import { groupClientsByWeekAndIndustry } from "@root/resolvers/client-industry";
 import { IndustryStackedBarChart } from "./IndustryStackedBarChart";
 import { AllData } from "@root/common/types";
 import { useState } from "react";
 import FilterSelection from "./FilterSelection";
-
-interface SectionGraphByIndustryProps {
-  allData: AllData[];
-}
 
 export default function SectionGraphByIndustry({ allData }) {
   if (!allData) return;
@@ -27,13 +20,11 @@ export default function SectionGraphByIndustry({ allData }) {
     selectedInterval
   );
 
-  const sortedData = groupedClients.sort(
-    (a: GraphByIndustryProps, b: GraphByIndustryProps) => {
-      const dateA = new Date(a.date.replace(",", ""));
-      const dateB = new Date(b.date.replace(",", ""));
-      return dateA.getTime() - dateB.getTime();
-    }
-  );
+  const sortedData = groupedClients.sort((a, b) => {
+    const dateA = new Date((a as any).date.replace(",", ""));
+    const dateB = new Date((b as any).date.replace(",", ""));
+    return dateA.getTime() - dateB.getTime();
+  });
 
   const options = [
     {
