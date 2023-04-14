@@ -1,5 +1,5 @@
 import { AllData } from "@root/common/types";
-import { updateClientIndustry } from "./client-industry";
+import { updateClientIndustryWithUsedDc } from "./client-industry";
 import { updateClientRegion } from "./client-regions";
 
 export default function ClientRegionIndustryResolver(clients: AllData[]) {
@@ -10,7 +10,7 @@ export default function ClientRegionIndustryResolver(clients: AllData[]) {
       client?.region,
       client?.address
     );
-    const clientsByIndustry = updateClientIndustry(
+    const clientsByIndustry = updateClientIndustryWithUsedDc(
       client.industry,
       client.address
     );
