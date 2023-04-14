@@ -3,7 +3,6 @@ import { bytesToSize } from "@root/common/utilities";
 import GutterContainer from "./GutterContainer";
 
 export default function OverviewDataGrowthNew({
-  allDataFiltered,
   totalClients,
   totalClientCount,
 }) {

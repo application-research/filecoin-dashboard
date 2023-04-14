@@ -24,9 +24,11 @@ export default function SectionGraphByRegion({ allData }) {
 
   const clientsArray = Array.from(allData);
   const updatedKnownClientsRegions = updateClientRegions(clientsArray);
+
   const handleIntervalChange = (event) => {
     setSelectedInterval(event.target.value);
   };
+
   const groupedClients = groupClientsByWeekAndRegion(
     updatedKnownClientsRegions,
     selectedInterval

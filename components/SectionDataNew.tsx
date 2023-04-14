@@ -1,26 +1,26 @@
 "use client";
 
 import styles from "@components/SectionDataNew.module.scss";
-import { AllData } from "@root/common/types";
-import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
-import { fetchClientsPerPage, fetchTotalClients } from "@root/pages/api";
 import { formatDataToCamelCase } from "@root/common/utilities";
+import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners-fixtures";
+import { fetchClientsPerPage, fetchTotalClients } from "@root/pages/api";
+import totalClientsWithDealsResolver from "@root/resolvers/total-clients";
 import { useEffect, useState } from "react";
-import ClientRegionIndustryResolver from "@root/resolvers/client-industry-region";
 import GutterContainer from "./GutterContainer";
 import OnboardedDataTableNew from "./OnboardedDataTableNew";
 import OverviewDataGrowthNew from "./OverviewDataGrowthNew";
 import PartnersNew from "./PartnersNew";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
 import SectionGraphByRegion from "./SectionGraphByRegion";
-import totalClientsWithDealsResolver from "@root/resolvers/total-clients";
 
 export default function SectionDataNew() {
-  const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
   const [error, setError] = useState(null);
   const [totalClients, setTotalClients] = useState([]);
   const [totalClientCount, setTotalClientCount] = useState(0);
+  const [industryData, setIndustryData] = useState({ data: [] });
+  const [regionData, setRegionData] = useState({ data: [] });
+
   const partners = PARTNERS_FIXTURE;
   const clientsTableData = CLIENTS_WITH_DEALS_FIXTURE;
   const itemsPerPage = 15;
@@ -45,7 +45,7 @@ export default function SectionDataNew() {
   }, [currentPage, itemsPerPage, totalClientCount]);
 
   useEffect(() => {
-    fetch("/api/db")
+    fetch("/api/fil-user-explorer-industry")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -54,28 +54,37 @@ export default function SectionDataNew() {
       })
       .then((data) => {
         const camelCaseData = data.map((item) => formatDataToCamelCase(item));
-        setAllData(camelCaseData as any);
+        setIndustryData(camelCaseData as any);
       })
       .catch((error) => {
         console.error("Error getting data", error.message);
       });
   }, []);
 
-  let allDataFiltered;
-
-  if (Object.keys(allData).length > 0) {
-    allDataFiltered = ClientRegionIndustryResolver(allData as any);
-  }
+  useEffect(() => {
+    fetch("/api/fil-user-explorer-region")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const camelCaseData = data.map((item) => formatDataToCamelCase(item));
+        setRegionData(camelCaseData as any);
+      })
+      .catch((error) => {
+        console.error("Error getting data", error.message);
+      });
+  }, []);
 
   return (
     <div className={styles.body}>
-      {Object.keys(allData).length > 0 && (
-        <OverviewDataGrowthNew
-          totalClientCount={totalClientsWithDeals}
-          totalClients={totalClients}
-          allDataFiltered={allDataFiltered}
-        />
-      )}
+      <OverviewDataGrowthNew
+        totalClientCount={totalClientsWithDeals}
+        totalClients={totalClients}
+      />
+
       <div style={{ paddingBottom: "var(--p-large-xxl)" }}>
         <PartnersNew partners={partners} />
       </div>
@@ -87,53 +96,49 @@ export default function SectionDataNew() {
           background: "white",
         }}
       >
-        {allDataFiltered.length > 0 &&
-          Object.keys(allDataFiltered).length > 0 && (
-            <div>
-              <div
-                className={`${styles.headingContainer} ${styles.graphMobile}`}
+        <div>
+          <div className={`${styles.headingContainer} ${styles.graphMobile}`}>
+            <GutterContainer>
+              <h2
+                style={{
+                  color: "var(--color-black)",
+                  paddingBottom: "1rem",
+                }}
               >
-                <GutterContainer>
-                  <h2
-                    style={{
-                      color: "var(--color-black)",
-                      paddingBottom: "1rem",
-                    }}
-                  >
-                    Data Stored by Industry
-                  </h2>
-                  <p>
-                    Leading industries choose Filecoin to protect their most
-                    important data.
-                  </p>
-                </GutterContainer>
-                <div className={styles.graph}>
-                  <SectionGraphByIndustry allData={allDataFiltered} />
-                </div>
-              </div>
-              <div>
-                <GutterContainer>
-                  <div className={styles.headingContainer}>
-                    <h2
-                      style={{
-                        color: "var(--color-black)",
-                        paddingTop: "4rem",
-                      }}
-                    >
-                      Data Stored by Where the Owner Lives
-                    </h2>
-                    <p>
-                      Filecoin provides a range of storage solutions for a
-                      global client.
-                    </p>
-                  </div>
-                </GutterContainer>
-                <div className={styles.graph}>
-                  <SectionGraphByRegion allData={allDataFiltered} />
-                </div>
-              </div>
+                Data Stored by Industry
+              </h2>
+              <p>
+                Leading industries choose Filecoin to protect their most
+                important data.
+              </p>
+            </GutterContainer>
+            <div className={styles.graph}>
+              <SectionGraphByIndustry allData={industryData ?? null} />
             </div>
-          )}
+          </div>
+
+          <div>
+            <GutterContainer>
+              <div className={styles.headingContainer}>
+                <h2
+                  style={{
+                    color: "var(--color-black)",
+                    paddingTop: "4rem",
+                  }}
+                >
+                  Data Stored by Where the Owner Lives
+                </h2>
+                <p>
+                  Filecoin provides a range of storage solutions for a global
+                  client.
+                </p>
+              </div>
+            </GutterContainer>
+            <div className={styles.graph}>
+              <SectionGraphByRegion allData={regionData ?? null} />
+            </div>
+          </div>
+        </div>
 
         <div
           style={{

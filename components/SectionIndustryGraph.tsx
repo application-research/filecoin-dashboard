@@ -9,10 +9,10 @@ import GutterContainer from "./GutterContainer";
 import SectionGraphByIndustry from "./SectionGraphByIndustry";
 
 export default function SectionIndustryGraph() {
-  const [allData, setAllData] = useState<{ data: AllData[] }>({ data: [] });
+  const [industryData, setIndustryData] = useState({ data: [] });
 
   useEffect(() => {
-    fetch("/api/db")
+    fetch("/api/fil-user-explorer-industry")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -21,18 +21,12 @@ export default function SectionIndustryGraph() {
       })
       .then((data) => {
         const camelCaseData = data.map((item) => formatDataToCamelCase(item));
-        setAllData(camelCaseData as any);
+        setIndustryData(camelCaseData as any);
       })
       .catch((error) => {
         console.error("Error getting data", error.message);
       });
   }, []);
-
-  let allDataFiltered;
-
-  if (Object.keys(allData).length > 0) {
-    allDataFiltered = clientRegionIndustryResolver(allData as any);
-  }
 
   return (
     <div className={styles.body}>
@@ -46,10 +40,7 @@ export default function SectionIndustryGraph() {
         <GutterContainer>
           <div>
             <div className={`${styles.headingContainer} ${styles.graphMobile}`}>
-              {allDataFiltered.length > 0 &&
-                Object.keys(allDataFiltered).length > 0 && (
-                  <SectionGraphByIndustry allData={allDataFiltered} />
-                )}
+              <SectionGraphByIndustry allData={industryData} />
             </div>
           </div>
         </GutterContainer>

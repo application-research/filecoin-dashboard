@@ -1,4 +1,7 @@
-import { groupClientsByWeekAndIndustry } from "@root/resolvers/client-industry";
+import {
+  groupClientsByIndustryWithDates,
+  groupClientsByWeekAndIndustry,
+} from "@root/resolvers/client-industry";
 import { IndustryStackedBarChart } from "./IndustryStackedBarChart";
 import { AllData } from "@root/common/types";
 import { useState } from "react";
@@ -8,13 +11,7 @@ interface SectionGraphByIndustryProps {
   allData: AllData[];
 }
 
-interface GraphByIndustryProps extends SectionGraphByIndustryProps {
-  date: string;
-}
-
-export default function SectionGraphByIndustry({
-  allData,
-}: SectionGraphByIndustryProps) {
+export default function SectionGraphByIndustry({ allData }) {
   if (!allData) return;
   const [selectedInterval, setSelectedInterval] = useState<
     "month" | "3month" | "6month" | "12month"
@@ -24,6 +21,7 @@ export default function SectionGraphByIndustry({
   const handleIntervalChange = (event) => {
     return setSelectedInterval(event.target.value);
   };
+
   const groupedClients = groupClientsByWeekAndIndustry(
     clientsArray,
     selectedInterval

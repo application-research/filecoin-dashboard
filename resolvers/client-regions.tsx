@@ -29,12 +29,31 @@ export function updateClientRegions(clients) {
   if (!Array.isArray(clients)) {
     return clients;
   }
-
   const updatedClients = clients.map((client) => {
-    const updatedRegion = updateClientRegion(client.region, client.name);
+    const updatedRegion = categorizeClientRegion(client.region);
     return { ...client, region: (updatedRegion as any).region };
   });
   return updatedClients;
+}
+
+export function categorizeClientRegion(region) {
+  if (!region || typeof region !== "string") {
+    return { region: "Uncategorized" };
+  }
+
+  const lowerCaseRegion = region.toLowerCase();
+
+  for (const [key, keywords] of Object.entries(REGIONS_KEYWORDS_MAP_FIXTURE)) {
+    if (
+      keywords.some((keyword) =>
+        lowerCaseRegion.includes(keyword.toLowerCase())
+      )
+    ) {
+      return { region: key };
+    }
+  }
+
+  return "Uncategorized";
 }
 
 export function updateClientRegion(region, address) {
@@ -75,7 +94,7 @@ export function updateClientRegion(region, address) {
   return "Uncategorized";
 }
 
-export function groupClientsByWeekAndRegion(clients, interval) {
+export function groupClientsByWeekAndRegionWithUsedDc(clients, interval) {
   const groupedData = {};
   const startDate = changeIntervalToCurrentDate(interval);
 
@@ -117,6 +136,50 @@ export function groupClientsByWeekAndRegion(clients, interval) {
 
       groupedData[dateString][regionKey] += Number(dataOutgoingInPetabytes);
     });
+  });
+
+  return Object.values(groupedData);
+}
+
+export function groupClientsByWeekAndRegion(clients, interval) {
+  const groupedData = {};
+  const startDate = changeIntervalToCurrentDate(interval);
+
+  clients?.forEach((client) => {
+    if (!client || client.length === 0) {
+      return;
+    }
+
+    const regionKey = getCategorizedRegion(client.region);
+    const week = client.week;
+    const year = client.year;
+
+    const clientReadableDate = new Date(year, 0, 1 + (week - 1) * 7);
+    if (clientReadableDate < startDate) {
+      return;
+    }
+
+    const dateString = clientReadableDate.toLocaleDateString("en-US", {
+      year: "2-digit",
+      month: "short",
+      day: "numeric",
+    });
+
+    if (!groupedData[dateString]) {
+      groupedData[dateString] = {
+        date: dateString,
+        Asia: 0,
+        Europe: 0,
+        "North America": 0,
+        Oceania: 0,
+        "South America": 0,
+        Uncategorized: 0,
+      };
+    }
+    const dataOutgoing = BigInt(client.outgoingDatacap);
+    const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
+
+    groupedData[dateString][regionKey] += Number(dataOutgoingInPetabytes);
   });
 
   return Object.values(groupedData);

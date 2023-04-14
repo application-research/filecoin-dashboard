@@ -1,4 +1,3 @@
-import { Client } from "@root/common/types";
 import {
   byteInPetabyte,
   changeIntervalToCurrentDate,
@@ -56,16 +55,19 @@ export function updateClientIndustry(industry, address) {
   return { industry: "Other" };
 }
 
-export function groupClientsByWeekAndIndustry(clients: Client[], interval) {
+export function groupClientsByWeekAndIndustryWithUsedDc(
+  clients,
+  selectedInterval
+) {
   const groupedData = {};
-  const startDate = changeIntervalToCurrentDate(interval);
+  const startDate = changeIntervalToCurrentDate(selectedInterval);
 
-  clients?.forEach((client) => {
+  clients?.usedDc.forEach((client) => {
     if (!client.usedDc || client.usedDc.length === 0) {
       return;
     }
 
-    client.usedDc.forEach((record: any) => {
+    client.forEach((record: any) => {
       const week = record.week;
       const year = record.year;
 
@@ -101,6 +103,52 @@ export function groupClientsByWeekAndIndustry(clients: Client[], interval) {
         dataOutgoingInPetabytes
       );
     });
+  });
+
+  return Object.values(groupedData);
+}
+
+export function groupClientsByWeekAndIndustry(clients, interval) {
+  const groupedData = {};
+  const startDate = changeIntervalToCurrentDate(interval);
+
+  clients?.forEach((client) => {
+    if (!client) {
+      return;
+    }
+
+    const week = client.week;
+    const year = client.year;
+
+    const clientReadableDate = new Date(year, 0, 1 + (week - 1) * 7);
+    if (clientReadableDate < startDate) {
+      return;
+    }
+
+    const dateString = clientReadableDate.toLocaleDateString("en-US", {
+      year: "2-digit",
+      month: "short",
+      day: "numeric",
+    });
+
+    if (!groupedData[dateString]) {
+      groupedData[dateString] = {
+        date: dateString,
+        Research: 0,
+        "Financial Services": 0,
+        Environment: 0,
+        Web3: 0,
+        "Information, Media & Telecommunications": 0,
+        "IT & Technology Services": 0,
+        "Life Science / Healthcare": 0,
+        Other: 0,
+      };
+    }
+
+    const dataOutgoing = BigInt(client.outgoingDatacap);
+    const dataOutgoingInPetabytes = BigInt(dataOutgoing) / byteInPetabyte;
+
+    groupedData[dateString][client.industry] += Number(dataOutgoingInPetabytes);
   });
 
   return Object.values(groupedData);
