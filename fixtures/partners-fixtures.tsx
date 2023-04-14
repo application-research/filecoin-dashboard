@@ -245,6 +245,31 @@ export const ALL_PARTNERS_FIXTURE = [
     logo: "https://user-images.githubusercontent.com/28320272/230529633-d862aa8f-cec4-4c5a-89d9-313c5d432470.png",
     link: "https://www.glif.io/",
   },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/232147981-92a18647-6f31-417f-8a6e-0257fbec17cb.png",
+    link: "",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/232148313-80aa3440-4e27-4390-9a7e-825f8ac1e7b8.png",
+    link: "",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/232148507-d84eb42d-c85c-4f4b-8555-a78907f6299f.png",
+    link: "",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/232148668-078f083a-c43c-4617-b031-a0bd7472be94.png",
+    link: "https://fbsnor.no/",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/232148942-8fdd9955-d883-4714-a536-9aa4ef5e3966.png",
+    link: "https://motowizja.pl/",
+  },
 ];
 
 export const PARTNERS_FIXTURE_OLD = [
