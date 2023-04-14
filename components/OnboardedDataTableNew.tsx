@@ -11,7 +11,11 @@ function TableHeadings() {
         <div className={styles.tableName}>Client ID and Name</div>
       </div>
       <span className={styles.col15}>
-        <div className={styles.tableName}>Address</div>
+        <div className={styles.tableName}>
+          Filecoin
+          <br />
+          Address
+        </div>
       </span>
       <span className={styles.col12}>
         <div className={styles.tableName}>
@@ -29,11 +33,11 @@ function TableHeadings() {
       <span className={styles.col30}>
         <div className={styles.tableName}>Industry</div>
       </span>
-      <span className={styles.col12}>
+      {/* <span className={styles.col12}>
         <div className={styles.tableName}>
           Verified <br /> Deals
         </div>
-      </span>
+      </span> */}
       <span className={styles.col10}>
         <div className={styles.tableName}>
           Links <br />
@@ -87,9 +91,9 @@ export default function OnboardedDataTableNew({ clients }) {
             <span className={`${styles.col30} ${styles.industries}`}>
               {each.industry ?? "Other"}
             </span>
-            <span className={`${styles.col12} ${styles.deals}`}>
+            {/* <span className={`${styles.col12} ${styles.deals}`}>
               {each.dealCount ?? "0"}
-            </span>
+            </span> */}
             <span className={`${styles.col10} ${styles.deals}`}>
               <div className={`${styles.left} ${styles.githubLink}`}>
                 <a href={each.github} target="_blank">
