@@ -1,4 +1,8 @@
-import { groupClientsByWeekAndIndustry } from "@root/resolvers/client-industry";
+import {
+  groupClientsByWeekAndIndustry,
+  updateClientIndustries,
+  updateClientIndustry,
+} from "@root/resolvers/client-industry";
 import { IndustryStackedBarChart } from "./IndustryStackedBarChart";
 import { AllData } from "@root/common/types";
 import { useState } from "react";
@@ -11,12 +15,13 @@ export default function SectionGraphByIndustry({ allData }) {
   >("6month");
 
   const clientsArray = Array.from(allData);
+  const updatedKnownClientsIndustries = updateClientIndustries(clientsArray);
   const handleIntervalChange = (event) => {
     return setSelectedInterval(event.target.value);
   };
 
   const groupedClients = groupClientsByWeekAndIndustry(
-    clientsArray,
+    updatedKnownClientsIndustries,
     selectedInterval
   );
 
