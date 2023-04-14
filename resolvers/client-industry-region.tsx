@@ -11,8 +11,8 @@ export default function ClientRegionIndustryResolver(clients: AllData[]) {
       client?.address
     );
     const clientsByIndustry = updateClientIndustryWithUsedDc(
-      client.industry,
-      client.address
+      client?.industry,
+      client?.address
     );
     client.industry = clientsByIndustry.industry;
     client.region = (clientsByRegions as any).region;

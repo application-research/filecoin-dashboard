@@ -10,7 +10,10 @@ function TableHeadings() {
         <div className={styles.tableName}>Client ID and Name</div>
       </div>
       <span className={styles.col18}>
-        <div className={styles.tableName}>Address</div>
+        <div className={styles.tableName}>
+          Filecoin <br />
+          Address
+        </div>
       </span>
       <span className={styles.col18}>
         <div className={styles.tableName}>DataCap Allocated</div>

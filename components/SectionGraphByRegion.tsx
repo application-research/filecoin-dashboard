@@ -1,6 +1,5 @@
 import styles from "@root/components/SectionGraphByRegion.module.scss";
 
-import { AllData } from "@root/common/types";
 import { RegionStackedBarChart } from "./RegionStackedBarChart";
 import {
   groupClientsByWeekAndRegion,
