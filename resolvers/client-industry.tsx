@@ -8,7 +8,7 @@ import {
   INDUSTRY_KEYWORDS_MAP_FIXTURE,
 } from "@root/fixtures/industry-fixtures";
 
-export function updateClientIndustry(industry, address) {
+export function updateClientIndustryWithUsedDc(industry, address) {
   if (!industry || typeof industry !== "string") {
     if (address) {
       const formattedAddressId = formatKeywordForComparison(address);
@@ -152,4 +152,44 @@ export function groupClientsByWeekAndIndustry(clients, interval) {
   });
 
   return Object.values(groupedData);
+}
+
+export function updateClientIndustries(clients) {
+  if (!Array.isArray(clients)) {
+    return clients;
+  }
+  const updatedClients = clients.map((client) => {
+    const updatedIndustry = updateClientIndustry(client.industry);
+    return { ...client, industry: (updatedIndustry as any).industry };
+  });
+  return updatedClients;
+}
+
+export function updateClientIndustry(industry) {
+  if (!industry || typeof industry !== "string") {
+    return { industry: "Other" };
+  }
+
+  const formattedInputIndustry = formatKeywordForComparison(industry);
+
+  for (const [category, keywords] of Object.entries(
+    INDUSTRY_KEYWORDS_MAP_FIXTURE
+  )) {
+    const formattedCategory = formatKeywordForComparison(category);
+
+    if (formattedInputIndustry === formattedCategory) {
+      return { industry: category };
+    }
+
+    // Check if any keyword is present in the formattedInputIndustry
+    const foundKeyword = keywords.find((keyword) =>
+      formattedInputIndustry.includes(formatKeywordForComparison(keyword))
+    );
+
+    if (foundKeyword) {
+      return { industry: category };
+    }
+  }
+
+  return { industry: "Other" };
 }
