@@ -62,6 +62,21 @@ export const PARTNERS_FIXTURE = [
     logo: "https://user-images.githubusercontent.com/28320272/230521742-04349f72-1b6b-4111-9fe5-658a8baa2711.png",
     link: "https://chainsafe.io/",
   },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/232148507-d84eb42d-c85c-4f4b-8555-a78907f6299f.png",
+    link: "",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/232148668-078f083a-c43c-4617-b031-a0bd7472be94.png",
+    link: "https://fbsnor.no/",
+  },
+  {
+    type: "image",
+    logo: "https://user-images.githubusercontent.com/28320272/232148942-8fdd9955-d883-4714-a536-9aa4ef5e3966.png",
+    link: "https://motowizja.pl/",
+  },
 ];
 
 export const PARTNERS_TWO_FIXTURE = [

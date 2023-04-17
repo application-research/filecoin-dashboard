@@ -36,11 +36,13 @@ export default function OverviewDataGrowthNew({
           </p>
           <div className={styles.container}>
             <div>
-              <h4 className={styles.data}>{totalInitialAllowance}</h4>
+              <h4 className={styles.data}>745.4 PiB</h4>
+
+              {/* <h4 className={styles.data}>{totalInitialAllowance}</h4> */}
               <p className={styles.dataTitle}>Data onboarded</p>
             </div>
             <div>
-              <h4 className={styles.data}>{totalClientCount}</h4>
+              <h4 className={styles.data}>1334</h4>
               <p className={styles.dataTitle}>Clients served</p>
             </div>
           </div>

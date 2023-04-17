@@ -304,3 +304,17 @@
     }
   }
 }
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.logoContainer > .logoItem {
+  width: 16.6666667%;
+  padding: 1rem;
+}
