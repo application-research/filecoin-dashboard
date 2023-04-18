@@ -73,7 +73,13 @@ export async function fetchClientsPerPage(itemsPerPage, currentPage) {
 
   return { count, data };
 }
+export async function fetchStatistics() {
+  const res = await fetch(`https://api.datacapstats.io/api/getSimplifiedStats`);
 
+  const clients = await res.json();
+  console.log("clients", clients);
+  return clients;
+}
 export async function fetchTotalClients() {
   const res = await fetch(
     `https://api.datacapstats.io/api/getVerifiedClients?limit=none`

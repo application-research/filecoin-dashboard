@@ -1,19 +1,10 @@
 import styles from "@components/OverviewDataGrowthNew.module.scss";
-import { bytesToSize } from "@root/common/utilities";
 import GutterContainer from "./GutterContainer";
 
 export default function OverviewDataGrowthNew({
-  totalClients,
   totalClientCount,
+  totalDataOnboarded,
 }) {
-  const totalDataOnboarded = totalClients.reduce((acc, client) => {
-    const initialAllowance = BigInt(client.initialAllowance);
-    const allowance = BigInt(client.allowance);
-    return acc + (initialAllowance - allowance);
-  }, BigInt(0));
-
-  const totalInitialAllowance = bytesToSize(totalDataOnboarded);
-
   return (
     <div className={styles.body}>
       <video className={styles.video} autoPlay muted loop>
@@ -36,7 +27,9 @@ export default function OverviewDataGrowthNew({
           </p>
           <div className={styles.container}>
             <div>
-              <h4 className={styles.data}>{totalInitialAllowance}</h4>
+              <h4 className={styles.data}>745.4 PiB</h4>
+
+              <h4 className={styles.data}>{totalDataOnboarded}</h4>
               <p className={styles.dataTitle}>Data onboarded</p>
             </div>
             <div>

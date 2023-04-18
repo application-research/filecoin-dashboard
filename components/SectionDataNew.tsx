@@ -1,10 +1,10 @@
 "use client";
 
 import styles from "@components/SectionDataNew.module.scss";
-import { formatDataToCamelCase } from "@root/common/utilities";
+import { byteInPetabyte, formatDataToCamelCase } from "@root/common/utilities";
 import { CLIENTS_WITH_DEALS_FIXTURE } from "@root/fixtures/clients-with-deals";
 import { PARTNERS_FIXTURE } from "@root/fixtures/partners-fixtures";
-import { fetchClientsPerPage, fetchTotalClients } from "@root/pages/api";
+import { fetchStatistics } from "@root/pages/api";
 import totalClientsWithDealsResolver from "@root/resolvers/total-clients";
 import { useEffect, useState } from "react";
 import GutterContainer from "./GutterContainer";
@@ -17,6 +17,7 @@ import SectionGraphByRegion from "./SectionGraphByRegion";
 export default function SectionDataNew() {
   const [error, setError] = useState(null);
   const [totalClients, setTotalClients] = useState([]);
+  const [totalDataOnboarded, setTotalDataOnboarded] = useState(0);
   const [totalClientCount, setTotalClientCount] = useState(0);
   const [industryData, setIndustryData] = useState({ data: [] });
   const [regionData, setRegionData] = useState({ data: [] });
@@ -30,12 +31,14 @@ export default function SectionDataNew() {
   useEffect(() => {
     async function fetchPaginatedAndTotalData() {
       try {
-        const { count } = await fetchClientsPerPage(itemsPerPage, currentPage);
+        const clients = await fetchStatistics();
 
-        const totalClientsFetched = await fetchTotalClients();
+        const totalClients = clients.clientCount;
 
-        setTotalClientCount(count);
-        setTotalClients(totalClientsFetched.data);
+        const dataOnboarded = BigInt(clients.outgoingDatacap) / byteInPetabyte;
+
+        setTotalClientCount(totalClients);
+        setTotalDataOnboarded(dataOnboarded as any);
       } catch (error) {
         setError(error);
       }
@@ -81,8 +84,8 @@ export default function SectionDataNew() {
   return (
     <div className={styles.body}>
       <OverviewDataGrowthNew
-        totalClientCount={totalClientsWithDeals}
-        totalClients={totalClients}
+        totalClientCount={totalClientCount}
+        totalDataOnboarded={totalDataOnboarded}
       />
 
       <div style={{ paddingBottom: "var(--p-large-xxl)" }}>

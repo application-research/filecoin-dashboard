@@ -106,10 +106,11 @@ export default function PartnersNew({ partners }) {
             <h3 className={` ${styles.headingTitle}`}>Featured Clients</h3>
           </div>
         </GutterContainer>
-        <Marquee marqueeColor="transparent" direction="right">
+
+        <div className={styles.logoContainer}>
           {partners.map((partner, index) => {
             return (
-              <div key={index}>
+              <div key={index} className={styles.logoItem}>
                 <a
                   href={partner.link}
                   style={{ cursor: "pointer" }}
@@ -122,9 +123,8 @@ export default function PartnersNew({ partners }) {
               </div>
             );
           })}
-        </Marquee>
-        <Marquee marqueeColor="transparent" direction="left">
-          {partnersRowTwo.map((partner, index) => {
+
+          {/* {partnersRowTwo.map((partner, index) => {
             return (
               <div key={index}>
                 <a
@@ -138,8 +138,8 @@ export default function PartnersNew({ partners }) {
                 </a>
               </div>
             );
-          })}
-        </Marquee>
+          })} */}
+        </div>
         <GutterContainer>
           <div className={styles.center} style={{ paddingBottom: "6rem" }}>
             <button
