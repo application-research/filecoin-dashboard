@@ -6,14 +6,6 @@ export default function OverviewDataGrowthNew({
   totalClients,
   totalClientCount,
 }) {
-  const totalDataOnboarded = totalClients.reduce((acc, client) => {
-    const initialAllowance = BigInt(client.initialAllowance);
-    const allowance = BigInt(client.allowance);
-    return acc + (initialAllowance - allowance);
-  }, BigInt(0));
-
-  const totalInitialAllowance = bytesToSize(totalDataOnboarded);
-
   return (
     <div className={styles.body}>
       <video className={styles.video} autoPlay muted loop>
@@ -36,7 +28,7 @@ export default function OverviewDataGrowthNew({
           </p>
           <div className={styles.container}>
             <div>
-              <h4 className={styles.data}>{totalInitialAllowance}</h4>
+              <h4 className={styles.data}>775 PiB</h4>
               <p className={styles.dataTitle}>Data onboarded</p>
             </div>
             <div>
