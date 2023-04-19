@@ -51,12 +51,14 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
         </YAxis>
         <Tooltip />
 
-        {isMobile && (
+        {isMobile ? (
           <Legend
             className={styles.legendMobile}
             layout="horizontal"
             wrapperStyle={{ right: -20 }}
           />
+        ) : (
+          <></>
         )}
 
         {!isMobile && (

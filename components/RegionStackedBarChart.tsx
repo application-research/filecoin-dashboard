@@ -1,3 +1,6 @@
+import styles from "@components/RegionStakedBarChart.module.scss";
+import { BreakpointEnum, useBreakpoint } from "@root/common/use-breakpoint";
+
 import * as React from "react";
 
 import {
@@ -17,6 +20,9 @@ export interface BarGraphProps {
 }
 
 export function RegionStackedBarChart({ graphData }: BarGraphProps) {
+  const breakpoint = useBreakpoint();
+  const isMobile = breakpoint === BreakpointEnum.SM;
+
   return (
     <ResponsiveContainer width="100%" height={500}>
       <BarChart
@@ -47,13 +53,17 @@ export function RegionStackedBarChart({ graphData }: BarGraphProps) {
         </YAxis>
         <Tooltip />
 
-        <p>test</p>
-        <Legend
-          layout="vertical"
-          align="right"
-          verticalAlign="middle"
-          wrapperStyle={{ right: 92 }}
-        />
+        {isMobile ? <Legend className={styles.legendMobile} /> : <></>}
+
+        {!isMobile && (
+          <Legend
+            className={styles.legendDesktop}
+            layout="vertical"
+            align="right"
+            verticalAlign="middle"
+            wrapperStyle={{ right: 90 }}
+          />
+        )}
 
         <Bar dataKey="North America" stackId="outgoing" fill="#004477" />
         <Bar dataKey="South America" stackId="outgoing" fill="#006341" />
