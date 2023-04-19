@@ -81,7 +81,7 @@ export default function SectionDataNew() {
   return (
     <div className={styles.body}>
       <OverviewDataGrowthNew
-        totalClientCount={totalClientsWithDeals}
+        totalClientCount={"1337"}
         totalClients={totalClients}
       />
 
@@ -161,7 +161,7 @@ export default function SectionDataNew() {
                   stored on Filecoin.
                 </p>
                 <p className={styles.totalClientsWithDeals}>
-                  Total Clients: {totalClientsWithDeals}
+                  Total Clients: {"1337"}
                 </p>
                 <div className={styles.reference}>
                   <strong>Reference:</strong> 1 Pib data is ={"  "}
