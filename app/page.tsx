@@ -6,12 +6,12 @@ import NavbarNew from "@root/components/NavbarNew";
 import PlausibleAnalyticsScript from "@root/components/PlausibleAnalyticsScript";
 import Resources from "@root/components/Resources";
 import SectionDataNew from "@root/components/SectionDataNew";
-import SectionData from "@root/components/SectionData";
 
 export default async function Page() {
   return (
     <DefaultLayout>
       <PlausibleAnalyticsScript />
+
       <NavbarNew />
       <div style={{ position: "relative" }}>
         <SectionDataNew />
