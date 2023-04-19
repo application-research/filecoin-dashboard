@@ -1,3 +1,6 @@
+import styles from "@components/IndustryStakedBarChart.module.scss";
+import { BreakpointEnum, useBreakpoint } from "@root/common/use-breakpoint";
+
 import {
   Bar,
   BarChart,
@@ -15,6 +18,9 @@ export interface BarGraphProps {
 }
 
 export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
+  const breakpoint = useBreakpoint();
+  const isMobile = breakpoint === BreakpointEnum.SM;
+
   return (
     <ResponsiveContainer height={500}>
       <BarChart
@@ -44,12 +50,25 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
           />
         </YAxis>
         <Tooltip />
-        <Legend
-          layout="vertical"
-          align="right"
-          verticalAlign="middle"
-          wrapperStyle={{ right: -20 }}
-        />
+
+        {isMobile && (
+          <Legend
+            className={styles.legendMobile}
+            layout="horizontal"
+            wrapperStyle={{ right: -20 }}
+          />
+        )}
+
+        {!isMobile && (
+          <Legend
+            className={styles.legendDesktop}
+            layout="vertical"
+            align="right"
+            verticalAlign="middle"
+            wrapperStyle={{ right: -20 }}
+          />
+        )}
+
         <Bar dataKey="IT & Technology Services" stackId="a" fill="#004477" />
         <Bar
           dataKey="Information, Media & Telecom."

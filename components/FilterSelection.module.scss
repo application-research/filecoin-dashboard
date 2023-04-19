@@ -3,6 +3,10 @@
   align-items: center;
   justify-content: flex-end;
 
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+
   .filterBarOption {
     font-family: "Poppins";
     font-size: var(--font-size-small);
@@ -10,5 +14,9 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     min-width: 220px;
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
   }
 }
