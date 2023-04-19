@@ -13,10 +13,11 @@ export const INDUSTRY_KEYWORDS_MAP_FIXTURE = {
     "Finance",
     "Finance Technology",
   ],
-  "Information, Media & Telecommunications": [
+  "Information, Media & Telecom.": [
     "Media",
     "Communications",
     "Telecommunications",
+    "Telecom",
     "Information",
     "Information, Media & Telecommunications",
   ],

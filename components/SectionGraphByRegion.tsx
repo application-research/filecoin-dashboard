@@ -56,12 +56,13 @@ export default function SectionGraphByRegion({ allData }) {
           gap: "1rem",
         }}
       >
-        Filter
-        <FilterSelection
-          options={options}
-          value={selectedInterval}
-          onChange={handleIntervalChange}
-        />
+        <div style={{ width: "100%" }}>
+          <FilterSelection
+            options={options}
+            value={selectedInterval}
+            onChange={handleIntervalChange}
+          />
+        </div>
       </div>
       <div className={styles.chartContainer}>
         <RegionStackedBarChart graphData={sortedData} />
