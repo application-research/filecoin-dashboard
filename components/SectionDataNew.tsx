@@ -25,7 +25,6 @@ export default function SectionDataNew() {
   const clientsTableData = CLIENTS_WITH_DEALS_FIXTURE;
   const itemsPerPage = 15;
   let currentPage = 1;
-  const totalClientsWithDeals = totalClientsWithDealsResolver(totalClients);
 
   useEffect(() => {
     async function fetchPaginatedAndTotalData() {
