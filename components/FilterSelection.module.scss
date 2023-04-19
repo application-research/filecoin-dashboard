@@ -4,7 +4,10 @@
   justify-content: flex-end;
 
   @media (max-width: 800px) {
-    width: 100%;
+    width: 95%;
+    margin: 0 auto 0 auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .filterBarOption {
@@ -16,7 +19,7 @@
     min-width: 220px;
 
     @media (max-width: 800px) {
-      width: 100%;
+      width: 99%;
     }
   }
 }
