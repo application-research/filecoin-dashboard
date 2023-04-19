@@ -57,7 +57,6 @@ export default function SectionGraphByIndustry({ allData }) {
           gap: "1rem",
         }}
       >
-        Filter
         <FilterSelection
           options={options}
           value={selectedInterval}
