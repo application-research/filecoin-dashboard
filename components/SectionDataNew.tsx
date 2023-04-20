@@ -93,89 +93,87 @@ export default function SectionDataNew() {
           display: "grid",
           rowGap: "var(--p-large-xxl)",
           background: "white",
+          paddingBottom: "6rem",
+          overflow: "hidden",
         }}
       >
+        <div className={`${styles.headingContainer} ${styles.graphMobile}`}>
+          <GutterContainer>
+            <h2
+              style={{
+                color: "var(--color-black)",
+                paddingBottom: "1rem",
+              }}
+            >
+              Data Stored by Industry
+            </h2>
+            <p>
+              Leading industries choose Filecoin to protect their most important
+              data.
+            </p>
+          </GutterContainer>
+          <div className={styles.graph} style={{ overflow: "hidden" }}>
+            <SectionGraphByIndustry allData={industryData ?? null} />
+          </div>
+        </div>
+
         <div>
-          <div className={`${styles.headingContainer} ${styles.graphMobile}`}>
-            <GutterContainer>
+          <GutterContainer>
+            <div className={styles.headingContainer}>
               <h2
                 style={{
                   color: "var(--color-black)",
-                  paddingBottom: "1rem",
+                  paddingTop: "4rem",
                 }}
               >
-                Data Stored by Industry
+                Data Stored by Where the Owner Lives
               </h2>
               <p>
-                Leading industries choose Filecoin to protect their most
-                important data.
+                Filecoin provides a range of storage solutions for a global
+                client.
               </p>
-            </GutterContainer>
-            <div className={styles.graph}>
-              <SectionGraphByIndustry allData={industryData ?? null} />
             </div>
-          </div>
-
-          <div>
-            <GutterContainer>
-              <div className={styles.headingContainer}>
-                <h2
-                  style={{
-                    color: "var(--color-black)",
-                    paddingTop: "4rem",
-                  }}
-                >
-                  Data Stored by Where the Owner Lives
-                </h2>
-                <p>
-                  Filecoin provides a range of storage solutions for a global
-                  client.
-                </p>
-              </div>
-            </GutterContainer>
-            <div className={styles.graph}>
-              <SectionGraphByRegion allData={regionData ?? null} />
-            </div>
+          </GutterContainer>
+          <div className={styles.graph} style={{ overflow: "hidden" }}>
+            <SectionGraphByRegion allData={regionData ?? null} />
           </div>
         </div>
+      </div>
+      <div
+        className={styles.backgroundTable}
+        style={{
+          paddingBottom: "6rem",
+          paddingTop: "6rem",
+          background: "var(--color-light-blue)",
+        }}
+      >
+        <GutterContainer>
+          <div className={styles.headingContainer}>
+            <div className={styles.backgroundTableTitle}>
+              <h2 style={{ color: "var(--color-black)" }}>
+                Data Onboarding Details
+              </h2>
+            </div>
 
-        <div
-          style={{
-            paddingBottom: "6rem",
-            paddingTop: "6rem",
-            background: "var(--color-light-blue)",
-          }}
-        >
-          <div className={styles.backgroundTable}>
-            <GutterContainer>
-              <div className={styles.headingContainer}>
-                <div className={styles.backgroundTableTitle}>
-                  <h2 style={{ color: "var(--color-black)" }}>
-                    Data Onboarding Details
-                  </h2>
-                </div>
-
-                <p style={{ paddingBottom: "2rem" }}>
-                  Get additional details about the client data that’s being
-                  stored on Filecoin.
-                </p>
-                <p className={styles.totalClientsWithDeals}>
-                  Total Clients: {"1337"}
-                </p>
-                <div className={styles.reference}>
-                  <strong>Reference:</strong> 1 Pib data is ={"  "}
-                  <img
-                    src="https://user-images.githubusercontent.com/28320272/231327138-355178af-c631-4954-92a2-c0bbfd606f40.png"
-                    className={styles.referenceIcon}
-                  />
-                  {"  "}1 million high resolution movies.
-                </div>
-              </div>
-            </GutterContainer>
-
-            <OnboardedDataTableNew clients={clientsTableData} />
+            <p style={{ paddingBottom: "2rem" }}>
+              Get additional details about the client data that’s being stored
+              on Filecoin.
+            </p>
+            <p className={styles.totalClientsWithDeals}>
+              Total Clients: {"1337"}
+            </p>
+            <div className={styles.reference}>
+              <strong>Reference:</strong> 1 Pib data is ={"  "}
+              <img
+                src="https://user-images.githubusercontent.com/28320272/231327138-355178af-c631-4954-92a2-c0bbfd606f40.png"
+                className={styles.referenceIcon}
+              />
+              {"  "}1 million high resolution movies.
+            </div>
           </div>
-        </div>
+        </GutterContainer>
+
+        <OnboardedDataTableNew clients={clientsTableData} />
       </div>
     </div>
   );

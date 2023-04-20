@@ -71,6 +71,10 @@
   flex-wrap: wrap;
   padding: 1rem 16px 1rem 16px;
   min-height: 54px;
+
+  @media (max-width: 1050px) {
+    display: none;
+  }
 }
 
 .col12 {
@@ -83,6 +87,10 @@
   flex-wrap: wrap;
   padding: 1rem 16px 1rem 16px;
   min-height: 54px;
+
+  @media (max-width: 1050px) {
+    width: 15%;
+  }
 }
 
 .col15 {
@@ -192,6 +200,12 @@
 }
 
 .industries {
+  @media (max-width: 1050px) {
+    display: none;
+  }
+}
+
+.hideMobile {
   @media (max-width: 1050px) {
     display: none;
   }

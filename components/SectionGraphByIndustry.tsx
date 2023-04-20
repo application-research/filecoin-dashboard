@@ -7,12 +7,16 @@ import { IndustryStackedBarChart } from "./IndustryStackedBarChart";
 import { AllData } from "@root/common/types";
 import { useState } from "react";
 import FilterSelection from "./FilterSelection";
+import { BreakpointEnum, useBreakpoint } from "@root/common/use-breakpoint";
 
 export default function SectionGraphByIndustry({ allData }) {
   if (!allData) return;
   const [selectedInterval, setSelectedInterval] = useState<
     "month" | "3month" | "6month" | "12month"
   >("6month");
+  const breakpoint = useBreakpoint();
+  const isMobile =
+    breakpoint === BreakpointEnum.XS || breakpoint === BreakpointEnum.SM;
 
   const clientsArray = Array.from(allData);
   const updatedKnownClientsIndustries = updateClientIndustries(clientsArray);
@@ -63,7 +67,20 @@ export default function SectionGraphByIndustry({ allData }) {
           onChange={handleIntervalChange}
         />
       </div>
-      <IndustryStackedBarChart graphData={sortedData} />
+      {isMobile && (
+        <IndustryStackedBarChart
+          graphData={sortedData}
+          showDesktopLedger={false}
+          showMobileLedger={true}
+        />
+      )}
+      {!isMobile && (
+        <IndustryStackedBarChart
+          graphData={sortedData}
+          showDesktopLedger={true}
+          showMobileLedger={false}
+        />
+      )}{" "}
     </>
   );
 }

@@ -15,12 +15,15 @@ import {
 
 export interface BarGraphProps {
   graphData: any;
+  showDesktopLedger: boolean;
+  showMobileLedger: boolean;
 }
 
-export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
-  const breakpoint = useBreakpoint();
-  const isMobile = breakpoint === BreakpointEnum.SM;
-
+export function IndustryStackedBarChart({
+  graphData,
+  showDesktopLedger,
+  showMobileLedger,
+}: BarGraphProps) {
   return (
     <ResponsiveContainer height={500}>
       <BarChart
@@ -29,8 +32,8 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
         data={graphData}
         margin={{
           top: 4,
-          right: 0,
-          left: 2,
+          right: showMobileLedger ? 10 : 0,
+          left: showMobileLedger ? -20 : 2,
           bottom: 0,
         }}
       >
@@ -43,7 +46,7 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
         <XAxis dataKey="date" stroke="var(--color-black300)" />
         <YAxis stroke="var(--color-black300)">
           <Label
-            value="PiB Onboarded"
+            value={showDesktopLedger ? "PiB Onboarded" : ""}
             angle={-90}
             position="insideLeft"
             style={{ textAnchor: "middle" }}
@@ -51,7 +54,7 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
         </YAxis>
         <Tooltip />
 
-        {isMobile ? (
+        {showMobileLedger ? (
           <Legend
             className={styles.legendMobile}
             layout="horizontal"
@@ -61,7 +64,7 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
           <></>
         )}
 
-        {!isMobile && (
+        {showDesktopLedger ? (
           <Legend
             className={styles.legendDesktop}
             layout="vertical"
@@ -69,6 +72,8 @@ export function IndustryStackedBarChart({ graphData }: BarGraphProps) {
             verticalAlign="middle"
             wrapperStyle={{ right: -20 }}
           />
+        ) : (
+          <></>
         )}
 
         <Bar dataKey="IT & Technology Services" stackId="a" fill="#004477" />
