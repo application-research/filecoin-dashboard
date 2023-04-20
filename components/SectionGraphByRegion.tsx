@@ -7,11 +7,15 @@ import {
 } from "@root/resolvers/client-regions";
 import { useState } from "react";
 import FilterSelection from "./FilterSelection";
+import { BreakpointEnum, useBreakpoint } from "@root/common/use-breakpoint";
 
 export default function SectionGraphByRegion({ allData }) {
   const [selectedInterval, setSelectedInterval] = useState<
     "month" | "3month" | "6month" | "12month"
   >("6month");
+  const breakpoint = useBreakpoint();
+  const isMobile =
+    breakpoint === BreakpointEnum.XS || breakpoint === BreakpointEnum.SM;
 
   const clientsArray = Array.from(allData);
   const updatedKnownClientsRegions = updateClientRegions(clientsArray);
@@ -65,7 +69,21 @@ export default function SectionGraphByRegion({ allData }) {
         </div>
       </div>
       <div className={styles.chartContainer}>
-        <RegionStackedBarChart graphData={sortedData} />
+        {isMobile && (
+          <RegionStackedBarChart
+            graphData={sortedData}
+            showDesktopLedger={false}
+            showMobileLedger={true}
+          />
+        )}
+
+        {!isMobile && (
+          <RegionStackedBarChart
+            graphData={sortedData}
+            showDesktopLedger={true}
+            showMobileLedger={false}
+          />
+        )}
       </div>
     </div>
   );

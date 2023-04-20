@@ -17,20 +17,23 @@ import {
 
 export interface BarGraphProps {
   graphData: any;
+  showMobileLedger: boolean;
+  showDesktopLedger: boolean;
 }
 
-export function RegionStackedBarChart({ graphData }: BarGraphProps) {
-  const breakpoint = useBreakpoint();
-  const isMobile = breakpoint === BreakpointEnum.SM;
-
+export function RegionStackedBarChart({
+  graphData,
+  showMobileLedger,
+  showDesktopLedger,
+}: BarGraphProps) {
   return (
     <ResponsiveContainer width="100%" height={500}>
       <BarChart
         data={graphData}
         margin={{
-          top: 4,
-          right: 112,
-          left: 2,
+          top: showMobileLedger ? 30 : 4,
+          right: showMobileLedger ? 10 : 112,
+          left: showMobileLedger ? -20 : 2,
           bottom: 0,
         }}
       >
@@ -44,7 +47,7 @@ export function RegionStackedBarChart({ graphData }: BarGraphProps) {
         <XAxis dataKey="date" stroke="var(--color-black300)" />
         <YAxis stroke="var(--color-black300)">
           <Label
-            value="PiB Onboarded"
+            value={showDesktopLedger ? "PiB Onboarded" : ""}
             fontFamily="Poppins"
             angle={-90}
             position="insideLeft"
@@ -53,9 +56,9 @@ export function RegionStackedBarChart({ graphData }: BarGraphProps) {
         </YAxis>
         <Tooltip />
 
-        {isMobile ? <Legend className={styles.legendMobile} /> : <></>}
+        {showMobileLedger ? <Legend className={styles.legendMobile} /> : <></>}
 
-        {!isMobile && (
+        {showDesktopLedger ? (
           <Legend
             className={styles.legendDesktop}
             layout="vertical"
@@ -63,6 +66,8 @@ export function RegionStackedBarChart({ graphData }: BarGraphProps) {
             verticalAlign="middle"
             wrapperStyle={{ right: 90 }}
           />
+        ) : (
+          <></>
         )}
 
         <Bar dataKey="North America" stackId="outgoing" fill="#004477" />

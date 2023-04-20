@@ -17,7 +17,7 @@ function TableHeadings() {
           Address
         </div>
       </span>
-      <span className={styles.col12}>
+      <span className={`${styles.col12}`}>
         <div className={styles.tableName}>
           DataCap
           <br />
@@ -30,14 +30,9 @@ function TableHeadings() {
           Available
         </div>
       </span>
-      <span className={styles.col30}>
+      <span className={`${styles.col30} ${styles.hideMobile}`}>
         <div className={styles.tableName}>Industry</div>
       </span>
-      {/* <span className={styles.col12}>
-        <div className={styles.tableName}>
-          Verified <br /> Deals
-        </div>
-      </span> */}
       <span className={styles.col10}>
         <div className={styles.tableName}>
           Links <br />
@@ -91,9 +86,6 @@ export default function OnboardedDataTableNew({ clients }) {
             <span className={`${styles.col30} ${styles.industries}`}>
               {each.industry ?? "Other"}
             </span>
-            {/* <span className={`${styles.col12} ${styles.deals}`}>
-              {each.dealCount ?? "0"}
-            </span> */}
             <span className={`${styles.col10} ${styles.deals}`}>
               <div className={`${styles.left} ${styles.githubLink}`}>
                 <a href={each.github} target="_blank">
