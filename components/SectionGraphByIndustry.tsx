@@ -8,6 +8,7 @@ import { AllData } from "@root/common/types";
 import { useState } from "react";
 import FilterSelection from "./FilterSelection";
 import { BreakpointEnum, useBreakpoint } from "@root/common/use-breakpoint";
+import { IndustryChartTimeFilter } from "./IndustryChartTimeFilter";
 
 export default function SectionGraphByIndustry({ allData }) {
   if (!allData) return;
@@ -20,8 +21,8 @@ export default function SectionGraphByIndustry({ allData }) {
 
   const clientsArray = Array.from(allData);
   const updatedKnownClientsIndustries = updateClientIndustries(clientsArray);
-  const handleIntervalChange = (event) => {
-    return setSelectedInterval(event.target.value);
+  const handleIntervalChange = (value) => {
+    setSelectedInterval(value);
   };
 
   const groupedClients = groupClientsByWeekAndIndustry(
@@ -37,15 +38,15 @@ export default function SectionGraphByIndustry({ allData }) {
 
   const options = [
     {
-      text: "last month",
+      text: "30D",
       value: "month",
     },
     {
-      text: "3 months",
+      text: "90D",
       value: "3month",
     },
     {
-      text: "6 months",
+      text: "180D",
       value: "6month",
     },
   ];
@@ -67,7 +68,12 @@ export default function SectionGraphByIndustry({ allData }) {
           onChange={handleIntervalChange}
         />
       </div>
-      {isMobile && (
+      <IndustryChartTimeFilter
+        graphData={sortedData}
+        showDesktopLedger={false}
+        showMobileLedger={true}
+      />
+      {/* {isMobile && (
         <IndustryStackedBarChart
           graphData={sortedData}
           showDesktopLedger={false}
@@ -80,7 +86,7 @@ export default function SectionGraphByIndustry({ allData }) {
           showDesktopLedger={true}
           showMobileLedger={false}
         />
-      )}{" "}
+      )}{" "} */}
     </>
   );
 }
