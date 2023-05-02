@@ -1,6 +1,6 @@
 import * as React from "react";
 import ReactEcharts from "echarts-for-react";
-import echarts from "echarts";
+import { ResponsiveContainer } from "recharts";
 
 export interface BarGraphProps {
   graphData: any;
@@ -19,9 +19,9 @@ export function IndustryChartTimeFilter({
     tooltip: {},
     legend: {
       show: true,
-      orient: "vertical",
-      right: -20,
-      top: 150,
+      orient: showMobileLedger ? "horizontal" : "vertical",
+      right: showMobileLedger ? 0 : 20,
+      top: showMobileLedger ? 0 : 150,
       bottom: 0,
       data: [
         "IT & Technology Services",
@@ -33,6 +33,10 @@ export function IndustryChartTimeFilter({
         "Financial Services",
         "Other",
       ],
+    },
+    grid: {
+      top: 10,
+      right: 230,
     },
     xAxis: {
       type: "category",
@@ -126,15 +130,16 @@ export function IndustryChartTimeFilter({
   };
 
   return (
-    <ReactEcharts
-      option={option}
-      echarts={echarts}
-      style={{
-        height: "500px",
-        width: "100%",
-        marginLeft: "-6rem",
-        marginRight: "0.5rem",
-      }}
-    />
+    <ResponsiveContainer>
+      <ReactEcharts
+        option={option}
+        style={{
+          height: "500px",
+          width: "110%",
+          marginLeft: showMobileLedger ? "0rem" : "-7rem",
+          marginRight: showMobileLedger ? "0rem" : "0.5rem",
+        }}
+      />
+    </ResponsiveContainer>
   );
 }

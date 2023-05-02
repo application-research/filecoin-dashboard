@@ -68,25 +68,20 @@ export default function SectionGraphByIndustry({ allData }) {
           onChange={handleIntervalChange}
         />
       </div>
-      <IndustryChartTimeFilter
-        graphData={sortedData}
-        showDesktopLedger={false}
-        showMobileLedger={true}
-      />
-      {/* {isMobile && (
-        <IndustryStackedBarChart
+      {isMobile && (
+        <IndustryChartTimeFilter
           graphData={sortedData}
           showDesktopLedger={false}
           showMobileLedger={true}
         />
       )}
       {!isMobile && (
-        <IndustryStackedBarChart
+        <IndustryChartTimeFilter
           graphData={sortedData}
           showDesktopLedger={true}
           showMobileLedger={false}
         />
-      )}{" "} */}
+      )}
     </>
   );
 }

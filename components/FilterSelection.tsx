@@ -13,7 +13,6 @@ export default function FilterSelection({ value, onChange, options }) {
                 : styles.filterButton
             }
             key={index}
-            // style={{ background: option.value === value ? styles : "gray" }}
           >
             {option.text}
           </button>

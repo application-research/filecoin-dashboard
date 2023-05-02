@@ -1,6 +1,6 @@
 import * as React from "react";
 import ReactEcharts from "echarts-for-react";
-import echarts from "echarts";
+import { ResponsiveContainer } from "recharts";
 
 export interface BarGraphProps {
   graphData: any;
@@ -19,9 +19,9 @@ export function RegionChartTimeFiltered({
     tooltip: {},
     legend: {
       show: true,
-      orient: "vertical",
-      right: -5,
-      top: 150,
+      orient: showMobileLedger ? "horizontal" : "vertical",
+      right: showMobileLedger ? 80 : 100,
+      top: showMobileLedger ? 0 : 150,
       bottom: 0,
       data: [
         "North America",
@@ -32,6 +32,10 @@ export function RegionChartTimeFiltered({
         "Oceania",
         "Uncategorized",
       ],
+    },
+    grid: {
+      top: 10,
+      right: 230,
     },
     xAxis: {
       type: "category",
@@ -118,15 +122,16 @@ export function RegionChartTimeFiltered({
   };
 
   return (
-    <ReactEcharts
-      option={option}
-      echarts={echarts}
-      style={{
-        height: "500px",
-        width: "100%",
-        marginLeft: "-6rem",
-        marginRight: "1rem",
-      }}
-    />
+    <ResponsiveContainer>
+      <ReactEcharts
+        option={option}
+        style={{
+          height: "500px",
+          width: "110%",
+          marginLeft: showMobileLedger ? "0rem" : "-7rem",
+          marginRight: showMobileLedger ? "0rem" : "0rem",
+        }}
+      />
+    </ResponsiveContainer>
   );
 }
