@@ -123,7 +123,7 @@ export default function SectionDataNew() {
               <h2
                 style={{
                   color: "var(--color-black)",
-                  paddingTop: "4rem",
+                  paddingTop: "2rem",
                 }}
               >
                 Data Stored by Where the Owner Lives

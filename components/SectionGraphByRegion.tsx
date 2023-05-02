@@ -8,6 +8,7 @@ import {
 import { useState } from "react";
 import FilterSelection from "./FilterSelection";
 import { BreakpointEnum, useBreakpoint } from "@root/common/use-breakpoint";
+import { RegionChartTimeFiltered } from "./RegionChartTimeFiltered";
 
 export default function SectionGraphByRegion({ allData }) {
   const [selectedInterval, setSelectedInterval] = useState<
@@ -20,8 +21,8 @@ export default function SectionGraphByRegion({ allData }) {
   const clientsArray = Array.from(allData);
   const updatedKnownClientsRegions = updateClientRegions(clientsArray);
 
-  const handleIntervalChange = (event) => {
-    setSelectedInterval(event.target.value);
+  const handleIntervalChange = (value) => {
+    setSelectedInterval(value);
   };
 
   const groupedClients = groupClientsByWeekAndRegion(
@@ -37,15 +38,15 @@ export default function SectionGraphByRegion({ allData }) {
 
   const options = [
     {
-      text: "last month",
+      text: "30D",
       value: "month",
     },
     {
-      text: "3 months",
+      text: "90D",
       value: "3month",
     },
     {
-      text: "6 months",
+      text: "180D",
       value: "6month",
     },
   ];
@@ -70,15 +71,14 @@ export default function SectionGraphByRegion({ allData }) {
       </div>
       <div className={styles.chartContainer}>
         {isMobile && (
-          <RegionStackedBarChart
+          <RegionChartTimeFiltered
             graphData={sortedData}
             showDesktopLedger={false}
             showMobileLedger={true}
           />
         )}
-
         {!isMobile && (
-          <RegionStackedBarChart
+          <RegionChartTimeFiltered
             graphData={sortedData}
             showDesktopLedger={true}
             showMobileLedger={false}
