@@ -71,10 +71,10 @@ export default function SectionGraphByRegion({ allData }) {
       </div>
       <div className={styles.chartContainer}>
         {isMobile && (
-          <RegionChartTimeFiltered
-            graphData={sortedData}
-            showDesktopLedger={false}
+          <RegionStackedBarChart
             showMobileLedger={true}
+            showDesktopLedger={false}
+            graphData={sortedData}
           />
         )}
         {!isMobile && (
