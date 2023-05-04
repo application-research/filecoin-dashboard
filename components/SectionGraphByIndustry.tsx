@@ -69,10 +69,10 @@ export default function SectionGraphByIndustry({ allData }) {
         />
       </div>
       {isMobile && (
-        <IndustryChartTimeFilter
-          graphData={sortedData}
-          showDesktopLedger={false}
+        <IndustryStackedBarChart
           showMobileLedger={true}
+          showDesktopLedger={false}
+          graphData={sortedData}
         />
       )}
       {!isMobile && (
