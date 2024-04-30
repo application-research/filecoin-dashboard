@@ -4,6 +4,7 @@ import {
   updateClientIndustry,
 } from "@root/resolvers/client-industry";
 import { IndustryStackedBarChart } from "./IndustryStackedBarChart";
+import { graphIntervalsEnum } from "@root/common/types";
 import { AllData } from "@root/common/types";
 import { useState } from "react";
 import FilterSelection from "./FilterSelection";
@@ -12,9 +13,7 @@ import { IndustryChartTimeFilter } from "./IndustryChartTimeFilter";
 
 export default function SectionGraphByIndustry({ allData }) {
   if (!allData) return;
-  const [selectedInterval, setSelectedInterval] = useState<
-    "month" | "3month" | "6month" | "12month" | "allTime"
-  >("allTime");
+  const [selectedInterval, setSelectedInterval] = useState<graphIntervalsEnum>(graphIntervalsEnum.allTime);
   const breakpoint = useBreakpoint();
   const isMobile =
     breakpoint === BreakpointEnum.XS || breakpoint === BreakpointEnum.SM;
@@ -39,19 +38,19 @@ export default function SectionGraphByIndustry({ allData }) {
   const options = [
     {
       text: "30D",
-      value: "month",
+      value: graphIntervalsEnum.oneMonth,
     },
     {
       text: "90D",
-      value: "3month",
+      value: graphIntervalsEnum.threeMonths,
     },
     {
       text: "180D",
-      value: "6month",
+      value: graphIntervalsEnum.sixMonths,
     },
     {
-      text: "All Time",
-      value: "allTime",
+      text: "All time",
+      value: graphIntervalsEnum.allTime,
     },
   ];
 
