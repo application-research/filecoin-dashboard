@@ -12,8 +12,8 @@ import { RegionChartTimeFiltered } from "./RegionChartTimeFiltered";
 
 export default function SectionGraphByRegion({ allData }) {
   const [selectedInterval, setSelectedInterval] = useState<
-    "month" | "3month" | "6month" | "12month"
-  >("6month");
+    "month" | "3month" | "6month" | "12month" | "allTime"
+  >("allTime");
   const breakpoint = useBreakpoint();
   const isMobile =
     breakpoint === BreakpointEnum.XS || breakpoint === BreakpointEnum.SM;
@@ -48,6 +48,10 @@ export default function SectionGraphByRegion({ allData }) {
     {
       text: "180D",
       value: "6month",
+    },
+    {
+      text: "All Time",
+      value: "allTime",
     },
   ];
   return (

@@ -214,6 +214,8 @@ export function changeIntervalToCurrentDate(interval) {
       return currentDate.setMonth(currentDate.getMonth() - 3);
     case "6month":
       return currentDate.setMonth(currentDate.getMonth() - 6);
+    case "allTime":
+      return new Date('2023')
   }
 
   //check if the current interval currentDate touches the previous years
