@@ -79,3 +79,11 @@ export interface GroupedDataByRegionAndData {
   "South America": { incoming: number; outgoing: number };
   Uncategorized: { incoming: number; outgoing: number };
 }
+
+export enum graphIntervalsEnum  {
+  oneMonth = "month",
+  threeMonths = "3month",
+  sixMonths = "6month",
+  twelveMonths = "12month",
+  allTime = "allTime;"
+}
